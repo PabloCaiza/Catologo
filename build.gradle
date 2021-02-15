@@ -1,0 +1,26 @@
+plugins {
+ id 'java-library'
+    id 'war'
+    id 'eclipse-wtp' //para agregarle al tomcat 
+}
+
+repositories {
+    
+    jcenter()
+}
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+dependencies {
+compile group: 'org.jboss.weld.servlet', name: 'weld-servlet-core', version: '3.1.4.Final'
+compile group: 'org.hibernate', name: 'hibernate-core', version: '5.4.12.Final'
+compile group: 'org.postgresql', name: 'postgresql', version: '42.2.14'
+compile group: 'org.glassfish', name: 'javax.faces', version: '2.4.0'
+// https://mvnrepository.com/artifact/org.primefaces/primefaces
+compile group: 'org.primefaces', name: 'primefaces', version: '10.0.0-RC1'
+
+
+compile 'net.bootsfaces:bootsfaces:1.4.2'
+   
+}
