@@ -1,4 +1,5 @@
 Para adjuntar tus cambios
+git add 
 git commit -am "nombre_de_cambio"
 git push -u origin main 
 
