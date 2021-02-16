@@ -1,5 +1,48 @@
 @charset "ISO-8859-1";
 
-.red{
-	color:red;
+*{
+	margin:0px;
+	padding:0px;
+	box-sizing:0px;
+}
+
+body{
+	margin:0px;
+	padding:0px;
+}
+
+/* Estilos del header */
+
+.header {
+    height: 700px;
+    width: 100%;
+    position: relative;
+    background: #8E2DE2; 
+    background: -webkit-linear-gradient(to right, rgba(75, 0, 224, 0.698), rgba(141, 45, 226, 0.705));
+    background: linear-gradient(to right, rgba(75, 0, 224, 0.726), rgba(141, 45, 226, 0.705));
+}
+
+.imgInicio {
+	width: 100%;
+	
+}
+
+.headerContenido {
+	height:550px;
+	width:90%;
+	overflow:hidden;
+	margin:auto;
+	
+}
+
+.textoHeader {
+	width: 50%;
+	color: #fff;
+	
+	
+}
+
+.textoHeader > h1,h3,p {
+	padding: 10px 3px;
+	font-size: 40px
 }

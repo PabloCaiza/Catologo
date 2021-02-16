@@ -1,0 +1,101 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta content='text/html; charset=UTF-8' http-equiv="Content-Type" />
+	<title>Estudio Actuarial</title>
+	
+
+	
+	
+	
+</h:head>
+
+<h:body> 
+	<h:outputStylesheet library="css" name="primeflex.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="estilo.css"></h:outputStylesheet>
+
+
+	
+		<div class="header">
+		
+			<div class="p-d-flex p-jc-center p-ai-center headerContenido">
+				
+				<div class="Card textoHeader">	
+					<h1>VANATCI</h1>
+					<h3>Ropa Industrial de la mejor calidad y al mejor precio</h3>
+					<p:button value="Secondary" styleClass="ui-button-outlined" style="color:#fff" />
+						
+				</div>
+				
+				
+				<div class="" style="whith:50%">
+					<img src="resources/images/ilustracion1.svg" class="imgInicio"></img>
+				</div>
+			
+				
+				
+			
+			
+			</div>
+			
+			 <div class="wave-bottom" style="height: 150px; overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M0.00,49.98 C150.39,136.47 332.11,-25.37 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: #fff;"></path></svg></div>
+			
+			
+			
+		
+		
+		
+		</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<h:form id="personaForm">
+	
+	
+	
+	
+	
+	<div align="center">
+		<h2>Registro de Personas</h2>
+		
+		
+		
+		
+		
+		
+		<p:panelGrid columns="2">
+			<p:outputLabel>Nombre</p:outputLabel>
+		
+			
+			<p:inputText value="#{personaB.persona.persNombre}"/>
+			<p:outputLabel>Edad</p:outputLabel>
+			<p:inputText value="#{personaB.persona.persEdad}" type="number"/>
+			<p:commandButton value="Grabar"
+				actionListener="#{personaB.crearPersona}"
+				update="personaForm"/>
+		</p:panelGrid>
+	</div>
+		
+		<br/>
+		<h2>Listado de Personas</h2>
+		<p:dataTable id="tbPersonas" var="persona" value="#{personaB.personas}">
+			<p:column headerText="Nombre">
+				<h:outputText value="#{persona.persNombre}" />
+			</p:column>
+			<p:column headerText="Edad">
+				<h:outputText value="#{persona.persEdad}" />
+			</p:column>
+		</p:dataTable>
+	</h:form>	
+</h:body>
+</html>
