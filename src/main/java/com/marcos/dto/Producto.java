@@ -3,6 +3,8 @@ package com.marcos.dto;
 import javax.persistence.*;
 
 @Entity
+
+@NamedQuery(name = "Producto.findAll",query = "SELECT p FROM PRODUCTO p")
 public class Producto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,6 +14,9 @@ public class Producto {
 	private double precio;
 	private String descripcion;
 	private String imagen;
+	@ManyToOne
+	@Column(name="id_categoria")
+	private Categoria categoria;
 	public int getId() {
 		return id;
 	}
@@ -41,6 +46,12 @@ public class Producto {
 	}
 	public void setImagen(String imagen) {
 		this.imagen = imagen;
+	}
+	public Categoria getCategoria() {
+		return categoria;
+	}
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
 	
 	
