@@ -18,20 +18,41 @@
 <h:body>
 	 
 	<h:outputStylesheet library="css" name="primeflex.css"></h:outputStylesheet>
-	<h:outputStylesheet library="css" name="estilo.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="EstilosAdmin.css"></h:outputStylesheet>
 	
 	
-	<div class="p-grid p-d-flex">
+	<div class=" p-d-flex p-ai-center p-jc-center container">
+	
+	
+	
+		<div>
+			<img src="resources/images/log2.svg"></img>	
+		</div>
 		
-		<div class="p-col-6 p-offset-3" style="background:red">
+		<div class="degradado p-d-flex p-flex-column p-jc-center">
 		
-			<i class="fas fa-user"></i>
+			
+			<div class="logo">
+				<img src="resources/images/profile.svg" style="width:100px"></img>	
+			</div>
+			
 			
 			<div>
-				 <span class="ui-float-label">
+				<h:form>
+				<span class="ui-float-label">
        				<p:inputText id="float-input" value="#{inputTextView.text}"/>
        				<p:outputLabel for="@previous" value="Username"/>
   				 </span>
+  				 
+  				 <p:password id="turkishFeedback" value="#{passwordView.password3}" feedback="true"
+                    promptLabel="Ingresa tu contraseña" weakLabel="Débil"
+                    goodLabel="Buena" strongLabel="Fuerte"/>
+                    
+                  <p:button value="Primary" styleClass="rounded-button" style="background:#61D2C2" />
+				
+				
+				</h:form>
+				 
 				
 			</div>
 			
@@ -42,8 +63,7 @@
 	
 	</div>
 	
-	
-	<h3>Prueba</h3>
+
 
 	
 </h:body>
