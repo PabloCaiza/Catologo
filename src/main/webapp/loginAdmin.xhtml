@@ -21,11 +21,21 @@
 	<h:outputStylesheet library="css" name="estilo.css"></h:outputStylesheet>
 	
 	
-	<div class="p-grid">
+	<div class="p-grid p-d-flex">
 		
-		<div class="p-col-6 p-offset-3">6
+		<div class="p-col-6 p-offset-3" style="background:red">
 		
 			<i class="fas fa-user"></i>
+			
+			<div>
+				 <span class="ui-float-label">
+       				<p:inputText id="float-input" value="#{inputTextView.text}"/>
+       				<p:outputLabel for="@previous" value="Username"/>
+  				 </span>
+				
+			</div>
+			
+			
 		</div>
 		
 	
