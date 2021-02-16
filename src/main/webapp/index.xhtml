@@ -17,17 +17,24 @@
         <p:panelGrid columns="2">
             <p:outputLabel>Nombre</p:outputLabel>
 
-saquese de mi server despedidom   cambio
-            <p:inputText value="#{usuarioB.usuario.nombre}"/>
 
-            <p:outputLabel>Correo</p:outputLabel>
-            <p:inputText value="#{usuarioB.usuario.correo}" type="text"/>
+            <p:inputText value="#{productoB.producto.nombre}"/>
 
-            <p:outputLabel>Clave</p:outputLabel>
-            <p:inputText value="#{usuarioB.usuario.clave}" type="password"></p:inputText>
+            <p:outputLabel>precio</p:outputLabel>
+            <p:inputText value="#{productoB.producto.precio}" type="number"/>
+
+            <p:outputLabel>Descripcion</p:outputLabel>
+            <p:inputText value="#{productoB.producto.descripcion}" type="text"></p:inputText>
+            
+            <p:outputLabel>imagen</p:outputLabel>
+            <p:inputText value="#{productoB.producto.imagen}" type="text"></p:inputText>
+            
+ 
+             <p:inputText value="#{productoB.categoria}"></p:inputText>
+            
 
             <p:commandButton value="Grabar"
-                actionListener="#{usuarioB.crearUsuario}"
+                actionListener="#{productoB.setProducto}"
                 update="personaForm"/>
         </p:panelGrid>
     </div>

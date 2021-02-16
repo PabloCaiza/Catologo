@@ -5,7 +5,7 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
-@NamedQuery(name="Categoria.findAll",query = "SELECT c FROM CATEGORIA c")
+@NamedQuery(name="Categoria.findAll",query = "SELECT c FROM Categoria c")
 public class Categoria {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

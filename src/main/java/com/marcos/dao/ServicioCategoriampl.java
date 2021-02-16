@@ -2,11 +2,13 @@ package com.marcos.dao;
 
 import java.util.List;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.*;
 import javax.persistence.EntityManager;
 
 import com.marcos.dto.Categoria;
 
+@ApplicationScoped
 public class ServicioCategoriampl implements ServicioCategoria{
 	@Inject
 	EntityManager em;
@@ -22,6 +24,12 @@ public class ServicioCategoriampl implements ServicioCategoria{
 		em.persist(caterogira);
 		em.getTransaction().commit();
 		
+	}
+
+	@Override
+	public Categoria encontrarCategoria(int id) {
+		em.getTransaction().begin();
+		return em.find(Categoria.class, id);
 	}
 
 }

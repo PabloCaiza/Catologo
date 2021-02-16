@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 
-@NamedQuery(name = "Producto.findAll",query = "SELECT p FROM PRODUCTO p")
+@NamedQuery(name = "Producto.findAll",query = "SELECT E FROM Producto E")
 public class Producto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,7 +15,7 @@ public class Producto {
 	private String descripcion;
 	private String imagen;
 	@ManyToOne
-	@Column(name="id_categoria")
+	@JoinColumn(name="id_categoria", nullable=false)
 	private Categoria categoria;
 	public int getId() {
 		return id;
