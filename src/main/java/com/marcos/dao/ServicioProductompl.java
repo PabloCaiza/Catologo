@@ -13,22 +13,29 @@ public class ServicioProductompl implements ServicioProducto{
 	private EntityManager em;
 	@Override
 	public List<Producto> listarProductos() {
-		// TODO Auto-generated method stub
-		return null;
+		return em.createNamedQuery("Producto.findAll").getResultList();
 	}
 	@Override
 	public void crear(Producto producto) {
-		// TODO Auto-generated method stub
+		em.getTransaction().begin();
+		em.persist(producto);
+		em.getTransaction().commit();
 		
 	}
 	@Override
 	public void elimnar(int id) {
-		// TODO Auto-generated method stub
+		em.getTransaction().begin();
+		Producto producto=em.find(Producto.class, id);
+		em.remove(producto);
+		em.getTransaction().commit();
 		
 	}
 	@Override
 	public void modificar(int id, Producto producto) {
-		// TODO Auto-generated method stub
+		producto.setId(id);
+		em.getTransaction().begin();
+		em.merge(producto);
+		em.getTransaction().commit();
 		
 	}
 
