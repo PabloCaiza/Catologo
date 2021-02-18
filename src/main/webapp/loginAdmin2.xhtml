@@ -1,0 +1,68 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta content='text/html; charset=UTF-8' http-equiv="Content-Type" />
+	<link></link>
+	<title>Estudio Actuarial</title>
+	
+
+	
+	
+	
+</h:head>
+
+<h:body> 
+	<h:outputStylesheet library="css" name="primeflex.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="EstilosAdmin.css"></h:outputStylesheet>
+	
+	
+	<img class="wave" src="resources/images/wave.jpg" ></img>
+
+	<div class="Contenedor p-grid">
+	
+		<div class="img p-d-flex p-jc-end p-ai-center ">
+			<img src="resources/images/log2.svg" ></img>
+			
+		</div>
+		
+		<div class="loginContenedor p-d-flex p-jc-start p-ai-center">
+		
+			<div class="form">
+				<img class="imgg" src="resources/images/profile.svg" ></img>
+				<h2 class="title">Bienvenido</h2>
+				
+				<div class="input user">
+					<div class="div">
+			 			<span class="ui-float-label" style="text-align:center">
+       						<p:inputText id="float-input" value="#{inputTextView.text}"/>
+  				 		</span>
+			 		</div>
+				</div>
+				
+				<div class="input pass">
+					<div class="div">
+			 			<p:password id="nonFeedback" value="#{passwordView.password1}"/>
+			 		</div>
+				</div>
+				<p:button value="Primary" styleClass="rounded-button" style="background:#61D2C2" />
+				
+			
+			</div>
+		
+			
+		</div>
+	
+	
+	
+	
+	</div>
+
+
+	
+	
+	
+</h:body>
+</html>
