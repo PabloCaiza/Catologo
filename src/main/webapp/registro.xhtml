@@ -1,0 +1,46 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	
+<h:head>
+	<title>Registro</title>
+</h:head>
+
+<h:body>
+	<h:form id="registryForm">
+		<p:growl id="growl" showDetail="true" />
+		<div class="card">
+		<p:panel id="pnlLogin" header="Registrarse" style="text-align:center ">
+		 <p:panelGrid columns="2"  layout="flex"
+					styleClass="customPanelGrid" contentStyleClass="ui-fluid">
+		<p:outputLabel value="Nombre" style="float:left"></p:outputLabel>
+		<p:inputText value="#{personaB.persona.nombre}" required="true" requiredMessage="Nombre es requerido"> </p:inputText>
+		<p:outputLabel value="Correo" style="float:left"></p:outputLabel>
+		<p:inputText value="#{personaB.persona.correo}" required="true" requiredMessage="Correo es requerido"></p:inputText>
+		<p:outputLabel value="Clave" style="float:left"></p:outputLabel>
+		<p:inputText value="#{personaB.persona.clave}" required="true" type="password" requiredMessage="Clave es requerida"></p:inputText>
+		<p:outputLabel value="Clave" style="float:left"></p:outputLabel>
+		<p:inputText value="#{personaB.password}" required="true" type="password" requiredMessage="Clave es requerida"></p:inputText>
+		
+		<p:commandButton value="Registrarse" action="#{personaB.crearPersona}"
+		update="registryForm,growl " styleClass="rounded-button" style="background:#61D2C2"> </p:commandButton>
+		<p:button value="Login" outcome="login" styleClass="rounded-button" style="background:#61D2C2"></p:button>
+		</p:panelGrid>
+		</p:panel>
+		</div>
+	
+	
+	
+	
+	
+	</h:form>
+	
+
+
+</h:body>
+
+
+
+</html>

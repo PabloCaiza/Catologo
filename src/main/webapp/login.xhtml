@@ -7,7 +7,7 @@
 	<meta content='text/html; charset=UTF-8' http-equiv="Content-Type" />
 	<link></link>
 	<title>Estudio Actuarial</title>
-	
+	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
 
 	
 	
@@ -31,24 +31,28 @@
 		<div class="loginContenedor p-d-flex p-jc-start p-ai-center">
 		
 			<div class="form">
+				<h:form id="loginForm">
+				 <p:growl id="growl" showDetail="true" />
 				<img class="i" src="resources/images/profile.svg" ></img>
 				<h2 class="title">Bienvenido</h2>
 				
 				<div class="input user">
 					<div class="div">
 			 			<span class="ui-float-label" style="text-align:center">
-       						<p:inputText id="float-input" value="#{inputTextView.text}"/>
+       						<p:inputText placeholder="Correo" id="float-input" value="#{personaB.correo}" required="true" requiredMessage="Ingrese su correo"/>
   				 		</span>
 			 		</div>
 				</div>
 				
 				<div class="input pass">
 					<div class="div">
-			 			<p:password id="nonFeedback" value="#{passwordView.password1}"/>
+			 			<p:password  placeholder="Contraseña" id="nonFeedback" value="#{personaB.password}" required="true" requiredMessage="Ingrese su clave"/>
 			 		</div>
 				</div>
-				<p:button value="Primary" styleClass="rounded-button" style="background:#61D2C2" />
-				
+				<p:commandButton value="Ingresar" styleClass="rounded-button" style="background:#61D2C2" 
+				update="loginForm,growl " action="#{personaB.ingresar}" />
+				<p:button value="Registrarse" styleClass="rounded-button" style="background:#61D2C2" outcome="registro"/>
+				</h:form>
 			
 			</div>
 		
