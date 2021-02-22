@@ -1,12 +1,16 @@
 package com.marcos.beans;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.annotation.ManagedProperty;
 import javax.faces.application.FacesMessage;
 import javax.faces.application.FacesMessage.Severity;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.ExternalContextFactory;
 import javax.faces.context.FacesContext;
@@ -16,8 +20,8 @@ import javax.inject.Named;
 import com.marcos.dao.ServicioPersonaI;
 import com.marcos.dto.Persona;
 
-@Named("personaB")
-@RequestScoped
+@Named("personaBean")
+@javax.faces.view.ViewScoped
 public class PersonaBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -29,6 +33,8 @@ public class PersonaBean implements Serializable {
 
 	@Inject
 	private ServicioPersonaI servicio;
+	@Inject
+	private SessionController session;
 
 	@PostConstruct
 	public void init() {
@@ -36,6 +42,20 @@ public class PersonaBean implements Serializable {
 
 		persona = new Persona();
 	}
+	
+	
+
+	public SessionController getSession() {
+		return session;
+	}
+
+
+
+	public void setSession(SessionController session) {
+		this.session = session;
+	}
+
+
 
 	public List<Persona> getPersonas() {
 		return personas;
@@ -73,11 +93,12 @@ public class PersonaBean implements Serializable {
 		Persona persona=coincidenCredenciales();
 		if(persona!=null) {
 			if(persona.getRol().getNombre().equals("admin")) {
-				System.out.println("es admin");
-				
+				session.setPersona(persona);
+				rediccionar("interfazAdmin.xhtml");
 			}else {
 				
-				System.out.println("es usuario");
+				session.setPersona(persona);
+				rediccionar("catalogo.xhtml");
 				
 			}
 		}else {
@@ -86,7 +107,14 @@ public class PersonaBean implements Serializable {
 			
 		}
 	}
-
+	public void rediccionar(String pagina) {
+		try {
+			FacesContext.getCurrentInstance().getExternalContext().redirect(pagina);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	public Persona coincidenCredenciales() {
 		for (int i = 0; i < personas.size(); i++) {
 			if (personas.get(i).getCorreo().equalsIgnoreCase(correo) && personas.get(i).getClave().equals(password)) {

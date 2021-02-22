@@ -39,18 +39,18 @@
 				<div class="input user">
 					<div class="div">
 			 			<span class="ui-float-label" style="text-align:center">
-       						<p:inputText placeholder="Correo" id="float-input" value="#{personaB.correo}" required="true" requiredMessage="Ingrese su correo"/>
+       						<p:inputText placeholder="Correo" id="float-input" value="#{personaBean.correo}" required="true" requiredMessage="Ingrese su correo"/>
   				 		</span>
 			 		</div>
 				</div>
 				
 				<div class="input pass">
 					<div class="div">
-			 			<p:password  placeholder="Contraseña" id="nonFeedback" value="#{personaB.password}" required="true" requiredMessage="Ingrese su clave"/>
+			 			<p:password  placeholder="Contraseña" id="nonFeedback" value="#{personaBean.password}" required="true" requiredMessage="Ingrese su clave"/>
 			 		</div>
 				</div>
 				<p:commandButton value="Ingresar" styleClass="rounded-button" style="background:#61D2C2" 
-				update="loginForm,growl " action="#{personaB.ingresar}" />
+				update="loginForm,growl " action="#{personaBean.ingresar}" />
 				<p:button value="Registrarse" styleClass="rounded-button" style="background:#61D2C2" outcome="registro"/>
 				</h:form>
 			
