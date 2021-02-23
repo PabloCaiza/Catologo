@@ -16,15 +16,15 @@
 		 <p:panelGrid columns="2"  layout="flex"
 					styleClass="customPanelGrid" contentStyleClass="ui-fluid">
 		<p:outputLabel value="Nombre" style="float:left"></p:outputLabel>
-		<p:inputText value="#{personaB.persona.nombre}" required="true" requiredMessage="Nombre es requerido"> </p:inputText>
+		<p:inputText value="#{personaBean.persona.nombre}" required="true" requiredMessage="Nombre es requerido"> </p:inputText>
 		<p:outputLabel value="Correo" style="float:left"></p:outputLabel>
-		<p:inputText value="#{personaB.persona.correo}" required="true" requiredMessage="Correo es requerido"></p:inputText>
+		<p:inputText value="#{personaBean.persona.correo}" required="true" requiredMessage="Correo es requerido"></p:inputText>
 		<p:outputLabel value="Clave" style="float:left"></p:outputLabel>
-		<p:inputText value="#{personaB.persona.clave}" required="true" type="password" requiredMessage="Clave es requerida"></p:inputText>
+		<p:inputText value="#{personaBean.persona.clave}" required="true" type="password" requiredMessage="Clave es requerida"></p:inputText>
 		<p:outputLabel value="Clave" style="float:left"></p:outputLabel>
-		<p:inputText value="#{personaB.password}" required="true" type="password" requiredMessage="Clave es requerida"></p:inputText>
+		<p:inputText value="#{personaBean.password}" required="true" type="password" requiredMessage="Clave es requerida"></p:inputText>
 		
-		<p:commandButton value="Registrarse" action="#{personaB.crearPersona}"
+		<p:commandButton value="Registrarse" action="#{personaBean.crearPersona}"
 		update="registryForm,growl " styleClass="rounded-button" style="background:#61D2C2"> </p:commandButton>
 		<p:button value="Login" outcome="login" styleClass="rounded-button" style="background:#61D2C2"></p:button>
 		</p:panelGrid>

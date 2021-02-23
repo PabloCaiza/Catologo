@@ -19,6 +19,8 @@ import javax.inject.Named;
 
 import com.marcos.dao.ServicioPersonaI;
 import com.marcos.dto.Persona;
+import com.marcos.utils.CommonUtils;
+
 
 @Named("personaBean")
 @javax.faces.view.ViewScoped
@@ -93,8 +95,13 @@ public class PersonaBean implements Serializable {
 		Persona persona=coincidenCredenciales();
 		if(persona!=null) {
 			if(persona.getRol().getNombre().equals("admin")) {
-				session.setPersona(persona);
-				rediccionar("interfazAdmin.xhtml");
+				
+				try {
+					session.setPersona(persona);
+					CommonUtils.redireccionarPagina("/pages/commons/dashBoard.xhtml");
+				} catch (IOException e) {
+					CommonUtils.mostarMensaje(FacesMessage.SEVERITY_ERROR, "Error al cargar la pagina", "");
+				}
 			}else {
 				
 				session.setPersona(persona);
