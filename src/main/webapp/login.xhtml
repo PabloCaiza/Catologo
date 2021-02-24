@@ -25,7 +25,7 @@
 	<div class="Contenedor p-grid">
 
 		<div class="img p-d-flex p-jc-end p-ai-center ">
-			<img src="resources/images/log2.svg"></img>
+			<img src="resources/imgs/log2.svg"></img>
 
 		</div>
 
@@ -39,7 +39,8 @@
 
 					<div class="input user">
 						<div class="div">
-							<span class="ui-float-label" style="text-align: center"> <p:inputText
+							<span class="ui-float-label" style="text-align: center"> 
+								<p:inputText
 									placeholder="Correo" id="float-input"
 									value="#{personaBean.correo}" required="true"
 									requiredMessage="Ingrese su correo" />
@@ -54,11 +55,13 @@
 								requiredMessage="Ingrese su clave" />
 						</div>
 					</div>
-					<p:commandButton value="Ingresar" styleClass="rounded-button"
+					<p:commandButton value="Ingresar" styleClass="rounded-button roun p-text-bold p-shadow-1"
 						style="background:#61D2C2" update="loginForm,growl "
 						action="#{personaBean.ingresar}" />
-					<p:button value="Registrarse" styleClass="rounded-button"
-						style="background:#61D2C2" outcome="registro" />
+					<!-- Separacion -->	
+					
+					<p:button value="Registrarse" styleClass="rounded-button p-text-bold p-shadow-1"
+						style="background:#61D2C2;margin:0 5px" outcome="registro" />
 				</h:form>
 
 			</div>
