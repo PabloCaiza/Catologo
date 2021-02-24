@@ -9,5 +9,6 @@ public interface ServicioProducto {
 	void crear(Producto producto);
 	void elimnar(int id);
 	void modificar(int id,Producto producto);
+	List<Producto> queryByNameFilter(String filter);
 
 }

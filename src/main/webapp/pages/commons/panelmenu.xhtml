@@ -4,25 +4,24 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-	<div class="p-grid ">
-		<div class="p-col">
-			<div class="ui-inputgroup" style="display: block;">
-				<p:inputText id="txtBuscador" style="width:90% ;margin-bottom:20px"
-					value="" placeholder="Producto"></p:inputText>
+	<div class="card">
+		<h:form>
+			<p:growl>
+				<p:autoUpdate />
+			</p:growl>
 
-			</div>
+			<p:panelMenu style="width:100%">
+				<p:submenu label="Mi perfil" rendered="true" expanded="true">
+					<p:menuitem value="Informacion General" icon="pi pi-user-edit" />
+					<p:menuitem value="Mis compras" icon="pi pi-shopping-cart" />
+				</p:submenu>
+				<p:submenu label="Administracion" rendered="false">
+					<p:menuitem value="Delete" action="#{menuView.delete}" ajax="false"
+						icon="pi pi-times" />
+				</p:submenu>
 
-			<div class="ui-inputgroup" >
-				<p:panel id="pnlResultados" style="width:90%;margin: 0px auto">
-				
-					
-				
-				</p:panel>
-
-			</div>
-
-
-		</div>
+			</p:panelMenu>
+		</h:form>
 	</div>
 
 

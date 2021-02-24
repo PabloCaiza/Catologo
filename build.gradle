@@ -19,7 +19,9 @@ compile group: 'org.postgresql', name: 'postgresql', version: '42.2.14'
 compile group: 'org.glassfish', name: 'javax.faces', version: '2.4.0'
 // https://mvnrepository.com/artifact/org.primefaces/primefaces
 compile group: 'org.primefaces', name: 'primefaces', version: '10.0.0-RC1'
-
+// https://mvnrepository.com/artifact/org.springframework/spring-context
+compile group: 'org.springframework', name: 'spring-context', version: '5.3.4'
+compile group: 'org.springframework', name: 'spring-web', version: '5.3.4'
 
 compile 'net.bootsfaces:bootsfaces:1.4.2'
    

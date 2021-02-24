@@ -3,13 +3,14 @@ package com.marcos.dto;
 import javax.persistence.*;
 
 @Entity
-
+@NamedQuery(name = "Producto.findByName",query = "SELECT p FROM Producto p WHERE p.nombre like :filter ")
 @NamedQuery(name = "Producto.findAll",query = "SELECT E FROM Producto E")
 public class Producto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_producto")
 	private int id;
+	@Column(name="nombre")
 	private String nombre;
 	private double precio;
 	private String descripcion;
