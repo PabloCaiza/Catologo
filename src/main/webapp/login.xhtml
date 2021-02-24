@@ -9,64 +9,74 @@
 	<title>Estudio Actuarial</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
 
-	
-	
-	
+
+
+
 </h:head>
 
-<h:body> 
+<h:body>
 	<h:outputStylesheet library="css" name="primeflex.css"></h:outputStylesheet>
 	<h:outputStylesheet library="css" name="EstilosAdmin.css"></h:outputStylesheet>
-	
-	
-	<img class="wave" src="resources/images/wave.jpg" ></img>
+
+
+		<img class="wave" src="resources/imgs/wave.jpg"></img>
+		
 
 	<div class="Contenedor p-grid">
-	
+
 		<div class="img p-d-flex p-jc-end p-ai-center ">
-			<img src="resources/images/log2.svg" ></img>
-			
+			<img src="resources/images/log2.svg"></img>
+
 		</div>
-		
+
 		<div class="loginContenedor p-d-flex p-jc-start p-ai-center">
-		
+
 			<div class="form">
 				<h:form id="loginForm">
-				 <p:growl id="growl" showDetail="true" />
-				<img class="i" src="resources/images/profile.svg" ></img>
-				<h2 class="title">Bienvenido</h2>
-				
-				<div class="input user">
-					<div class="div">
-			 			<span class="ui-float-label" style="text-align:center">
-       						<p:inputText placeholder="Correo" id="float-input" value="#{personaBean.correo}" required="true" requiredMessage="Ingrese su correo"/>
-  				 		</span>
-			 		</div>
-				</div>
-				
-				<div class="input pass">
-					<div class="div">
-			 			<p:password  placeholder="Contraseña" id="nonFeedback" value="#{personaBean.password}" required="true" requiredMessage="Ingrese su clave"/>
-			 		</div>
-				</div>
-				<p:commandButton value="Ingresar" styleClass="rounded-button" style="background:#61D2C2" 
-				update="loginForm,growl " action="#{personaBean.ingresar}" />
-				<p:button value="Registrarse" styleClass="rounded-button" style="background:#61D2C2" outcome="registro"/>
+					<p:growl id="growl" showDetail="true" />
+					<img class="i" src="resources/imgs/profile.svg" width="50%"></img>
+					<h2 class="title">Bienvenido</h2>
+
+					<div class="input user">
+						<div class="div">
+							<span class="ui-float-label" style="text-align: center"> <p:inputText
+									placeholder="Correo" id="float-input"
+									value="#{personaBean.correo}" required="true"
+									requiredMessage="Ingrese su correo" />
+							</span>
+						</div>
+					</div>
+
+					<div class="input pass">
+						<div class="div">
+							<p:password placeholder="Contraseña" id="nonFeedback"
+								value="#{personaBean.password}" required="true"
+								requiredMessage="Ingrese su clave" />
+						</div>
+					</div>
+					<p:commandButton value="Ingresar" styleClass="rounded-button"
+						style="background:#61D2C2" update="loginForm,growl "
+						action="#{personaBean.ingresar}" />
+					<p:button value="Registrarse" styleClass="rounded-button"
+						style="background:#61D2C2" outcome="registro" />
 				</h:form>
-			
+
 			</div>
-		
-			
+
+
 		</div>
-	
-	
-	
-	
+
+
+
+
 	</div>
 
+		
+		
 
-	
-	
-	
+
+
+
+
 </h:body>
 </html>

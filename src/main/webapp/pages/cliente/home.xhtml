@@ -5,7 +5,11 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 	<div class="p-grid ">
+		
+		
+		
 		<div class="p-col">
+
 			<div class="ui-inputgroup" style="display: block;">
 				<p:inputText id="txtBuscador" style="width:90% ;margin-bottom:20px"
 					value="#{productoB.filtroPorNombre}" placeholder="Producto">
@@ -19,15 +23,15 @@
 			<div class="ui-inputgroup">
 				<p:panel id="pnlResultados" style="width:90%;margin: 0px auto">
 
-					<div class="product card" >
+					<div class="product card">
 						<h:form id="form">
 							<p:dataView var="product" value="#{productoB.productos}"
 								crows="12" paginator="true"
 								paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
 								gridIcon="pi pi-th-large" listIcon="pi pi-bars" layout="grid"
-								gridRowStyleClass="p-lg-6 p-xl-4" flex="true" >
+								gridRowStyleClass="p-lg-6 p-xl-4" flex="true">
 
-								<p:dataViewGridItem >
+								<p:dataViewGridItem>
 									<div class="product-grid-item card border-1">
 										<div class="product-grid-item-top">
 
@@ -40,7 +44,8 @@
 
 
 										<div class="product-grid-item-content">
-
+											
+											<p:graphicImage name="imgs/producto/#{product.imagen}" width="100%" height="400px" />
 											<div class="product-name">#{product.nombre}</div>
 											<div class="product-description">#{product.descripcion}</div>
 
@@ -67,7 +72,7 @@
 
 
 								<p:dataViewListItem>
-									<div class="product-grid-item card border-1" >
+									<div class="product-grid-item card border-1">
 										<div class="product-grid-item-top">
 
 											<div>
@@ -79,7 +84,7 @@
 
 
 										<div class="product-grid-item-content">
-
+											<p:graphicImage name="imgs/producto/#{product.imagen}" width="25%" height="400px" />
 											<div class="product-name">#{product.nombre}</div>
 											<div class="product-description">#{product.descripcion}</div>
 
