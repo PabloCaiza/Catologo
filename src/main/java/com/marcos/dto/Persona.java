@@ -20,7 +20,7 @@ import org.hibernate.annotations.CascadeType;
 public class Persona {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
+	@Column
 	private int id;
 	@Column(name = "nombre")
 	private String nombre;
