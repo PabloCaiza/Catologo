@@ -6,59 +6,88 @@
 	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
 <h:head>
-	<ui:include src="/pages/commons/scripts.xhtml"></ui:include>	
+	<ui:include src="/pages/commons/scripts.xhtml"></ui:include>
+	<script src="https://kit.fontawesome.com/145ec6c83c.js"
+		crossorigin="anonymous"></script>
+	<h:outputStylesheet library="css" name="primeflex.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="estilosFooter.css"></h:outputStylesheet>
 </h:head>
 
-<h:body> 
+<h:body>
 	<div class="ui-fluid">
 		<h:form id="formDashboard">
 			<ui:include src="/pages/commons/navbar.xhtml">
-	
-			
-			
-			
-			</ui:include>		
+
+
+
+
+			</ui:include>
 
 			<div class="p-grid sample-layout">
-				<div class="p-col-12 p-md-2" >
-				<p:commandLink>
-				<p:graphicImage name="imgs/profile.svg" width="100%"></p:graphicImage>
-				</p:commandLink>
-					
+				<div class="p-col-12 p-md-2">
+					<p:commandLink>
+						<p:graphicImage name="imgs/profile.svg" width="100%"></p:graphicImage>
+					</p:commandLink>
+
 					<ui:include src="/pages/commons/panelmenu.xhtml"></ui:include>
 				</div>
-				
-				<div class="p-col-12 p-md-10 p-col-nogutter" >
+
+				<div class="p-col-12 p-md-10 p-col-nogutter">
 					<div class="p-Grid">
 						<div class="p-col-12">
-						<c:if test="#{sessionController.persona.rol.idRol == 2}">
-						 <ui:include src="/pages/cliente/home.xhtml"></ui:include>
-						 
-						 </c:if>
+							<c:if test="#{sessionController.persona.rol.idRol == 2}">
+								<ui:include src="/pages/cliente/home.xhtml"></ui:include>
+
+							</c:if>
 						</div>
 					</div>
 				</div>
-				
-				<div class="p-col-12 " >
-				
-					<p:outputLabel value="@Copyright by Quesito"></p:outputLabel>
-				
-				</div>
-			
+
+
+
 			</div>
-			
-			
+
+
 		</h:form>
-	
-	
+
+
 	</div>
-	
-	
+
+	<div class="p-d-flex p-jc-around contenedor">
+
+		<div class="contacto">
+			<h6
+				style="color: #fff; font-size: 24px; margin-bottom: 10px; font-weight: 300;"
+				class="p-text-italic">Contactanos</h6>
+			<p
+				style="color: #000; font-size: 18px; margin-bottom: 10px; font-weight: 300;"
+				class="p-text-italic">Info@g.com</p>
+			<p>+52 76577888</p>
+
+			<h6
+				style="color: #fff; font-size: 24px; margin-bottom: 10px; font-weight: 300;"
+				class="p-text-italic">Redes sociales</h6>
 
 
+			<i class="fab fa-twitter icono"
+				style="font-size: 20px; color: #fff; padding: 14px; background: #000; width: 50px; height: 50px; text-align: center; border-radius: 100%; margin: 15px 15px 0 0; cursor: pointer;"></i>
+			<i class="fab fa-facebook-f icono"
+				style="font-size: 20px; color: #fff; padding: 14px; background: #000; width: 50px; height: 50px; text-align: center; border-radius: 100%; margin: 15px 15px 0 0; cursor: pointer;"></i>
+			<i class="fab fa-instagram icono"
+				style="font-size: 20px; color: #fff; padding: 14px; background: #000; width: 50px; height: 50px; text-align: center; border-radius: 100%; margin: 15px 15px 0 0; cursor: pointer;"></i>
 
-	
-	
-	
+		</div>
+		<div class="imgg">
+			<p
+				style="color: #fff; font-size: 24px; margin: 10px 0; font-weight: 300;"
+				class="p-text-italic">VANATCI</p>
+				
+			<img src="../../imgs/logo.png"></img>
+			<p:outputLabel value="@Copyright by Quesito"></p:outputLabel>
+
+		</div>
+
+	</div>
+
 </h:body>
 </html>
