@@ -21,7 +21,6 @@ import com.marcos.dao.ServicioPersonaI;
 import com.marcos.dto.Persona;
 import com.marcos.utils.CommonUtils;
 
-
 @Named("personaBean")
 @javax.faces.view.ViewScoped
 public class PersonaBean implements Serializable {
@@ -44,20 +43,14 @@ public class PersonaBean implements Serializable {
 
 		persona = new Persona();
 	}
-	
-	
 
 	public SessionController getSession() {
 		return session;
 	}
 
-
-
 	public void setSession(SessionController session) {
 		this.session = session;
 	}
-
-
 
 	public List<Persona> getPersonas() {
 		return personas;
@@ -90,30 +83,21 @@ public class PersonaBean implements Serializable {
 	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
-	
+
 	public void ingresar() {
-		Persona persona=coincidenCredenciales();
-		if(persona!=null) {
-			if(persona.getRol().getNombre().equals("admin")) {
-				
-				try {
-					session.setPersona(persona);
-					CommonUtils.redireccionarPagina("/pages/commons/dashBoard.xhtml");
-				} catch (IOException e) {
-					CommonUtils.mostarMensaje(FacesMessage.SEVERITY_ERROR, "Error al cargar la pagina", "");
-				}
-			}else {
-				
-				session.setPersona(persona);
-				rediccionar("catalogo.xhtml");
-				
-			}
-		}else {
+		Persona persona = coincidenCredenciales();
+		if (persona != null) {
+
+			session.setPersona(persona);
+			rediccionar("pages/commons/dashBoard.xhtml");
+
+		} else {
 			FacesContext.getCurrentInstance().addMessage("loginForm",
 					new FacesMessage(FacesMessage.SEVERITY_ERROR, "No coinciden las credenciales", ""));
-			
+
 		}
 	}
+
 	public void rediccionar(String pagina) {
 		try {
 			FacesContext.getCurrentInstance().getExternalContext().redirect(pagina);
@@ -122,6 +106,7 @@ public class PersonaBean implements Serializable {
 			e.printStackTrace();
 		}
 	}
+
 	public Persona coincidenCredenciales() {
 		for (int i = 0; i < personas.size(); i++) {
 			if (personas.get(i).getCorreo().equalsIgnoreCase(correo) && personas.get(i).getClave().equals(password)) {

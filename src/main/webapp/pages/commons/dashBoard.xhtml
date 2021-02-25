@@ -2,7 +2,8 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
 <h:head>
 	<ui:include src="/pages/commons/scripts.xhtml"></ui:include>	
@@ -11,21 +12,36 @@
 <h:body> 
 	<div class="ui-fluid">
 		<h:form id="formDashboard">
+			<ui:include src="/pages/commons/navbar.xhtml">
+	
+			
+			
+			
+			</ui:include>		
+
 			<div class="p-grid sample-layout">
 				<div class="p-col-12 p-md-2" >
+				<p:commandLink>
+				<p:graphicImage name="imgs/profile.svg" width="100%"></p:graphicImage>
+				</p:commandLink>
+					
 					<ui:include src="/pages/commons/panelmenu.xhtml"></ui:include>
 				</div>
 				
 				<div class="p-col-12 p-md-10 p-col-nogutter" >
 					<div class="p-Grid">
 						<div class="p-col-12">
-							
+						<c:if test="#{sessionController.persona.rol.idRol == 2}">
 						 <ui:include src="/pages/cliente/home.xhtml"></ui:include>
+						 
+						 </c:if>
 						</div>
 					</div>
 				</div>
 				
-				<div class="p-col-12 p-md-2" >
+				<div class="p-col-12 " >
+				
+					<p:outputLabel value="@Copyright by Quesito"></p:outputLabel>
 				
 				</div>
 			
