@@ -17,11 +17,39 @@
 
 .contacto {
 	width: 27%;
+	
 }
 
 
 
-.img{
-	vertical-align: top;
-   
+
+
+@media screen and (max-width:800px){
+	
+	 .contacto{
+        width: 40%;
+    }
+
+    .imgg{
+        width: 40%;
+    }
+}
+
+@media screen and (max-width:400px){
+	
+	
+    .contenedor{
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .contacto{
+        width: 100%;
+    }
+
+    .imgg{
+        width: 100%;
+    }
 }

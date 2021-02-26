@@ -13,13 +13,10 @@
 	<h:outputStylesheet library="css" name="estilosFooter.css"></h:outputStylesheet>
 </h:head>
 
-<h:body>
-	<div class="ui-fluid">
+<h:body style="margin: 0; padding: 0; box-sizing: border-box;">
+	<div class="ui-fluid" style="overflow: hidden;">
 		<h:form id="formDashboard">
 			<ui:include src="/pages/commons/navbar.xhtml">
-
-
-
 
 			</ui:include>
 
@@ -77,13 +74,15 @@
 				style="font-size: 20px; color: #fff; padding: 14px; background: #000; width: 50px; height: 50px; text-align: center; border-radius: 100%; margin: 15px 15px 0 0; cursor: pointer;"></i>
 
 		</div>
-		<div class="imgg">
-			<p
-				style="color: #fff; font-size: 24px; margin: 10px 0; font-weight: 300;"
-				class="p-text-italic">VANATCI</p>
-				
-			<img src="../../imgs/logo.png"></img>
-			<p:outputLabel value="@Copyright by Quesito"></p:outputLabel>
+		<div class="imgg" style=" width: 27%;
+    					vertical-align: top;padding:10px 0">
+			
+
+			<img src="../../resources/imgs/logo.png" style="width: 100%;
+    										object-fit: cover;"></img>
+			
+			<p style="text-align: center" class="p-text-italic p-text-bold">@Copyright by Quesito</p>
+			
 
 		</div>
 
