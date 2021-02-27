@@ -22,6 +22,12 @@ compile group: 'org.primefaces', name: 'primefaces', version: '10.0.0-RC1'
 // https://mvnrepository.com/artifact/org.springframework/spring-context
 compile group: 'org.springframework', name: 'spring-context', version: '5.3.4'
 compile group: 'org.springframework', name: 'spring-web', version: '5.3.4'
+implementation group:  'org.apache.logging.log4j', name: 'log4j-core', version: '2.14.0'
+implementation group:  'org.apache.logging.log4j', name: 'log4j-api', version: '2.14.0'
+// https://mvnrepository.com/artifact/org.primefaces.extensions/primefaces-extensions
+implementation group: 'org.primefaces.extensions', name: 'primefaces-extensions', version: '10.0.0-RC1'
+
+
 
 compile 'net.bootsfaces:bootsfaces:1.4.2'
    

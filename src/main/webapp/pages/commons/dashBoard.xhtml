@@ -21,13 +21,8 @@
 			</ui:include>
 
 			<div class="p-grid sample-layout">
-				<div class="p-col-12 p-md-2">
-					<p:commandLink>
-						<p:graphicImage name="imgs/profile.svg" width="100%"></p:graphicImage>
-					</p:commandLink>
 
-					<ui:include src="/pages/commons/panelmenu.xhtml"></ui:include>
-				</div>
+				<ui:include src="/pages/commons/header.xhtml"></ui:include>
 
 				<div class="p-col-12 p-md-10 p-col-nogutter">
 					<div class="p-Grid">
@@ -49,44 +44,7 @@
 
 
 	</div>
-
-	<div class="p-d-flex p-jc-around contenedor">
-
-		<div class="contacto">
-			<h6
-				style="color: #fff; font-size: 24px; margin-bottom: 10px; font-weight: 300;"
-				class="p-text-italic">Contactanos</h6>
-			<p
-				style="color: #000; font-size: 18px; margin-bottom: 10px; font-weight: 300;"
-				class="p-text-italic">Info@g.com</p>
-			<p>+52 76577888</p>
-
-			<h6
-				style="color: #fff; font-size: 24px; margin-bottom: 10px; font-weight: 300;"
-				class="p-text-italic">Redes sociales</h6>
-
-
-			<i class="fab fa-twitter icono"
-				style="font-size: 20px; color: #fff; padding: 14px; background: #000; width: 50px; height: 50px; text-align: center; border-radius: 100%; margin: 15px 15px 0 0; cursor: pointer;"></i>
-			<i class="fab fa-facebook-f icono"
-				style="font-size: 20px; color: #fff; padding: 14px; background: #000; width: 50px; height: 50px; text-align: center; border-radius: 100%; margin: 15px 15px 0 0; cursor: pointer;"></i>
-			<i class="fab fa-instagram icono"
-				style="font-size: 20px; color: #fff; padding: 14px; background: #000; width: 50px; height: 50px; text-align: center; border-radius: 100%; margin: 15px 15px 0 0; cursor: pointer;"></i>
-
-		</div>
-		<div class="imgg" style=" width: 27%;
-    					vertical-align: top;padding:10px 0">
-			
-
-			<img src="../../resources/imgs/logo.png" style="width: 100%;
-    										object-fit: cover;"></img>
-			
-			<p style="text-align: center" class="p-text-italic p-text-bold">@Copyright by Quesito</p>
-			
-
-		</div>
-
-	</div>
+	<ui:include src="/pages/commons/footer.xhtml"></ui:include>
 
 </h:body>
 </html>

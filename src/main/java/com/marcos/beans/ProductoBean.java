@@ -1,27 +1,41 @@
 package com.marcos.beans;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.MarkerManager.Log4jMarker;
+import org.apache.logging.log4j.core.Logger;
 
 import com.marcos.dao.ServicioCategoria;
 import com.marcos.dao.ServicioProducto;
 import com.marcos.dto.Categoria;
 import com.marcos.dto.Producto;
+import com.marcos.utils.CommonUtils;
 
 @Named("productoB")
-@RequestScoped
+@ViewScoped
 public class ProductoBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	private static final org.apache.logging.log4j.Logger LOGGER=LogManager.getLogger(ProductoBean.class);
+	
+	
 	private Producto producto;
 	private List<Producto> productos;
 	private String categoria;
 	private String filtroPorNombre;
+	@Inject
+	private SessionController sessionController;
 	@Inject
 	private ServicioProducto servicio;
 	@Inject
@@ -29,11 +43,29 @@ public class ProductoBean implements Serializable {
 
 	@PostConstruct
 	public void init() {
+		LOGGER.info("INFO");
+		LOGGER.warn("WARN");
+		LOGGER.error("ERROR");
+		LOGGER.fatal("FATAL");
+		
 		productos = servicio.listarProductos();
 		producto = new Producto();
 
 	}
+	
 
+	
+	public void showDetail(Producto producto) {
+		LOGGER.info(producto.getNombre());
+		
+		sessionController.setSelectProduct(producto);
+		try {
+			CommonUtils.redireccionarPagina("/pages/cliente/detalle.xhtml");
+		} catch (IOException e) {
+			CommonUtils.mostarMensaje(FacesMessage.SEVERITY_ERROR, "UPS!", "no se pudo ingresar");
+		}
+		
+	}
 	public void crearProducto() {
 		try {
 			servicio.crear(producto);
@@ -121,5 +153,7 @@ public class ProductoBean implements Serializable {
 	public void setFiltroPorNombre(String filtroPorNombre) {
 		this.filtroPorNombre = filtroPorNombre;
 	}
+	
+	
 
 }
