@@ -1,5 +1,7 @@
 package com.marcos.dto;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,9 +11,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
+
 
 @Entity
 
@@ -20,7 +23,7 @@ import org.hibernate.annotations.CascadeType;
 public class Persona {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
+	@Column(name = "id_persona")
 	private int id;
 	@Column(name = "nombre")
 	private String nombre;
@@ -31,6 +34,12 @@ public class Persona {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idRol")
 	private Rol rol;
+	
+	@OneToOne(mappedBy = "persona")
+	private Carrito carrito;
+	
+	@OneToMany(mappedBy = "personaF")
+	private List<Factura> facturas;
 	
 	
 	public int getId() {
@@ -63,6 +72,19 @@ public class Persona {
 	public void setRol(Rol rol) {
 		this.rol = rol;
 	}
+	public Carrito getCarrito() {
+		return carrito;
+	}
+	public void setCarrito(Carrito carrito) {
+		this.carrito = carrito;
+	}
+	public List<Factura> getFacturas() {
+		return facturas;
+	}
+	public void setFacturas(List<Factura> facturas) {
+		this.facturas = facturas;
+	}
+
 	
 	
 	

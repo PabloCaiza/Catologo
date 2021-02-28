@@ -3,6 +3,7 @@ package com.marcos.beans;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
@@ -86,8 +87,11 @@ public class PersonaBean implements Serializable {
 
 	public void ingresar() {
 		Persona persona = coincidenCredenciales();
+		
 		if (persona != null) {
-
+			persona.getCarrito().setCarritosProducto(persona.getCarrito().getCarritosProducto().stream()
+					.filter(item -> item.getEstatus().equals("PENDIENTE")).collect(Collectors.toList()));
+		
 			session.setPersona(persona);
 			rediccionar("pages/commons/dashBoard.xhtml");
 

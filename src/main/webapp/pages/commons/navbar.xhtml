@@ -13,8 +13,8 @@
 			<p:menubar id="menubar">
 				
 				<f:facet name="options" >
-					<p:commandButton id="btnShopping" icon="pi pi-shopping-cart" >
-					<pe:badge content="1" />
+					<p:commandButton id="btnShopping" icon="pi pi-shopping-cart" action="#{navBarController.redireccionar}">
+					<pe:badge content="#{sessionController.persona.carrito.carritosProducto.size()}" rendered="#{sessionController.persona.carrito.carritosProducto.size() != 0}" />
 					
 					</p:commandButton>
 					<p:commandButton  id="btnCerrarSesion"  icon="pi pi-sign-out" action="#{sessionClosedController.closeSession}" ></p:commandButton>

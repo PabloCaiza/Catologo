@@ -8,12 +8,18 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.persistence.Persistence;
 
+import org.apache.logging.log4j.LogManager;
+
+import com.marcos.beans.ProductoBean;
+
 public class CommonUtils {
 	/**
 	 * Metodo para refireccionarse entre pantallas del aplicativo
 	 * @param url
 	 * @throws IOException
 	 */
+	
+	private static final org.apache.logging.log4j.Logger LOGGER=LogManager.getLogger(ProductoBean.class);
 	public static void redireccionarPagina(String url) throws IOException {
 		ExternalContext context=FacesContext.getCurrentInstance().getExternalContext();
 		String contextPath=context.getRequestContextPath();

@@ -18,18 +18,25 @@ public class SessionController implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Persona persona;
 	private Producto selectProduct;
+	private double totalCompra=0;
+	
 
 	@PostConstruct
 	public void init() {
 		System.out.println("***********************************");
 		System.out.println("ingresamos a una nueva sesion");
+		
 
 	}
 
 	public Persona getPersona() {
 
 		return persona;
+		
 	}
+
+	
+	
 
 	public void setPersona(Persona persona) {
 
@@ -48,6 +55,16 @@ public class SessionController implements Serializable {
 	public void setSelectProduct(Producto selectProduct) {
 		this.selectProduct = selectProduct;
 	}
+
+	public double getTotalCompra() {
+		return totalCompra;
+	}
+
+	public void setTotalCompra(double totalCompra) {
+		this.totalCompra = totalCompra;
+	}
+
+
 	
 	
 

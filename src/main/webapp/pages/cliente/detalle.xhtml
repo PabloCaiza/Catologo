@@ -47,11 +47,12 @@
 										<p:outputLabel
 											value="#{sessionController.selectProduct.precio}">
 											
-											<f:convertNumber type="currenct" currencySymbol="$"></f:convertNumber>
+											<f:convertNumber type="currency" currencySymbol="$"></f:convertNumber>
 											</p:outputLabel>
-										<p:commandButton icon="pi pi-shopping-cart"></p:commandButton>
+										<p:commandButton icon="pi pi-shopping-cart" action="#{detalleController.agregarProductoCarrito(sessionController.selectProduct)}"
+										update="formDetalle:btnShopping"></p:commandButton>
 
-										<p:selectOneMenu id="cboCantidad" value="">
+										<p:selectOneMenu id="cboCantidad" value="#{detalleController.cantidadProductoSelecionado}">
 											<f:selectItem itemValue="1" itemLabel="1"
 												noSelectionOption="true"></f:selectItem>
 											<f:selectItem itemValue="2" itemLabel="2"

@@ -1,0 +1,178 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<ui:include src="/pages/commons/scripts.xhtml"></ui:include>
+	<script src="https://kit.fontawesome.com/145ec6c83c.js"
+		crossorigin="anonymous"></script>
+	<h:outputStylesheet library="css" name="primeflex.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="estilosFooter.css"></h:outputStylesheet>
+</h:head>
+
+<h:body style="margin: 0; padding: 0; box-sizing: border-box;">
+	<div class="ui-fluid" style="overflow: hidden;">
+		<h:form id="formCarrito">
+			<ui:include src="/pages/commons/navbar.xhtml">
+
+			</ui:include>
+
+			<div class="p-grid sample-layout">
+
+				<ui:include src="/pages/commons/header.xhtml"></ui:include>
+
+				<div class="p-col-12 p-md-10 p-col-nogutter">
+					<div class="p-Grid">
+						<div class="p-col-12">
+						
+							<ui:include src="/pages/commons/steps.xhtml"></ui:include>
+						
+							<div class="p-col" style="width: 90%; margin: 0px auto;">
+								<p:dataView id="dataViewDetalleCarrito" rowIndexVar="index"
+									var="itemCarrito"
+									value="#{sessionController.persona.carrito.carritosProducto}"
+									listIcon="pi pi-bars">
+
+
+									<p:dataViewListItem>
+										<p:panelGrid columns="5"
+											columnClasses="ui-g-12 ui-md-2, ui-g-12 ui-md-4 , ui-g-12 ui-md-2,ui-g-12 ui-md-2,ui-g-12 ui-md-2,logo,detail"
+											layout="grid">
+
+											<p:graphicImage
+												name="imgs/producto/#{itemCarrito.producto.imagen}"
+												width="100%"></p:graphicImage>
+											<p:panelGrid columns="1" columnClasses="ui-g-12 ui-md-12">
+												<p:panelGrid columns="2">
+													<h:outputText value="Nombre"></h:outputText>
+													<h:outputText value="#{itemCarrito.producto.nombre}"></h:outputText>
+
+													<h:outputText value="Precio"></h:outputText>
+													<h:outputText value="#{itemCarrito.producto.precio}">
+														<f:convertNumber type="currency" currencySymbol="$"></f:convertNumber>
+													</h:outputText>
+
+												</p:panelGrid>
+
+
+
+
+
+											</p:panelGrid>
+
+
+											<p:selectOneMenu value="#{itemCarrito.cantidad}">
+
+
+												<f:selectItem itemValue="1" itemLabel="1"></f:selectItem>
+												<f:selectItem itemValue="2" itemLabel="2"></f:selectItem>
+												<f:selectItem itemValue="3" itemLabel="3"></f:selectItem>
+												<f:selectItem itemValue="4" itemLabel="4"></f:selectItem>
+												<f:selectItem itemValue="5" itemLabel="5"></f:selectItem>
+
+												<p:ajax
+													listener="#{carritoController.actualizarCantidadCarrito(itemCarrito)}"
+													event="change"
+													update="formCarrito:dataViewDetalleCarrito,formCarrito:pnlTotalCompra"></p:ajax>
+
+
+
+
+
+											</p:selectOneMenu>
+
+											<p:commandButton icon="pi pi-trash"
+												action="#{carritoController.eliminarItemCarrito(itemCarrito)}"
+												update="formCarrito:menubar,formCarrito:dataViewDetalleCarrito,formCarrito:pnlTotalCompra">
+
+												<p:confirm header="Confirmar"
+													message="Estas seguro de eliminar #{itemCarrito.producto.nombre} ?"
+													icon="pi pi-info-circle" />
+											</p:commandButton>
+
+
+
+											<p:outputLabel
+												value="#{itemCarrito.cantidad * itemCarrito.producto.precio}">
+												<f:convertNumber type="currency" currencySymbol="$"></f:convertNumber>
+											</p:outputLabel>
+
+
+										</p:panelGrid>
+
+
+									</p:dataViewListItem>
+
+
+
+								</p:dataView>
+
+								<p:panelGrid id="pnlTotalCompra" columns="5"
+									columnClasses="ui-g-12 ui-md-2, ui-g-12 ui-md-4 , ui-g-12 ui-md-2,ui-g-12 ui-md-2,ui-g-12 ui-md-2,logo,detail"
+									layout="grid">
+									<p:outputLabel></p:outputLabel>
+									<p:outputLabel></p:outputLabel>
+									<p:outputLabel></p:outputLabel>
+									<p:outputLabel value="Total:"></p:outputLabel>
+									<p:outputLabel value="#{carritoController.session.totalCompra}">
+										<f:convertNumber type="currency" currencySymbol="$"></f:convertNumber>
+
+									</p:outputLabel>
+
+
+
+								</p:panelGrid>
+								
+								<p:commandButton  value="continuar" style="float:right;width:10%;margin-top:10px" disabled="#{sessionController.persona.carrito.carritosProducto.size() == 0}"></p:commandButton>
+
+
+
+								<p:confirmDialog global="true" showEffect="fade"
+									hideEffect="fade" responsive="true" width="350"
+									style="margin:auto">
+									<p:commandButton value="No" type="button"
+										styleClass="ui-confirmdialog-no ui-button-flat" />
+									<p:commandButton value="Si" type="button"
+										styleClass="ui-confirmdialog-yes" />
+								</p:confirmDialog>
+
+
+
+
+							</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+						</div>
+					</div>
+				</div>
+
+
+
+			</div>
+
+
+		</h:form>
+
+
+	</div>
+	<ui:include src="/pages/commons/footer.xhtml"></ui:include>
+
+</h:body>
+</html>
