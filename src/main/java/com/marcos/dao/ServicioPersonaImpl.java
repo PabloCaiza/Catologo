@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import com.marcos.dto.Carrito;
 import com.marcos.dto.Persona;
 import com.marcos.dto.Rol;
 
@@ -36,6 +37,9 @@ public class ServicioPersonaImpl implements ServicioPersonaI {
 		em.getTransaction().begin();
 		try {
 			em.persist(persona);
+			Carrito carrito=new Carrito();
+			carrito.setPersona(persona);
+			em.persist(carrito);
 			em.getTransaction().commit();
 		} catch (Exception e) {
 			em.getTransaction().rollback();

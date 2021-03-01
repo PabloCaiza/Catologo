@@ -8,6 +8,8 @@ import javax.enterprise.context.SessionScoped;
 
 import com.marcos.dto.Persona;
 import com.marcos.dto.Producto;
+import com.paypal.http.HttpResponse;
+import com.paypal.orders.Order;
 
 @Named("sessionController")
 @SessionScoped
@@ -18,25 +20,22 @@ public class SessionController implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Persona persona;
 	private Producto selectProduct;
-	private double totalCompra=0;
-	
+	private double totalCompra = 0;
+	private HttpResponse<Order> order;
+	private int paso;
 
 	@PostConstruct
 	public void init() {
 		System.out.println("***********************************");
 		System.out.println("ingresamos a una nueva sesion");
-		
 
 	}
 
 	public Persona getPersona() {
 
 		return persona;
-		
-	}
 
-	
-	
+	}
 
 	public void setPersona(Persona persona) {
 
@@ -64,8 +63,21 @@ public class SessionController implements Serializable {
 		this.totalCompra = totalCompra;
 	}
 
+	public HttpResponse<Order> getOrder() {
+		return order;
+	}
 
+	public void setOrder(HttpResponse<Order> order) {
+		this.order = order;
+	}
+
+	public int getPaso() {
+		return paso;
+	}
+
+	public void setPaso(int paso) {
+		this.paso = paso;
+	}
 	
 	
-
 }

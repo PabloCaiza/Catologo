@@ -24,6 +24,7 @@ public class CarritoController implements Serializable {
 	@PostConstruct
 	public void init() {
 		calcularTotal();
+		this.session.setPaso(0);
 	}
 
 	public void calcularTotal() {

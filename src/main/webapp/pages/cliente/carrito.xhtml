@@ -26,9 +26,9 @@
 				<div class="p-col-12 p-md-10 p-col-nogutter">
 					<div class="p-Grid">
 						<div class="p-col-12">
-						
+
 							<ui:include src="/pages/commons/steps.xhtml"></ui:include>
-						
+
 							<div class="p-col" style="width: 90%; margin: 0px auto;">
 								<p:dataView id="dataViewDetalleCarrito" rowIndexVar="index"
 									var="itemCarrito"
@@ -124,8 +124,11 @@
 
 
 								</p:panelGrid>
-								
-								<p:commandButton  value="continuar" style="float:right;width:10%;margin-top:10px" disabled="#{sessionController.persona.carrito.carritosProducto.size() == 0}"></p:commandButton>
+
+								<p:commandButton value="continuar"
+									style="float:right;width:10%;margin-top:10px"
+									disabled="#{sessionController.persona.carrito.carritosProducto.size() == 0}"
+									action="#{pasosController.cambiarPaso('/pages/cliente/pago.xhtml',1)}"></p:commandButton>
 
 
 
