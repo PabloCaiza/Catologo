@@ -14,27 +14,27 @@
 </h:head>
 
 <h:body style="margin: 0; padding: 0; box-sizing: border-box;">
-	<div class="ui-fluid" style="overflow: hidden;">
-		<h:form id="formDetalle">
+	<div class="ui-fluid" style="overflow: hidden;margin: 5px 20px">
+		<h:form id="formDetalle" style="background:#fff">
 			<ui:include src="/pages/commons/navbar.xhtml">
 
 			</ui:include>
 
-			<div class="p-grid sample-layout">
+			<div class="p-grid sample-layout" style="background:#fff">
 
 				<ui:include src="/pages/commons/header.xhtml"></ui:include>
 
-				<div class="p-col-12 p-md-10 p-col-nogutter">
-					<div class="p-Grid">
-						<div class="p-col-12">
-							<p:panelGrid columns="3"
+				<div class="p-col-12 p-md-10 p-col-nogutter p-color" style="background-color: #fff">
+					<div class="p-Grid" style="background:#fff">
+						<div class="p-col-12" style="background:#fff">
+							<p:panelGrid columns="3" 
 								columnClasses="ui-g-12 ui-md-4, ui-g-12 ui-md-6, ui-g-12 ui-md-2"
 								layout="grid" styleClass="ui-panelgrid-blank  ui-fluid">
 
 								<p:graphicImage
 									name="imgs/producto/#{sessionController.selectProduct.imagen}"
 									width="100%"></p:graphicImage>
-								<p:panelGrid columns="1" columnClasses="ui-g-12 ui-md-12"
+								<p:panelGrid columns="1" columnClasses="ui-g-12 ui-md-12" 
 									layout="grid" styleClass="ui-panelgrid-blank  ui-fluid">
 									<p:panelGrid columns="2"
 										columnClasses="ui-g-12 ui-md-4, ui-g-12 ui-md-6" layout="grid"
