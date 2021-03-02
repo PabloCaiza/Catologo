@@ -5,15 +5,16 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:pe="http://primefaces.org/ui/extensions">
 
-	<div class="card">
-		<p:galleria value="#{imagesView.images}" var="image" panelWidth="500"
-			panelHeight="313" showCaption="true">
-			<p:graphicImage name="../../resources/imgs/modelo/#{image}"
-				alt="Image Description for #{image}" title="#{image}" />
+	<div class="card" >
+		<p:galleria value="#{ima.images}" var="image" panelWidth="1360" 
+			panelHeight="613" showCaption="true">
+			<img src="../../resources/imgs/modelo/#{image}"
+				style="width: 100%; object-fit: cover;"></img>
 		</p:galleria>
+		
 	</div>
 
-
+	 <!-- ../../resources/imgs/modelo/#{image} -->
 
 
 
