@@ -10,8 +10,8 @@
 
 		<div class="p-col">
 
-			<div class="ui-inputgroup" style="display: block;">
-				<p:inputText id="txtBuscador" style="width:90% ;margin-bottom:20px"
+			<div class="ui-inputgroup" style="display: block;margin:20px 20px">
+				<p:inputText id="txtBuscador" style="width:100%" styleClass="p-shadow-9"
 					value="#{productoB.filtroPorNombre}" placeholder="Producto">
 					<p:ajax event="keyup" listener="#{productoB.consultarPorFiltro}"
 						update="pnlResultados"></p:ajax>
