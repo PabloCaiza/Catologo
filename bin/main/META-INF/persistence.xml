@@ -19,7 +19,7 @@
 				value="postgres" />
 			<property name="javax.persistence.jdbc.password"
 
-				value="Pc123456" />
+				value="root" />
 
 		</properties>
 	</persistence-unit>
