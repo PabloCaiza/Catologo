@@ -5,19 +5,117 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:pe="http://primefaces.org/ui/extensions">
 
-	<div class="card">
-		<p:tabMenu activeIndex="#{param.i}">
-			<p:menuitem value="Lo nuevo" outcome="">
-				<f:param name="i" value="0" />
-			</p:menuitem>
-			<p:menuitem value="Lo más vendido" outcome="">
-				<f:param name="i" value="1" />
-			</p:menuitem>
-			<p:menuitem value="Descuentos" outcome="">
-				<f:param name="i" value="2" />
-			</p:menuitem>
-		</p:tabMenu>
-	</div>
+	<h:form>
+		<div class="card">
+			<p:commandLink action="">
+				<h:outputText value="Ajax Post" />
+			</p:commandLink>
+			<p:commandLink>
+				<h:outputText value="Ajax Post" />
+			</p:commandLink>
+			<p:commandLink>
+				<h:outputText value="Ajax Post" />
+			</p:commandLink>
+
+		</div>
+
+
+		<p:dataView var="product" value="#{productoB.productos}" crows="12"
+			paginator="true"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+			gridIcon="pi pi-th-large" listIcon="pi pi-bars" layout="grid"
+			gridRowStyleClass="p-lg-6 p-xl-4" flex="true">
+
+			<p:dataViewGridItem>
+				<div class="product-grid-item card border-1">
+					<div class="product-grid-item-top">
+
+						<div>
+							<i class="pi pi-tag product-category-icon" /> <span
+								class="product-category">#{product.categoria.tipo}</span>
+						</div>
+
+					</div>
+
+
+					<div class="product-grid-item-content">
+
+						<p:commandLink action="#{productoB.showDetail(product)}">
+							<p:graphicImage name="imgs/producto/#{product.imagen}"
+								width="100%" height="400px" />
+
+						</p:commandLink>
+
+
+						<div class="product-name">#{product.nombre}</div>
+						<div class="product-description">#{product.descripcion}</div>
+
+					</div>
+
+
+					<div class="product-grid-item-bottom">
+						<h:outputText value="#{product.precio}" styleClass="product-price">
+							<f:convertNumber currencySymbol="$" type="currency" />
+						</h:outputText>
+						<p:commandButton value="Add To Cart" icon="pi pi-shopping-cart">
+
+						</p:commandButton>
+
+
+					</div>
+
+				</div>
+			</p:dataViewGridItem>
+
+
+			<p:dataViewListItem>
+				<div class="product-grid-item card border-1">
+					<div class="product-grid-item-top">
+
+						<div>
+							<i class="pi pi-tag product-category-icon" /> <span
+								class="product-category">#{product.categoria.tipo}</span>
+						</div>
+
+					</div>
+
+
+					<div class="product-grid-item-content">
+
+						<p:commandLink action="#{productoB.showDetail(product)}">
+							<p:graphicImage name="imgs/producto/#{product.imagen}"
+								width="25%" height="400px" />
+
+						</p:commandLink>
+
+						<div class="product-name">#{product.nombre}</div>
+						<div class="product-description">#{product.descripcion}</div>
+
+					</div>
+
+
+					<div class="product-grid-item-bottom">
+						<h:outputText value="#{product.precio}" styleClass="product-price">
+							<f:convertNumber currencySymbol="$" type="currency" />
+						</h:outputText>
+						<p:commandButton value="Add To Cart" icon="pi pi-shopping-cart">
+
+						</p:commandButton>
+
+
+					</div>
+
+				</div>
+			</p:dataViewListItem>
+
+
+
+		</p:dataView>
+
+
+	</h:form>
+
+
 
 
 
