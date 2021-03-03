@@ -10,47 +10,12 @@
 		crossorigin="anonymous"></script>
 	<h:outputStylesheet library="css" name="primeflex.css"></h:outputStylesheet>
 	<h:outputStylesheet library="css" name="estilosFooter.css"></h:outputStylesheet>
-	<script
-		src="https://www.paypal.com/sdk/js?client-id=AbldJgJ5lNsV1zXUNtzDhvbytP4tQj00f0DHhsOyOEj7w58sHY9SIOPKtsfqFUiiyeKN8HWarUjDHLWV&amp;currency=USD"></script>
-	<script>
-		paypal.Buttons({
 
-			createOrder : function(data, actions) {
-				return fetch('../../PayPalServlet',{
-					method: 'post',
-					headers: {
-						'content-type': 'application/json'
-					}	
-				}).then(response =>{
-					let json=response.json();
-					console.log(json);
-					return json;
-					
-					
-				}).then(data=>{
-					return data.result.id;
-					
-				})
-			},
- 		onApprove: function(data,actions){
-			return actions.order.capture().then(
-			detalle =>{
-				finalizarTransaccion();
-				
-				
-			}		
-			
-			)
-		} 
-		
-
-		}).render('#divPaypalContainer');
-	</script>
 </h:head>
 
 <h:body style="margin: 0; padding: 0; box-sizing: border-box;">
 	<div class="ui-fluid" style="overflow: hidden;">
-		<h:form id="formPago">
+		<h:form id="formConfirmacion">
 			<ui:include src="/pages/commons/navbar.xhtml">
 
 			</ui:include>
@@ -67,13 +32,18 @@
 
 							<div class="p-col"
 								style="width: 90%; margin: 0px auto; text-align: center;">
-								<div id="divPaypalContainer" class="p-col"
-									style="width: 100%; margin: 0px auto">
+								<p:panelGrid columns="1" columnClasses="ui-g-12 ui-md-12"
+									layout="grid">
 									
-									<p:remoteCommand name="finalizarTransaccion" action="#{pagoController.guardarFactura}"></p:remoteCommand>
-									</div>
+									<p:outputLabel value="Compra Exitos!" id="lblCompraExitosa"></p:outputLabel>
+									<p:graphicImage name="imgs/ok.png" width="100%"></p:graphicImage>
+
+								</p:panelGrid>
+
+
+
 							</div>
-					
+
 
 
 
