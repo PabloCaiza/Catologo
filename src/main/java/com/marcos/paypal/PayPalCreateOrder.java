@@ -78,7 +78,7 @@ public class PayPalCreateOrder extends PayPalClient {
 			item.category("PHYSICAL_GOODS");
 			item.description(carrito.getProducto().getDescripcion());
 
-			item.unitAmount(new Money().currencyCode("USD").value("100"));
+			item.unitAmount(new Money().currencyCode("USD").value(String.valueOf(carrito.getProducto().getPrecio())));
 			item.tax(new Money().currencyCode("USD").value(String.valueOf(impuestoPorProducto)));
 			item.quantity(String.valueOf(carrito.getCantidad()));
 			item.sku("sku1");

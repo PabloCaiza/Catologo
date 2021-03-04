@@ -1,0 +1,72 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<h:outputStylesheet library="css" name="primeflex.css"></h:outputStylesheet>
+	<title>Registro de Productos</title>
+
+</h:head>
+
+<h:body>
+
+	<h:form id="registryForm">
+		<p:growl id="growl" showDetail="true" />
+		<div class="card">
+			<p:panel id="pnlLogin" header="Registre el producto deseado"
+				style="text-align:center ">
+				<p:panelGrid columns="1" layout="flex" styleClass="customPanelGrid"
+					contentStyleClass="ui-fluid">
+
+					<img src="../../resources/imgs/logo.png"></img>
+
+
+					<p:outputLabel value="Nombre" style="float:left"></p:outputLabel>
+					<p:inputText value="#{productoB.producto.nombre}" required="true"
+						requiredMessage="Nombre es requerido">
+					</p:inputText>
+
+					<p:outputLabel value="Precio" style="float:left"></p:outputLabel>
+					<p:inputNumber value="#{productoB.producto.precio}" required="true"
+						requiredMessage="Precio es Requerido" decimalPlaces="2"></p:inputNumber>
+
+					<p:outputLabel value="Descripcion" style="float:left"></p:outputLabel>
+					<p:inputText value="#{productoB.producto.descripcion}"
+						required="true" requiredMessage="descripción es requerida"></p:inputText>
+
+				
+						<p:outputLabel for="@next" value="Categoria" />
+						<p:selectOneMenu id="group"
+							value="#{productoB.categoria}">
+							<f:selectItem itemLabel="Select One" itemValue="" />
+							<f:selectItems value="#{categoriaB.categorias}" />
+						</p:selectOneMenu>
+					
+
+					<p:commandButton value="Registrar"
+						action="#{productoB.crearProducto}" update="registryForm,growl "
+						styleClass="rounded-button p-shadow-7 p-text-bold"
+						style="background:#61D2C2">
+					</p:commandButton>
+
+
+
+				</p:panelGrid>
+			</p:panel>
+		</div>
+
+
+
+
+
+	</h:form>
+
+
+
+</h:body>
+
+
+
+</html>
