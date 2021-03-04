@@ -18,7 +18,9 @@
 			<property name="javax.persistence.jdbc.user"
 				value="postgres" />
 			<property name="javax.persistence.jdbc.password"
-				value="crazycraft789" />
+
+				value="root" />
+
 		</properties>
 	</persistence-unit>
 </persistence>

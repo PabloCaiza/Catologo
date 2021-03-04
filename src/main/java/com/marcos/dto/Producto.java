@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 @NamedQuery(name = "Producto.findByName",query = "SELECT p FROM Producto p WHERE p.nombre like :filter ")
 @NamedQuery(name = "Producto.findAll",query = "SELECT E FROM Producto E")
-public class Producto {
+public class Producto  implements Comparable<Producto> {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_producto")
@@ -53,6 +53,19 @@ public class Producto {
 	}
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
+	}
+	@Override
+	public int compareTo(Producto o) {
+		 
+		if(o.getPrecio()==this.precio) {
+			return 0;
+		}else if(this.precio>o.precio) {
+			return 1;
+		}else {
+			return -1;
+		}
+		
+		
 	}
 	
 	

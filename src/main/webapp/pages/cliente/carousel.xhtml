@@ -1,0 +1,39 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+
+ <div class="card" style="margin-bottom:25px">
+        <p:carousel value="#{productoB.productos}" var="product" responsive="true">
+            <div class="product">
+                <div class="product-grid-item p-p-5">
+                    <div class="product-grid-item-top">
+                        <div>
+                            <i class="pi pi-tag product-category-icon"/>
+                            <span class="product-category">#{product.categoria.tipo}</span>
+                        </div>
+                       
+                    </div>
+                    <div class="product-grid-item-content">
+                        <p:graphicImage name="imgs/producto/#{product.imagen}" width="100%"/>
+                        <div class="product-name">#{product.nombre}</div>
+                        <div class="product-description">#{product.descripcion}</div>
+                      
+                    </div>
+                    <div class="product-grid-item-bottom">
+                        <h:outputText value="#{product.precio}" styleClass="product-price">
+                            <f:convertNumber currencySymbol="$" type="currency"/>
+                        </h:outputText>
+
+                    </div>
+                </div>
+            </div>
+
+        </p:carousel>
+    </div>
+
+
+</ui:composition>

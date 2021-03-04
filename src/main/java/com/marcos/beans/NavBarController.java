@@ -31,5 +31,21 @@ public class NavBarController implements Serializable{
 			CommonUtils.mostarMensaje(FacesMessage.SEVERITY_ERROR, "UPS ", "no se pudo cargar la pagina");
 		}
 	}
+	
+	public void redireccionarProductos() {
+		try {
+			CommonUtils.redireccionarPagina("/pages/cliente/BuscarProductos.xhtml");
+		} catch (IOException e) {
+			CommonUtils.mostarMensaje(FacesMessage.SEVERITY_ERROR, "UPS ", "no se pudo cargar la pagina");
+		}
+	}
+	
+	public void redireccionarHome() {
+		try {
+			CommonUtils.redireccionarPagina("/pages/commons/dashBoard.xhtml");
+		} catch (IOException e) {
+			CommonUtils.mostarMensaje(FacesMessage.SEVERITY_ERROR, "UPS ", "no se pudo cargar la pagina");
+		}
+	}
 
 }
