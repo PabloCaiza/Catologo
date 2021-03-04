@@ -24,29 +24,39 @@
 
 
 					<p:outputLabel value="Nombre" style="float:left"></p:outputLabel>
-					<p:inputText value="#{productoB.producto.nombre}" required="true"
-						requiredMessage="Nombre es requerido">
+					<p:inputText value="#{registroProductoController.producto.nombre}"
+						required="true" requiredMessage="Nombre es requerido">
 					</p:inputText>
 
 					<p:outputLabel value="Precio" style="float:left"></p:outputLabel>
-					<p:inputNumber value="#{productoB.producto.precio}" required="true"
-						requiredMessage="Precio es Requerido" decimalPlaces="2"></p:inputNumber>
+					<p:inputNumber
+						value="#{registroProductoController.producto.precio}"
+						required="true" requiredMessage="Precio es Requerido"
+						decimalPlaces="2"></p:inputNumber>
 
 					<p:outputLabel value="Descripcion" style="float:left"></p:outputLabel>
-					<p:inputText value="#{productoB.producto.descripcion}"
+					<p:inputText
+						value="#{registroProductoController.producto.descripcion}"
 						required="true" requiredMessage="descripción es requerida"></p:inputText>
 
+
+					<p:outputLabel for="@next" value="Tipo" style="float:left"/>
+					<p:selectOneMenu id="tipo"
+						value="#{registroProductoController.tipo}">
+						
+						<f:selectItems value="#{registroProductoController.tipos}" />
+					</p:selectOneMenu>
+
+					<p:outputLabel for="@next" value="Genero" style="float:left" />
+					<p:selectOneMenu id="genero"
+						value="#{registroProductoController.genero}">
 				
-						<p:outputLabel for="@next" value="Categoria" />
-						<p:selectOneMenu id="group"
-							value="#{productoB.categoria}">
-							<f:selectItem itemLabel="Select One" itemValue="" />
-							<f:selectItems value="#{categoriaB.categorias}" />
-						</p:selectOneMenu>
-					
+						<f:selectItems value="#{registroProductoController.generos}" />
+					</p:selectOneMenu>
 
 					<p:commandButton value="Registrar"
-						action="#{productoB.crearProducto}" update="registryForm,growl "
+						action="#{registroProductoController.crearProducto}"
+						update="registryForm,growl "
 						styleClass="rounded-button p-shadow-7 p-text-bold"
 						style="background:#61D2C2">
 					</p:commandButton>

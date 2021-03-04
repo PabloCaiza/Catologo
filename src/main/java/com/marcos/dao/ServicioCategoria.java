@@ -10,4 +10,5 @@ public interface ServicioCategoria {
 	void crear(Categoria caterogira);
 	Categoria encontrarCategoria(int id);
 	List<String> listarTipos();
+	List<String> listarGeneros();
 }
