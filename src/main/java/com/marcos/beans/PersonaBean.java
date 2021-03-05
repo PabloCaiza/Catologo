@@ -87,14 +87,18 @@ public class PersonaBean implements Serializable {
 
 	public void ingresar() {
 		Persona persona = coincidenCredenciales();
-		
-		if (persona != null) {
-			persona.getCarrito().setCarritosProducto(persona.getCarrito().getCarritosProducto().stream()
-					.filter(item -> item.getEstatus().equals("PENDIENTE")).collect(Collectors.toList()));
-		
-			session.setPersona(persona);
-			rediccionar("pages/commons/dashBoard.xhtml");
 
+		if (persona != null) {
+			if (persona.getRol().getNombre().equals("admin")) {
+				session.setPersona(persona);
+				rediccionar("pages/commons/registroProducto.xhtml");
+			} else {
+				persona.getCarrito().setCarritosProducto(persona.getCarrito().getCarritosProducto().stream()
+						.filter(item -> item.getEstatus().equals("PENDIENTE")).collect(Collectors.toList()));
+
+				session.setPersona(persona);
+				rediccionar("pages/commons/dashBoard.xhtml");
+			}
 		} else {
 			FacesContext.getCurrentInstance().addMessage("loginForm",
 					new FacesMessage(FacesMessage.SEVERITY_ERROR, "No coinciden las credenciales", ""));
