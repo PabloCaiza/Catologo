@@ -63,9 +63,11 @@
 												styleClass="product-price">
 												<f:convertNumber currencySymbol="$" type="currency" />
 											</h:outputText>
-											<p:commandButton value="Add To Cart"
-												icon="pi pi-shopping-cart">
-
+											<p:commandButton 
+												icon="pi pi-shopping-cart" action="#{productoB.agregarProducto(product)}"
+												update="formDashboard:btnShopping"
+												>
+											
 											</p:commandButton>
 
 
@@ -108,9 +110,12 @@
 												styleClass="product-price">
 												<f:convertNumber currencySymbol="$" type="currency" />
 											</h:outputText>
-											<p:commandButton value="Add To Cart"
-												icon="pi pi-shopping-cart">
-
+											<p:commandButton 
+												icon="pi pi-shopping-cart"
+												action="#{productoB.agregarProducto(product)}"
+												update="formDashboard:btnShopping"
+												>
+								
 											</p:commandButton>
 
 

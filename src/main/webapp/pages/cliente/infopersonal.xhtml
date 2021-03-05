@@ -1,0 +1,91 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<ui:include src="/pages/commons/scripts.xhtml"></ui:include>
+	<script src="https://kit.fontawesome.com/145ec6c83c.js"
+		crossorigin="anonymous"></script>
+	<h:outputStylesheet library="css" name="primeflex.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="estilosFooter.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="estilosNavBar"></h:outputStylesheet>
+</h:head>
+
+<h:body style="margin: 0; padding: 0; box-sizing: border-box;">
+	<div class="ui-fluid" style="overflow: hidden; margin: 5px 20px">
+		<h:form id="formInfoPersonal" style="background:#fff">
+		
+		<p:growl id="messages" showSummary="true" showDetail="true" skipDetailIfEqualsSummary="true"></p:growl>
+
+			<ui:include src="/pages/commons/navbar.xhtml">
+
+			</ui:include>
+
+
+			<div class="p-grid sample-layout" style="background: #fff">
+
+				<ui:include src="/pages/commons/header.xhtml"></ui:include>
+
+				<div class="p-col-12 p-md-10 p-col-nogutter p-color"
+					style="background-color: #fff">
+					<div class="p-Grid" style="background: #fff">
+						<div class="p-col-12" style="background: #fff">
+
+							<p:panelGrid columns="2"
+								columnClasses="ui-g-2 ui-md-2,ui-g-10 ui-md-10" layout="grid"
+								style="ui-panelgrid-blank">
+
+								<p:graphicImage name="imgs/profile.svg" width="100%" />
+
+								<p:panel id="pnlInfoPersonal"    header="Informacion Personal" style="border:none;">
+									<p:panelGrid columns="4"
+										columnClasses="ui-g-12 ui-md-2,ui-g-12 ui-md-4,ui-g-12 ui-md-2,ui-g-12 ui-md-4"
+										layout="grid" style="ui-panelgrid-blank">
+										<p:outputLabel value="Nombre: " for="txtNombre"></p:outputLabel>
+										<p:inputText id="txtNombre" value="#{infoPersonalController.persona.nombre}" required="true"
+											requiredMessage="nombre es requerido"></p:inputText>
+										<p:outputLabel value="Correo: " for="txtCorreo"></p:outputLabel>
+										<p:inputText id="txtCorreo" value="#{infoPersonalController.persona.correo}" disabled="true"></p:inputText>
+										<p:outputLabel value="Clave :" for="txtClave"></p:outputLabel>
+										<p:inputText id="txtClave" value="#{infoPersonalController.persona.clave}" required="true"
+											requiredMessage="clave es requerido" type="password"></p:inputText>
+										<p:outputLabel value="Clave :" for="txtClaveR"></p:outputLabel>
+										<p:inputText id="txtClaveR" value="#{infoPersonalController.password}" required="true"
+											requiredMessage="clave es requerido" type="password"></p:inputText>
+
+									</p:panelGrid>
+
+								</p:panel>
+
+
+
+							</p:panelGrid>
+
+							<p:panelGrid columns="2"
+								columnClasses="ui-g-5 ui-md-10,ui-g-7 ui-md-2" layout="grid"
+								style="ui-panelgrid-blank">
+								<p:outputLabel></p:outputLabel>
+								<p:commandButton action="#{infoPersonalController.modificarUsuario}" value="Modificar"
+								update="pnlInfoPersonal,messages"></p:commandButton>
+							</p:panelGrid>
+
+
+
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+
+
+		</h:form>
+
+
+	</div>
+	<ui:include src="/pages/commons/footer.xhtml"></ui:include>
+
+</h:body>
+</html>

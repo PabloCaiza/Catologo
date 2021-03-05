@@ -1,6 +1,7 @@
 package com.marcos.dao;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
@@ -72,6 +73,12 @@ public class ServicioFacturaImpl implements ServicioFactura {
 		
 		
 
+	}
+	@Override
+	public List<Factura> findAllByPersona(Persona persona) {
+		EntityManager em=emf.createEntityManager();
+		return em.createNamedQuery("Factura.findAllByPersona").setParameter("persona", persona).getResultList();
+		
 	}
 
 }

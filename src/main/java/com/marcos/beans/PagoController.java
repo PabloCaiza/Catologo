@@ -57,8 +57,8 @@ public class PagoController implements Serializable {
 					.actualizarCarritoProducto(persona.getCarrito().getCarritosProducto(), factura);
 			
 			if(isUpdateCarrito) {
-				Response response =reportesServiceClient.generarReporte(order.result().id(), persona.getCorreo(), persona.getNombre());
-				LOGGER.info("Response "+response.getStatus());
+				//Response response =reportesServiceClient.generarReporte(order.result().id(), persona.getCorreo(), persona.getNombre());
+				//LOGGER.info("Response "+response.getStatus());
 				this.session.getPersona().getCarrito().setCarritosProducto(new ArrayList<CarritoProducto>());
 				this.cambiarPaso("/pages/cliente/confirmacion.xhtml", 2);
 			}
