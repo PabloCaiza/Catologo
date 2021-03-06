@@ -41,6 +41,9 @@ public class Persona {
 	@OneToMany(mappedBy = "personaF")
 	private List<Factura> facturas;
 	
+	@OneToMany(mappedBy = "persona")
+	private List<Comentario> comentarios;
+	
 	
 	public int getId() {
 		return id;
@@ -84,7 +87,14 @@ public class Persona {
 	public void setFacturas(List<Factura> facturas) {
 		this.facturas = facturas;
 	}
-
+	public List<Comentario> getComentarios() {
+		return comentarios;
+	}
+	public void setComentarios(List<Comentario> comentarios) {
+		this.comentarios = comentarios;
+	}
+	
+	
 	
 	
 	

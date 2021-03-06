@@ -1,6 +1,10 @@
 package com.marcos.beans;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
@@ -8,9 +12,9 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.marcos.dao.ServicioCarrito;
-import com.marcos.dao.ServicioProducto;
-import com.marcos.dto.Carrito;
+import com.marcos.dao.ServicioComentario;
 import com.marcos.dto.CarritoProducto;
+import com.marcos.dto.Comentario;
 import com.marcos.dto.Producto;
 
 @Named("detalleController")
@@ -19,31 +23,50 @@ public class DetalleController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-
 	private int cantidadProductoSelecionado;
-	
-	@Inject 
+
+	@Inject
 	private ServicioCarrito servicioCarrito;
-	
+
 	@Inject
 	private SessionController session;
-	
+
+	@Inject
+	private ServicioComentario servicioComentario;
+
+	private List<Comentario> comentarios;
+	private Comentario comentario;
+	private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
 	@PostConstruct
 	public void init() {
-		this.cantidadProductoSelecionado=1;
+		this.comentario = new Comentario();
+		this.cantidadProductoSelecionado = 1;
+		comentarios = servicioComentario.listarComentaios(session.getSelectProduct());
 	}
-	
-	
+
+	public void agregarComentario() {
+		this.prepareComment();
+		System.out.println("inserta un nuevo comentario");
+		this.servicioComentario.agregarComentario(comentario);
+		comentarios.add(comentario);
+		this.comentario = new Comentario();
+	}
+
+	public void prepareComment() {
+		this.comentario.setPersona(session.getPersona());
+		this.comentario.setProducto(session.getSelectProduct());
+		this.comentario.setFecha(new Date());
+	}
+
 	public void agregarProductoCarrito(Producto producto) {
-		CarritoProducto carritoProducto=new CarritoProducto();
-		
-		
+		CarritoProducto carritoProducto = new CarritoProducto();
+
 		carritoProducto.setCarrito(session.getPersona().getCarrito());
 		carritoProducto.setCantidad(cantidadProductoSelecionado);
 		carritoProducto.setEstatus("PENDIENTE");
 		carritoProducto.setProducto(producto);
-		
-		
+
 		servicioCarrito.agregarProductoCarrito(carritoProducto);
 		session.getPersona().getCarrito().getCarritosProducto().add(carritoProducto);
 
@@ -53,10 +76,33 @@ public class DetalleController implements Serializable {
 		return cantidadProductoSelecionado;
 	}
 
-
 	public void setCantidadProductoSelecionado(int cantidadProductoSelecionado) {
 		this.cantidadProductoSelecionado = cantidadProductoSelecionado;
 	}
+
+	public List<Comentario> getComentarios() {
+		return comentarios;
+	}
+
+	public void setComentarios(List<Comentario> comentarios) {
+		this.comentarios = comentarios;
+	}
+
+	public Comentario getComentario() {
+		return comentario;
+	}
+
+	public void setComentario(Comentario comentario) {
+		this.comentario = comentario;
+	}
+
+	public DateTimeFormatter getFormatter() {
+		return formatter;
+	}
+
+	public void setFormatter(DateTimeFormatter formatter) {
+		this.formatter = formatter;
+	}
 	
-	
+
 }

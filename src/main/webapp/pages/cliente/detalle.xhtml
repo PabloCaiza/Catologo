@@ -14,29 +14,30 @@
 </h:head>
 
 <h:body style="margin: 0; padding: 0; box-sizing: border-box;">
-	<div class="ui-fluid" style="overflow: hidden;margin: 5px 20px">
+	<div class="ui-fluid" style="overflow: hidden; margin: 5px 20px">
 		<h:form id="formDetalle" style="background:#fff">
-			
+
 			<ui:include src="/pages/commons/navbar.xhtml">
 
 			</ui:include>
-			
-			
-			<div class="p-grid sample-layout" style="background:#fff">
 
-				 <ui:include src="/pages/commons/header.xhtml"></ui:include>
-				 
-				<div class="p-col-12 p-md-10 p-col-nogutter p-color" style="background-color: #fff">
-					<div class="p-Grid" style="background:#fff">
-						<div class="p-col-12" style="background:#fff">
-							<p:panelGrid columns="3" 
+
+			<div class="p-grid sample-layout" style="background: #fff">
+
+				<ui:include src="/pages/commons/header.xhtml"></ui:include>
+
+				<div class="p-col-12 p-md-10 p-col-nogutter p-color"
+					style="background-color: #fff">
+					<div class="p-Grid" style="background: #fff">
+						<div class="p-col-12" style="background: #fff">
+							<p:panelGrid columns="3"
 								columnClasses="ui-g-12 ui-md-4, ui-g-12 ui-md-6, ui-g-12 ui-md-2"
 								layout="grid" styleClass="ui-panelgrid-blank  ui-fluid">
 
 								<p:graphicImage
 									name="imgs/producto/#{sessionController.selectProduct.imagen}"
 									width="100%"></p:graphicImage>
-								<p:panelGrid columns="1" columnClasses="ui-g-12 ui-md-12" 
+								<p:panelGrid columns="1" columnClasses="ui-g-12 ui-md-12"
 									layout="grid" styleClass="ui-panelgrid-blank  ui-fluid">
 									<p:panelGrid columns="2"
 										columnClasses="ui-g-12 ui-md-4, ui-g-12 ui-md-6" layout="grid"
@@ -49,23 +50,21 @@
 										<p:outputLabel value="Precio"></p:outputLabel>
 										<p:outputLabel
 											value="#{sessionController.selectProduct.precio}">
-											
-											<f:convertNumber type="currency" currencySymbol="$"></f:convertNumber>
-											</p:outputLabel>
-										<p:commandButton icon="pi pi-shopping-cart" action="#{detalleController.agregarProductoCarrito(sessionController.selectProduct)}"
-										update="formDetalle:btnShopping"></p:commandButton>
 
-										<p:selectOneMenu id="cboCantidad" value="#{detalleController.cantidadProductoSelecionado}">
+											<f:convertNumber type="currency" currencySymbol="$"></f:convertNumber>
+										</p:outputLabel>
+										<p:commandButton icon="pi pi-shopping-cart"
+											action="#{detalleController.agregarProductoCarrito(sessionController.selectProduct)}"
+											update="formDetalle:btnShopping"></p:commandButton>
+
+										<p:selectOneMenu id="cboCantidad"
+											value="#{detalleController.cantidadProductoSelecionado}">
 											<f:selectItem itemValue="1" itemLabel="1"
 												noSelectionOption="true"></f:selectItem>
-											<f:selectItem itemValue="2" itemLabel="2"
-												></f:selectItem>
-											<f:selectItem itemValue="3" itemLabel="3"
-												></f:selectItem>
-											<f:selectItem itemValue="4" itemLabel="4"
-												></f:selectItem>
-											<f:selectItem itemValue="5" itemLabel="5"
-												></f:selectItem>
+											<f:selectItem itemValue="2" itemLabel="2"></f:selectItem>
+											<f:selectItem itemValue="3" itemLabel="3"></f:selectItem>
+											<f:selectItem itemValue="4" itemLabel="4"></f:selectItem>
+											<f:selectItem itemValue="5" itemLabel="5"></f:selectItem>
 										</p:selectOneMenu>
 
 									</p:panelGrid>
@@ -81,10 +80,60 @@
 
 								</p:panelGrid>
 							</p:panelGrid>
+
 						</div>
 					</div>
 				</div>
 
+			</div>
+
+</h:form>
+
+<h:form id="formComentario">
+	
+		
+	
+			<div class="p-col-12">
+				<p:panelGrid columns="2"
+					columnClasses="ui-g-12 ui-md-2,ui-g-12 ui-md-10" layout="grid"
+					styleClass="ui-panelgrid-blank ">
+					
+					<p:outputLabel ></p:outputLabel>
+					
+					<p:panelGrid columns="1" layout="grid" styleClass="ui-panelgrid-blank ">
+						<p:panel header="Ingrese un comentario">
+							
+							<p:outputLabel value="Nombre: #{sessionController.persona.nombre}"></p:outputLabel>
+							<p:rating value="#{detalleController.comentario.rating}"/>
+							<br/>
+							<p:inputTextarea required="true" value="#{detalleController.comentario.comentario}" requiredMessage="ingrese un comentario"></p:inputTextarea>
+							<br/>
+							<p:commandButton value="comentar" style="width:fit-content; flex-layout:right"
+							 action="#{detalleController.agregarComentario}" update="formComentario,pnlComment"
+							></p:commandButton>
+						</p:panel>
+						
+					
+					</p:panelGrid>
+					
+
+
+				
+			
+				<p:outputLabel></p:outputLabel>
+			<p:repeat value="#{detalleController.comentarios}" var="comment" id="pnlComment">
+				<p:outputLabel value="#{comment.persona.nombre}"></p:outputLabel>
+				<p:rating value="#{comment.rating}" readonly="true"/>
+				<p:outputLabel value="#{comment.fecha}">
+				<f:convertDateTime pattern="dd/MM/YYYY"></f:convertDateTime>
+				  
+				</p:outputLabel>
+				 <br/>
+				<p:outputLabel value="#{comment.comentario}"></p:outputLabel>
+				<br/>
+				 <p:separator/>
+			</p:repeat>
+			</p:panelGrid>
 			</div>
 
 
