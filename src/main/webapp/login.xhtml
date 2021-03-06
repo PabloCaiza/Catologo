@@ -1,7 +1,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
 	<meta content='text/html; charset=UTF-8' http-equiv="Content-Type" />
@@ -33,6 +34,7 @@
 
 			<div class="form">
 				<h:form id="loginForm">
+					<ui:include src="/pages/commons/loading.xhtml" ></ui:include>
 					<p:growl id="growl" showDetail="true" />
 					<img class="i" src="resources/imgs/profile.svg" width="50%"></img>
 					<h2 class="title">Bienvenido</h2>

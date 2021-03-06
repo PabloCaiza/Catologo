@@ -50,11 +50,25 @@ public class ServicioPersonaImpl implements ServicioPersonaI {
 	}
 
 	@Override
-	public void actualizar(Persona persona) {
-
-//		em.getTransaction().begin();
-//		em.merge(persona);
-//		em.getTransaction().commit();
+	public Persona actualizar(Persona persona) {
+		EntityManager em=emf.createEntityManager();
+		
+		em.getTransaction().begin();
+		try {
+			
+			em.merge(persona);
+			em.getTransaction().commit();
+			return persona;
+		}catch(Exception e) {
+			em.getTransaction().rollback();
+			return null;
+		}finally {
+			em.close();
+			
+		}
+		
+		
+		
 	}
 
 	@Override

@@ -85,7 +85,7 @@
 
 											<p:commandButton icon="pi pi-trash"
 												action="#{carritoController.eliminarItemCarrito(itemCarrito)}"
-												update="formCarrito:menubar,formCarrito:dataViewDetalleCarrito,formCarrito:pnlTotalCompra">
+												update="formCarrito:menubar,formCarrito:dataViewDetalleCarrito,formCarrito:pnlTotalCompra,formCarrito:btnContinuar">
 
 												<p:confirm header="Confirmar"
 													message="Estas seguro de eliminar #{itemCarrito.producto.nombre} ?"
@@ -125,7 +125,7 @@
 
 								</p:panelGrid>
 
-								<p:commandButton value="continuar"
+								<p:commandButton  id="btnContinuar" value="continuar"
 									style="float:right;width:10%;margin-top:10px"
 									disabled="#{sessionController.persona.carrito.carritosProducto.size() == 0}"
 									action="#{pasosController.cambiarPaso('/pages/cliente/pago.xhtml',1)}"></p:commandButton>

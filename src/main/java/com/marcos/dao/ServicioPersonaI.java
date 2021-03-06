@@ -10,7 +10,7 @@ public interface ServicioPersonaI {
 
 	void crear(Persona persona);
 
-	void actualizar(Persona persona);
+	Persona actualizar(Persona persona);
 
 	void eliminar(int id);
 

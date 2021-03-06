@@ -16,8 +16,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.MarkerManager.Log4jMarker;
 import org.apache.logging.log4j.core.Logger;
 
+import com.marcos.dao.ServicioCarrito;
 import com.marcos.dao.ServicioCategoria;
 import com.marcos.dao.ServicioProducto;
+import com.marcos.dto.CarritoProducto;
 import com.marcos.dto.Categoria;
 import com.marcos.dto.Producto;
 import com.marcos.utils.CommonUtils;
@@ -40,6 +42,8 @@ public class ProductoBean implements Serializable {
 	private ServicioProducto servicio;
 	@Inject
 	private ServicioCategoria servicioC;
+	@Inject
+	private ServicioCarrito servicioCarrito;
 
 	@PostConstruct
 	public void init() {
@@ -66,6 +70,18 @@ public class ProductoBean implements Serializable {
 		}
 		
 	}
+	
+	
+	public void agregarProducto(Producto product) {
+		CarritoProducto carritoProducto=new CarritoProducto();
+		carritoProducto.setCarrito(sessionController.getPersona().getCarrito());
+		carritoProducto.setCantidad(1);
+		carritoProducto.setEstatus("PENDIENTE");
+		carritoProducto.setProducto(product);
+		this.servicioCarrito.agregarProductoCarrito(carritoProducto);
+		this.sessionController.getPersona().getCarrito().getCarritosProducto().add(carritoProducto);
+	}
+	
 	public void crearProducto() {
 		try {
 			servicio.crear(producto);

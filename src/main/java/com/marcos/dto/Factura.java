@@ -6,12 +6,15 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.NamedQuery;
+
 /**
  * @author pablo
  *
  */
 @Entity
 @Table(name = "factura")
+@NamedQuery(name = "Factura.findAllByPersona" ,query = "SELECT f from Factura f WHERE f.personaF = :persona")
 public class Factura {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

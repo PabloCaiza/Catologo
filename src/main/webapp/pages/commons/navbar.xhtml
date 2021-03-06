@@ -23,20 +23,24 @@
 
 
 
+<<<<<<< HEAD
+					<p:commandButton id="home" icon="pi pi-home" immediate="true" styleClass="p-shadow-6" style="background:#61D2C2;margin:0 10px;color:#000" ></p:commandButton>
+=======
 					<p:commandButton id="home" icon="pi pi-home" styleClass="p-shadow-6" action="#{navBarController.redireccionarHome}" style="background:#61D2C2;margin:0 10px;color:#000"></p:commandButton>
+>>>>>>> ba25ba7d5678e43c8d0c0b4f51bd7f86fd00fc2d
 
 					<p:commandButton id="btnShopping" icon="pi pi-shopping-cart" 
-						action="#{navBarController.redireccionar}" styleClass="p-shadow-6" style="background:#61D2C2;margin:0 20px;color:#000">
+						action="#{navBarController.redireccionar}" styleClass="p-shadow-6" immediate="true" style="background:#61D2C2;margin:0 20px;color:#000">
 						<pe:badge
 							content="#{sessionController.persona.carrito.carritosProducto.size()}"
 							rendered="#{sessionController.persona.carrito.carritosProducto.size() != 0}" />
 
 					</p:commandButton>
 					<p:commandButton id="btnUsuario" icon="pi pi-user"
-						 styleClass="p-shadow-6" style="background:#61D2C2;margin:0 10px;color:#000"></p:commandButton>
+						 styleClass="p-shadow-6" style="background:#61D2C2;margin:0 10px;color:#000" immediate="true"></p:commandButton>
 					
 					<p:commandButton id="btnCerrarSesion" icon="pi pi-sign-out"
-						action="#{sessionClosedController.closeSession}" styleClass="p-shadow-6" style="background:#61D2C2;margin:0 10px;color:#000"></p:commandButton>
+						action="#{sessionClosedController.closeSession}" styleClass="p-shadow-6" style="background:#61D2C2;margin:0 10px;color:#000" immediate="true"></p:commandButton>
 
 				</f:facet>
 
