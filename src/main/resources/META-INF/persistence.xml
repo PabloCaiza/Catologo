@@ -18,8 +18,12 @@
 			<property name="javax.persistence.jdbc.user"
 				value="postgres" />
 			<property name="javax.persistence.jdbc.password"
+<<<<<<< HEAD
 
 				value="Pc123456" />
+=======
+				value="root" />
+>>>>>>> 5ce8d33ea91b7f5001c45bc1194b9bba269bd8ad
 
 		</properties>
 	</persistence-unit>

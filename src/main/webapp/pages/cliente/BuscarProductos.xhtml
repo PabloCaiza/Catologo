@@ -14,10 +14,10 @@
 </h:head>
 
 <h:body style="margin: 0; padding: 0; box-sizing: border-box;">
-	<div class="ui-fluid" style="overflow: hidden;">
+	<div class="ui-fluid" style="overflow: hidden; margin: 5px 70px">
 		<h:form id="formDashboard">
 
-			<div style="margin: 5px 70px">
+			<div>
 				<ui:include src="/pages/commons/navbar.xhtml">
 
 				</ui:include>
@@ -30,27 +30,98 @@
 			</div>
 
 
+			<div class="p-d-flex p-jc-around"
+				style="margin-top: 50px; background-image: url(//cdn.shopify.com/s/files/1/0058/9276/7855/files/background-palomas-fondo-de-agua_1920x.jpg?v=1566330730); background-size: contain; background-attachment: inherit; background-repeat-x: repeat; background-repeat-y: repeat;">
+				<div class="p-d-flex p-flex-column" style="width: 15%">
+					<p:commandLink id="Inicio" styleClass="titulo">
+						<h:outputText value="INICIO" style="color:#000" />
+					</p:commandLink>
+					<p:commandLink id="Hombres" style="margin-right:20px;"
+						styleClass="titulo">
+						<h:outputText value="HOMBRES" style="color:#000" />
+					</p:commandLink>
+					<p:commandLink id="HombresSudaderas" style="margin-right:20px;"
+						styleClass="subtitulos">
+						<h:outputText value="SUDADERAS" style="color:#000" />
+					</p:commandLink>
+					<p:commandLink id="HombresAccesorios" style="margin-right:20px;"
+						styleClass="subtitulos">
+						<h:outputText value="ACCESORIOS" style="color:#000" />
+					</p:commandLink>
+					<p:commandLink id="HombresMochilas" style="margin-right:20px;"
+						styleClass="subtitulos">
+						<h:outputText value="MOCHILAS" style="color:#000" />
+					</p:commandLink>
+					<p:commandLink id="HombresPrenda" style="margin-right:20px;"
+						styleClass="subtitulos">
+						<h:outputText value="PRENDA EXTERIOR" style="color:#000" />
+					</p:commandLink>
+					<p:commandLink id="HombresSueter" style="margin-right:20px;"
+						styleClass="subtitulos">
+						<h:outputText value="SUETER" style="color:#000" />
+					</p:commandLink>
+					<p:commandLink id="HombresChompas" style="margin-right:20px;"
+						styleClass="subtitulos">
+						<h:outputText value="CHOMPAS" style="color:#000" />
+					</p:commandLink>
 
-			<div class="p-grid sample-layout" style="margin: 5px 70px">
+
+					<p:commandLink id="Mujeres" style="margin-right:20px;"
+						styleClass="titulo">
+						<h:outputText value="MUJERES" style="color:#000" />
+					</p:commandLink>
+					<p:commandLink id="MujeresSudaderas" style="margin-right:20px;"
+						styleClass="subtitulos">
+						<h:outputText value="SUDADERAS" style="color:#000" />
+					</p:commandLink>
+					<p:commandLink id="M_Accesorios" style="margin-right:20px;"
+						styleClass="subtitulos">
+						<h:outputText value="ACCESORIOS" style="color:#000" />
+					</p:commandLink>
+					<p:commandLink id="M_Mochilas" style="margin-right:20px;"
+						styleClass="subtitulos">
+						<h:outputText value="MOCHILAS" style="color:#000" />
+					</p:commandLink>
+					<p:commandLink id="M_Prenda" style="margin-right:20px;"
+						styleClass="subtitulos">
+						<h:outputText value="PRENDA EXTERIOR" style="color:#000" />
+					</p:commandLink>
+					<p:commandLink id="M_Sueter" style="margin-right:20px;"
+						styleClass="subtitulos">
+						<h:outputText value="BUSO" style="color:#000" />
+					</p:commandLink>
+					<p:commandLink id="M_Chompas" style="margin-right:20px;"
+						styleClass="subtitulos">
+						<h:outputText value="CHOMPAS" style="color:#000" />
+					</p:commandLink>
 
 
 
-				<div class="p-col-12 p-md-10 p-col-nogutter">
-					<div class="p-Grid">
-						<div class="p-col-12">
-							<c:if test="#{sessionController.persona.rol.idRol == 2}">
-								<ui:include src="/pages/cliente/home.xhtml"></ui:include>
+				</div>
 
-							</c:if>
+				<div class="p-grid sample-layout" style="width: 85%">
+
+
+
+					<div class="p-col-12 p-md-10 p-col-nogutter"
+						style="margin-bottom:100px;width: 100%; background-image: url(//cdn.shopify.com/s/files/1/0058/9276/7855/files/background-palomas-fondo-de-agua_1920x.jpg?v=1566330730); background-size: contain; background-attachment: inherit; background-repeat-x: repeat; background-repeat-y: repeat;">
+						<div class="p-Grid">
+							<div class="p-col-12">
+								<c:if test="#{sessionController.persona.rol.idRol == 2}">
+									<ui:include src="/pages/cliente/home.xhtml"></ui:include>
+
+								</c:if>
+							</div>
 						</div>
 					</div>
+
+
+
 				</div>
 
 
 
 			</div>
-
-
 
 
 		</h:form>

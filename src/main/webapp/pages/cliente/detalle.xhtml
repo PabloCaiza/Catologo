@@ -14,12 +14,17 @@
 </h:head>
 
 <h:body style="margin: 0; padding: 0; box-sizing: border-box;">
+<<<<<<< HEAD
 	<div class="ui-fluid" style="overflow: hidden; margin: 5px 20px">
+=======
+	<div class="ui-fluid" style="overflow: hidden;margin: 5px 20px;margin: 5px 70px">
+>>>>>>> 5ce8d33ea91b7f5001c45bc1194b9bba269bd8ad
 		<h:form id="formDetalle" style="background:#fff">
 
 			<ui:include src="/pages/commons/navbar.xhtml">
 
 			</ui:include>
+<<<<<<< HEAD
 
 
 			<div class="p-grid sample-layout" style="background: #fff">
@@ -31,6 +36,18 @@
 					<div class="p-Grid" style="background: #fff">
 						<div class="p-col-12" style="background: #fff">
 							<p:panelGrid columns="3"
+=======
+			
+			
+			<div class="p-grid sample-layout" style="background:#fff;">
+
+				 
+				 
+				<div class="p-col-12 p-md-10 p-col-nogutter p-color" style="background-color: #fff; margin-bottom:200px">
+					<div class="p-Grid" style="background:#fff">
+						<div class="p-col-12" style="background:#fff">
+							<p:panelGrid columns="3" 
+>>>>>>> 5ce8d33ea91b7f5001c45bc1194b9bba269bd8ad
 								columnClasses="ui-g-12 ui-md-4, ui-g-12 ui-md-6, ui-g-12 ui-md-2"
 								layout="grid" styleClass="ui-panelgrid-blank  ui-fluid">
 
@@ -42,16 +59,17 @@
 									<p:panelGrid columns="2"
 										columnClasses="ui-g-12 ui-md-4, ui-g-12 ui-md-6" layout="grid"
 										styleClass="ui-panelgrid-blank  ui-fluid">
-										<p:outputLabel value="Nombre"></p:outputLabel>
+										<p:outputLabel value="Nombre" styleClass="p-text-bold"></p:outputLabel>
 										<p:outputLabel
 											value="#{sessionController.selectProduct.nombre}"></p:outputLabel>
 
 
-										<p:outputLabel value="Precio"></p:outputLabel>
+										<p:outputLabel value="Precio" styleClass="p-text-bold"></p:outputLabel>
 										<p:outputLabel
 											value="#{sessionController.selectProduct.precio}">
 
 											<f:convertNumber type="currency" currencySymbol="$"></f:convertNumber>
+<<<<<<< HEAD
 										</p:outputLabel>
 										<p:commandButton icon="pi pi-shopping-cart"
 											action="#{detalleController.agregarProductoCarrito(sessionController.selectProduct)}"
@@ -59,6 +77,16 @@
 
 										<p:selectOneMenu id="cboCantidad"
 											value="#{detalleController.cantidadProductoSelecionado}">
+=======
+											</p:outputLabel>
+										
+										<p:commandButton icon="pi pi-shopping-cart" action="#{detalleController.agregarProductoCarrito(sessionController.selectProduct)}"
+										update="formDetalle:btnShopping" value="Add to Card" styleClass="p-shadow-6" style="color:#000;background:#61D2C2"></p:commandButton>
+										
+										
+										
+										<p:selectOneMenu id="cboCantidad" value="#{detalleController.cantidadProductoSelecionado}">
+>>>>>>> 5ce8d33ea91b7f5001c45bc1194b9bba269bd8ad
 											<f:selectItem itemValue="1" itemLabel="1"
 												noSelectionOption="true"></f:selectItem>
 											<f:selectItem itemValue="2" itemLabel="2"></f:selectItem>
@@ -83,6 +111,9 @@
 
 						</div>
 					</div>
+					
+					
+					
 				</div>
 
 			</div>
