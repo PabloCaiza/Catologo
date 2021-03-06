@@ -14,7 +14,7 @@
 </h:head>
 
 <h:body style="margin: 0; padding: 0; box-sizing: border-box;">
-	<div class="ui-fluid" style="overflow: hidden;margin: 5px 20px">
+	<div class="ui-fluid" style="overflow: hidden;margin: 5px 20px;margin: 5px 70px">
 		<h:form id="formDetalle" style="background:#fff">
 			
 			<ui:include src="/pages/commons/navbar.xhtml">
@@ -22,11 +22,11 @@
 			</ui:include>
 			
 			
-			<div class="p-grid sample-layout" style="background:#fff">
+			<div class="p-grid sample-layout" style="background:#fff;">
 
-				 <ui:include src="/pages/commons/header.xhtml"></ui:include>
 				 
-				<div class="p-col-12 p-md-10 p-col-nogutter p-color" style="background-color: #fff">
+				 
+				<div class="p-col-12 p-md-10 p-col-nogutter p-color" style="background-color: #fff; margin-bottom:200px">
 					<div class="p-Grid" style="background:#fff">
 						<div class="p-col-12" style="background:#fff">
 							<p:panelGrid columns="3" 
@@ -41,20 +41,23 @@
 									<p:panelGrid columns="2"
 										columnClasses="ui-g-12 ui-md-4, ui-g-12 ui-md-6" layout="grid"
 										styleClass="ui-panelgrid-blank  ui-fluid">
-										<p:outputLabel value="Nombre"></p:outputLabel>
+										<p:outputLabel value="Nombre" styleClass="p-text-bold"></p:outputLabel>
 										<p:outputLabel
 											value="#{sessionController.selectProduct.nombre}"></p:outputLabel>
 
 
-										<p:outputLabel value="Precio"></p:outputLabel>
+										<p:outputLabel value="Precio" styleClass="p-text-bold"></p:outputLabel>
 										<p:outputLabel
 											value="#{sessionController.selectProduct.precio}">
 											
 											<f:convertNumber type="currency" currencySymbol="$"></f:convertNumber>
 											</p:outputLabel>
+										
 										<p:commandButton icon="pi pi-shopping-cart" action="#{detalleController.agregarProductoCarrito(sessionController.selectProduct)}"
-										update="formDetalle:btnShopping"></p:commandButton>
-
+										update="formDetalle:btnShopping" value="Add to Card" styleClass="p-shadow-6" style="color:#000;background:#61D2C2"></p:commandButton>
+										
+										
+										
 										<p:selectOneMenu id="cboCantidad" value="#{detalleController.cantidadProductoSelecionado}">
 											<f:selectItem itemValue="1" itemLabel="1"
 												noSelectionOption="true"></f:selectItem>
@@ -83,6 +86,9 @@
 							</p:panelGrid>
 						</div>
 					</div>
+					
+					
+					
 				</div>
 
 			</div>

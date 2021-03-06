@@ -17,7 +17,8 @@
 	<h:outputStylesheet library="css" name="primeflex.css"></h:outputStylesheet>
 	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
 
-
+		<p:commandButton icon="pi pi-shopping-cart" action="#{detalleController.agregarProductoCarrito(sessionController.selectProduct)}"
+										update="formDetalle:btnShopping"></p:commandButton>
 	
 		<div class="header">
 		

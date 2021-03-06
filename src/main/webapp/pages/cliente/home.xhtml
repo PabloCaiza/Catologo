@@ -4,13 +4,15 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-	<div class="p-grid ">
+	<div class="p-grid " style="margin:20px 20px;background:#fff">
+	
+		
 
 
 
 		<div class="p-col">
 
-			<div class="ui-inputgroup" style="display: block;margin:20px 20px">
+			<div class="ui-inputgroup" style="display: block;">
 				<p:inputText id="txtBuscador" style="width:100%" styleClass="p-shadow-9"
 					value="#{productoB.filtroPorNombre}" placeholder="Producto">
 					<p:ajax event="keyup" listener="#{productoB.consultarPorFiltro}"
@@ -76,9 +78,6 @@
 									</div>
 								</p:dataViewGridItem>
 
-
-
-
 								<p:dataViewListItem>
 									<div class="product-grid-item card border-1">
 										<div class="product-grid-item-top">
@@ -130,14 +129,6 @@
 				
 
 					</div>
-
-
-
-
-
-
-
-
 
 
 
