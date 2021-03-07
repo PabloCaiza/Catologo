@@ -1,5 +1,7 @@
 package com.marcos.dto;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -18,6 +20,10 @@ public class Producto  implements Comparable<Producto> {
 	@ManyToOne
 	@JoinColumn(name="id_categoria", nullable=false)
 	private Categoria categoria;
+	@OneToMany(mappedBy = "producto")
+	private List<Comentario> comentarios;
+	
+	
 	public int getId() {
 		return id;
 	}
@@ -53,6 +59,14 @@ public class Producto  implements Comparable<Producto> {
 	}
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
+	}
+	
+	
+	public List<Comentario> getComentarios() {
+		return comentarios;
+	}
+	public void setComentarios(List<Comentario> comentarios) {
+		this.comentarios = comentarios;
 	}
 	@Override
 	public int compareTo(Producto o) {
