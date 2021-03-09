@@ -97,7 +97,9 @@ public class PayPalCreateOrder extends PayPalClient {
 
 		DecimalFormat decimalFormat = new DecimalFormat("#.##");
 
-		double totalConDecimales = Double.valueOf(decimalFormat.format(session.getTotalCompra()));
+
+		
+		double totalConDecimales = Math.round(session.getTotalCompra()*100.0)/100.0;
 
 		double envio = 20;
 		double handling = 10;
