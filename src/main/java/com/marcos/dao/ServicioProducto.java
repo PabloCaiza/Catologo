@@ -10,5 +10,7 @@ public interface ServicioProducto {
 	void elimnar(int id);
 	void modificar(int id,Producto producto);
 	List<Producto> queryByNameFilter(String filter);
+	List<Producto> queryByCategoria(String genero,String tipo);
+	List<Producto> queryByGenero(String genero);
 
 }

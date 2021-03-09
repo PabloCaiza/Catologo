@@ -124,12 +124,18 @@ public class ProductoBean implements Serializable {
 			productos = servicio.listarProductos();
 		} else {
 			productos = servicio.queryByNameFilter(filtroPorNombre);
-			productos.forEach(producto -> {
-				System.out.println(producto.getNombre());
 
-			});
 		}
 
+	}
+	
+	public void consultarPorCategoria(String genero,String tipo) {
+		productos=servicio.queryByCategoria(genero, tipo);
+		
+	}
+	
+	public void consultarPorGenero(String genero) {
+		productos=servicio.queryByGenero(genero);
 	}
 
 	public Producto getProducto() {

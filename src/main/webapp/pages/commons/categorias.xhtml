@@ -7,74 +7,30 @@
 
 
 	<div class="p-d-flex p-flex-column" style="width: 15%;">
+	
 		<p:commandLink id="Inicio" styleClass="titulo">
 			<h:outputText value="INICIO" style="color:#000" />
 		</p:commandLink>
-		<p:commandLink id="Hombres" style="margin-right:20px;"
-			styleClass="titulo">
-			<h:outputText value="HOMBRES" style="color:#000" />
-		</p:commandLink>
-		<p:commandLink id="HombresSudaderas" style="margin-right:20px;"
-			styleClass="subtitulos">
-			<h:outputText value="SUDADERAS" style="color:#000" />
-		</p:commandLink>
-		<p:commandLink id="HombresAccesorios" style="margin-right:20px;"
-			styleClass="subtitulos">
-			<h:outputText value="ACCESORIOS" style="color:#000" />
-		</p:commandLink>
-		<p:commandLink id="HombresMochilas" style="margin-right:20px;"
-			styleClass="subtitulos">
-			<h:outputText value="MOCHILAS" style="color:#000" />
-		</p:commandLink>
-		<p:commandLink id="HombresPrenda" style="margin-right:20px;"
-			styleClass="subtitulos">
-			<h:outputText value="PRENDA EXTERIOR" style="color:#000" />
-		</p:commandLink>
-		<p:commandLink id="HombresSueter" style="margin-right:20px;"
-			styleClass="subtitulos">
-			<h:outputText value="SUETER" style="color:#000" />
-		</p:commandLink>
-		<p:commandLink id="HombresChompas" style="margin-right:20px;"
-			styleClass="subtitulos">
-			<h:outputText value="CHOMPAS" style="color:#000" />
-		</p:commandLink>
+
+		<p:repeat var="category" value="#{categoriaController.categories}">
+			<p:commandLink  style="margin-right:20px;"
+				styleClass="titulo"
+				action="#{productoB.consultarPorGenero(category.gender)}"
+				update="formDashboard:pnlResultados"
+				>
+				<h:outputText value="#{category.gender}" style="color:#000" />
+			</p:commandLink>
+			<p:repeat var="type" value="#{category.types}">
+				<p:commandLink style="margin-right:20px;"
+					styleClass="subtitulos" action="#{productoB.consultarPorCategoria(category.gender,type)}"
+					update="formDashboard:pnlResultados"
+					>
+					<h:outputText value="#{type}" style="color:#000" />
+				</p:commandLink>
+			</p:repeat>
 
 
-		<p:commandLink id="Mujeres" style="margin-right:20px;"
-			styleClass="titulo">
-			<h:outputText value="MUJERES" style="color:#000" />
-		</p:commandLink>
-		<p:commandLink id="MujeresSudaderas" style="margin-right:20px;"
-			styleClass="subtitulos">
-			<h:outputText value="SUDADERAS" style="color:#000" />
-		</p:commandLink>
-		<p:commandLink id="M_Accesorios" style="margin-right:20px;"
-			styleClass="subtitulos">
-			<h:outputText value="ACCESORIOS" style="color:#000" />
-		</p:commandLink>
-		<p:commandLink id="M_Mochilas" style="margin-right:20px;"
-			styleClass="subtitulos">
-			<h:outputText value="MOCHILAS" style="color:#000" />
-		</p:commandLink>
-		<p:commandLink id="M_Prenda" style="margin-right:20px;"
-			styleClass="subtitulos">
-			<h:outputText value="PRENDA EXTERIOR" style="color:#000" />
-		</p:commandLink>
-		<p:commandLink id="M_Sueter" style="margin-right:20px;"
-			styleClass="subtitulos">
-			<h:outputText value="BUSO" style="color:#000" />
-		</p:commandLink>
-		<p:commandLink id="M_Chompas" style="margin-right:20px;"
-			styleClass="subtitulos">
-			<h:outputText value="CHOMPAS" style="color:#000" />
-		</p:commandLink>
-
-
-
+		</p:repeat>
+		
 	</div>
-
-
-
-
-
 </ui:composition>
