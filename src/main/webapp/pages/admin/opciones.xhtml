@@ -8,11 +8,11 @@
 			
 			<p:menu>
 				<p:submenu label="Options">
-					<p:menuitem value="Save (Non-Ajax)" action="#{paginaController.redireccionarPagina('/pages/admin/ingresoProductos.xhtml')}"
+					<p:menuitem value="Home" 
 						 ajax="false" icon="pi pi-save" />
-					<p:menuitem value="Update" action="#{menuView.update}"
+					<p:menuitem value="Ingresar" action="#{paginaController.redireccionarPagina('/pages/admin/ingresoProductos.xhtml')}"
 						 icon="pi pi-refresh" />
-					<p:menuitem value="Delete" action="#{menuView.delete}"
+					<p:menuitem value="Modificar" action="#{paginaController.redireccionarPagina('/pages/admin/modificarProducto.xhtml')}"
 						 icon="pi pi-times" />
 				</p:submenu>
 				

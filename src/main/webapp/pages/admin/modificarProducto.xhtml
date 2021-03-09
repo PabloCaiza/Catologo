@@ -18,18 +18,21 @@
 
 		</ui:include>
 
-		<div class="p-d-flex p-jc-between" style="padding:20px 10px">
+		<div class="p-d-flex p-jc-between"  style="padding:20px 10px">
 			<ui:include src="/pages/admin/menuLateral.xhtml">
 
 			</ui:include>
-			<div style="width:80%">
+			<div  style="width:80%">
 				<h:form id="registryForm">
 					<p:growl id="growl" showDetail="true" />
 					<div class="card">
-						<p:panel id="pnlLogin" header="Registre el producto deseado"
+						<p:panel id="pnlLogin" header="Modifique el producto"
 							style="text-align:center ">
-							<p:panelGrid columns="2" layout="flex"
+							<p:panelGrid columns="1" layout="flex"
 								styleClass="customPanelGrid" contentStyleClass="ui-fluid">
+
+								<img src="../../resources/imgs/logo.png"></img>
+
 
 								<p:outputLabel value="Nombre" style="float:left"></p:outputLabel>
 								<p:inputText
