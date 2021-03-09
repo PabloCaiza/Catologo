@@ -1,0 +1,46 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+
+	<div class="card p-d-flex p-jc-between p-ai-center" >
+
+		<div style="width:350px">
+
+			<img src="../../resources/imgs/iconHeader.png"
+				style="width: 100%; object-fit: cover;"></img>
+
+
+		</div>
+
+		<div>
+			<p:menubar id="menubar" style="background:#fff">
+
+				<f:facet name="options" >
+
+
+					
+					<p:commandButton id="btnCerrarSesion" icon="pi pi-sign-out"
+						action="#{sessionClosedController.closeSession}" styleClass="p-shadow-6" style="background:#61D2C2;margin:0 10px;color:#000" immediate="true"></p:commandButton>
+
+				</f:facet>
+
+
+			</p:menubar>
+
+		</div>
+		<!--<p:sticky target="menubar"></p:sticky>  -->
+
+	</div>
+	
+	<hr />
+
+
+
+
+
+
+
+</ui:composition>
