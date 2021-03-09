@@ -47,10 +47,10 @@
 												width="100%"></p:graphicImage>
 											<p:panelGrid columns="1" columnClasses="ui-g-12 ui-md-12">
 												<p:panelGrid columns="2">
-													<h:outputText value="Nombre"></h:outputText>
+													<h:outputText value="Nombre" styleClass="p-text-bold"></h:outputText>
 													<h:outputText value="#{itemCarrito.producto.nombre}"></h:outputText>
 
-													<h:outputText value="Precio"></h:outputText>
+													<h:outputText value="Precio"  styleClass="p-text-bold"></h:outputText>
 													<h:outputText value="#{itemCarrito.producto.precio}">
 														<f:convertNumber type="currency" currencySymbol="$"></f:convertNumber>
 													</h:outputText>
@@ -116,8 +116,8 @@
 									<p:outputLabel></p:outputLabel>
 									<p:outputLabel></p:outputLabel>
 									<p:outputLabel></p:outputLabel>
-									<p:outputLabel value="Total:"></p:outputLabel>
-									<p:outputLabel value="#{carritoController.session.totalCompra}">
+									<p:outputLabel value="Total:"  styleClass="p-text-bold"></p:outputLabel>
+									<p:outputLabel value="#{carritoController.session.totalCompra}"  styleClass="p-text-bold">
 										<f:convertNumber type="currency" currencySymbol="$"></f:convertNumber>
 
 									</p:outputLabel>

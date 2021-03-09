@@ -14,7 +14,7 @@
 </h:head>
 
 <h:body style="margin: 0; padding: 0; box-sizing: border-box;">
-	<div class="ui-fluid" style="overflow: hidden; margin: 5px 20px">
+	<div class="ui-fluid" style="overflow: hidden; margin: 5px 70px">
 		<h:form id="formMisCompras" style="background:#fff">
 
 			<ui:include src="/pages/commons/navbar.xhtml">
@@ -22,14 +22,14 @@
 			</ui:include>
 
 
-			<div class="p-grid sample-layout" style="background: #fff">
+			<div class="p-grid sample-layout p-d-flex p-jc-between " style="background-image: url(//cdn.shopify.com/s/files/1/0058/9276/7855/files/background-palomas-fondo-de-agua_1920x.jpg?v=1566330730); background-size: contain; background-attachment: inherit; background-repeat-x: repeat; background-repeat-y: repeat;height:650px;padding:50px 10px">
 
 				<ui:include src="/pages/commons/header.xhtml"></ui:include>
 
 				<div class="p-col-12 p-md-10 p-col-nogutter p-color"
-					style="background-color: #fff">
-					<div class="p-Grid" style="background: #fff">
-						<div class="p-col-12" style="background: #fff">
+					style="width: 80%">
+					<div class="p-Grid" style="">
+						<div class="p-col-12" style="">
 
 							<p:dataTable id="tblMisCompras" var="factura"
 								value="#{misComprasController.facturas}" rows="10"
