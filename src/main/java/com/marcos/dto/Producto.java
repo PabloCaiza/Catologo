@@ -14,14 +14,17 @@ public class Producto  implements Comparable<Producto> {
 	private int id;
 	@Column(name="nombre")
 	private String nombre;
+	private String imagen;
 	private double precio;
 	private String descripcion;
-	private String imagen;
+
 	@ManyToOne
 	@JoinColumn(name="id_categoria", nullable=false)
 	private Categoria categoria;
 	@OneToMany(mappedBy = "producto")
 	private List<Comentario> comentarios;
+	@OneToMany(mappedBy = "producto")
+	private List<Imagen> imagenes;
 	
 	
 	public int getId() {
@@ -48,12 +51,7 @@ public class Producto  implements Comparable<Producto> {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	public String getImagen() {
-		return imagen;
-	}
-	public void setImagen(String imagen) {
-		this.imagen = imagen;
-	}
+
 	public Categoria getCategoria() {
 		return categoria;
 	}
@@ -67,6 +65,23 @@ public class Producto  implements Comparable<Producto> {
 	}
 	public void setComentarios(List<Comentario> comentarios) {
 		this.comentarios = comentarios;
+	}
+	
+	
+	
+	
+	
+	public String getImagen() {
+		return imagen;
+	}
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
+	public List<Imagen> getImagenes() {
+		return imagenes;
+	}
+	public void setImagenes(List<Imagen> imagenes) {
+		this.imagenes = imagenes;
 	}
 	@Override
 	public int compareTo(Producto o) {

@@ -15,6 +15,7 @@ import com.marcos.dao.ServicioCarrito;
 import com.marcos.dao.ServicioComentario;
 import com.marcos.dto.CarritoProducto;
 import com.marcos.dto.Comentario;
+import com.marcos.dto.Imagen;
 import com.marcos.dto.Producto;
 
 @Named("detalleController")
@@ -36,15 +37,35 @@ public class DetalleController implements Serializable {
 
 	private List<Comentario> comentarios;
 	private Comentario comentario;
+	private int isZoom;
 	private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
 	@PostConstruct
 	public void init() {
 		this.comentario = new Comentario();
 		this.cantidadProductoSelecionado = 1;
+		this.isZoom=0;
 		comentarios = servicioComentario.listarComentaios(session.getSelectProduct());
 	}
 
+	public void changeImage(Imagen imagen) {
+		System.out.println(imagen.getId());
+		this.session.getSelectProduct().setImagen(imagen.getNombre());
+	}
+	
+	public void changeZoomStatusT() {
+		System.out.println(isZoom);
+		if(this.isZoom!=1) {
+		this.isZoom=1;
+		}
+	}
+	public void changeZoomStatusF() {
+		System.out.println(isZoom);
+		if(this.isZoom!=0) {
+		this.isZoom=0;
+		}
+	}
+	
 	public void agregarComentario() {
 		this.prepareComment();
 		System.out.println("inserta un nuevo comentario");
@@ -103,6 +124,17 @@ public class DetalleController implements Serializable {
 	public void setFormatter(DateTimeFormatter formatter) {
 		this.formatter = formatter;
 	}
+
+	public int getIsZoom() {
+		return isZoom;
+	}
+
+	public void setIsZoom(int isZoom) {
+		this.isZoom = isZoom;
+	}
+
+
+	
 	
 
 }
