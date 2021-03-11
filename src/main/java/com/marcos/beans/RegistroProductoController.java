@@ -110,6 +110,11 @@ public class RegistroProductoController implements Serializable {
 
 	}
 	
+	public void cargarProducto(Producto pro) {
+		this.producto = pro;
+
+	}
+	
 	public void listarTipos(){
 		tipos= this.servicioCategoria.listarTipos();
 	}

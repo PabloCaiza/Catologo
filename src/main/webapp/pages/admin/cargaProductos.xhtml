@@ -60,11 +60,11 @@
 												styleClass="product-price p-text-bold">
 												<f:convertNumber currencySymbol="$" type="currency" />
 											</h:outputText>
-											<h:form>
+											
 												<p:growl id="growl" showDetail="true" />
-												<p:commandButton oncomplete="PF('digModificar').show()"
+												<p:commandButton oncomplete="PF('digModificar').show()" update="registryForm:pnlLogin"
 													icon="pi pi-pencil" styleClass="p-shadow-6"
-													style="color:#000;background:#61D2C2" value="Modificar">
+													style="color:#000;background:#61D2C2" value="Modificar" immediate="true" action="#{registroProductoController.cargarProducto(product)}">
 
 												</p:commandButton>
 
@@ -78,7 +78,7 @@
 																	header="Registre el producto deseado"
 																	style="text-align:center ">
 																	<p:panelGrid columns="4" layout="flex"
-																		styleClass="customPanelGrid"
+																		styleClass="customPanelGrid" id="pblProducto"
 																		contentStyleClass="ui-fluid">
 
 																		<p:outputLabel value="Nombre"
@@ -134,9 +134,9 @@
 																	</p:panelGrid>
 
 																</p:panel>
-																<p:commandButton value="Registrar"
-																	action="#{registroProductoController.crearProducto}"
-																	update="registryForm,growl "
+																<p:commandButton value="Modificar"
+																	immediate="true"
+																	
 																	styleClass="rounded-button p-shadow-7 p-text-bold"
 																	style="background:#61D2C2;margin-top: 20px;width:200px">
 																</p:commandButton>
@@ -153,7 +153,7 @@
 
 												</p:dialog>
 
-											</h:form>
+											
 
 
 
