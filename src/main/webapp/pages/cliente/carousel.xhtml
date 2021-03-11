@@ -11,14 +11,19 @@
             <div class="product">
                 <div class="product-grid-item p-p-5">
                     <div class="product-grid-item-top">
-                        <div>
+                        <div style="padding-bottom: 10px">
                             <i class="pi pi-tag product-category-icon"/>
                             <span class="product-category">#{product.categoria.tipo}</span>
                         </div>
                        
                     </div>
                     <div class="product-grid-item-content" style="margin-bottom: 20px">
-                        <p:graphicImage name="imgs/producto/#{product.imagen}" width="100%"/>
+                    
+                    	<div style="height: 300px;width: 300px;">
+                    		<p:graphicImage name="imgs/producto/#{product.imagen}" style="width:100%;object-fit: cover;height:100%"/>
+                    	</div>
+                        
+                        
                         <div class="product-name">
                         	<h3 style="text-align:center">#{product.nombre}</h3>
                         </div>
@@ -32,7 +37,7 @@
                             <f:convertNumber currencySymbol="$" type="currency"/>
                         </h:outputText>
                         
-                        <div style="width: 40%">
+                        <div style="width: 50%">
                         	 <p:commandButton type="button" value="Add to Card" icon="pi pi-shopping-cart" styleClass="p-shadow-6" style="color:#000;background:#61D2C2" />
                         </div>
                         
