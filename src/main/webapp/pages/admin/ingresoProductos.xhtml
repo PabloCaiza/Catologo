@@ -18,11 +18,11 @@
 
 		</ui:include>
 
-		<div class="p-d-flex p-jc-between" style="padding:20px 10px">
+		<div class="p-d-flex p-jc-between" style="padding: 20px 10px">
 			<ui:include src="/pages/admin/menuLateral.xhtml">
 
 			</ui:include>
-			<div style="width:80%">
+			<div style="width: 80%">
 				<h:form id="registryForm">
 					<p:growl id="growl" showDetail="true" />
 					<div class="card">
@@ -83,6 +83,20 @@
 				</h:form>
 
 
+			</div>
+			<div class="card">
+				<h:form>
+					<p:growl id="messages" showDetail="true" />
+
+					<p:fileUpload mode="advanced" multiple="false" sizeLimit="102400"
+						allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+						invalidSizeMessage="Maximum file size allowed is 100 KB"
+						invalidFileMessage="only gif | jpg | jpeg | png is allowed"
+						update="messages"
+						listener="#{cropUploaderBean.handleFileUpload}" />
+
+					
+				</h:form>
 			</div>
 		</div>
 
