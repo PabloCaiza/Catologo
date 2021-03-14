@@ -110,8 +110,21 @@ public class RegistroProductoController implements Serializable {
 
 	}
 	
+	public void actualizarProducto() {
+		
+		try {
+			
+			servicioProducto.modificar(this.producto.getId(), this.producto);
+			System.out.println("Ent");
+
+		} catch (Exception e) {
+			System.out.println("E");
+		}
+	}
+	
 	public void cargarProducto(Producto pro) {
 		this.producto = pro;
+		System.out.println("Entroooooooooooooo");
 
 	}
 	
