@@ -3,10 +3,12 @@
  */
 package com.marcos.beans;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -29,24 +31,31 @@ public class RegistroProductoController implements Serializable {
 	private List<String> tipos;
 	private String genero;
 	private List<String> generos;
-	List<Categoria> categorias ;
+	List<Categoria> categorias;
+
 	/**
 	 * @return the producto
 	 */
 	@Inject
- ServicioCategoria servicioCategoria;
+	SessionController sessionController;
 	@Inject
- ServicioProducto servicioProducto;
+	ServicioCategoria servicioCategoria;
+	@Inject
+	ServicioProducto servicioProducto;
 
 	@PostConstruct
-	public void init(){
+	public void init() {
 		producto = new Producto();
 		categorias = this.servicioCategoria.listarCategoria();
 		this.listarTipos();
 		this.listarGeneros();
+		if(producto !=null ) {
+		this.genero=this.sessionController.getSelectProduct().getCategoria().getGenero();
+		this.tipo=this.sessionController.getSelectProduct().getCategoria().getTipo();
+		}
 	}
-	public void identificaCategoria() {
 
+	public void identificaCategoria() {
 
 		for (Categoria aux : categorias) {
 			if (aux.getTipo().equals(tipo) && aux.getGenero().equals(genero)) {
@@ -55,7 +64,7 @@ public class RegistroProductoController implements Serializable {
 		}
 
 	}
-    
+
 	public Producto getProducto() {
 		return producto;
 	}
@@ -109,65 +118,119 @@ public class RegistroProductoController implements Serializable {
 		}
 
 	}
-	
-	public void actualizarProducto() {
-		
-		try {
-			
-			servicioProducto.modificar(this.producto.getId(), this.producto);
-			System.out.println("Ent");
 
+	public void actualizarProducto() {
+
+		try {
+
+			servicioProducto.crear(this.sessionController.getSelectProduct());
+			System.out.println("Ent");
+            rediccionar("http://localhost:8080/app-marcos-01/pages/admin/modificarProducto.xhtml");
 		} catch (Exception e) {
 			System.out.println("E");
 		}
 	}
-	
+	public void rediccionar(String pagina) {
+		try {
+			FacesContext.getCurrentInstance().getExternalContext().redirect(pagina);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	public void cargarProducto(Producto pro) {
 		this.producto = pro;
-		System.out.println("Entroooooooooooooo");
+	}
 
+	public void listarTipos() {
+		tipos = this.servicioCategoria.listarTipos();
 	}
-	
-	public void listarTipos(){
-		tipos= this.servicioCategoria.listarTipos();
+
+	public void listarGeneros() {
+		generos = this.servicioCategoria.listarGeneros();
 	}
-	public void listarGeneros(){
-		generos= this.servicioCategoria.listarGeneros();
-	}
+
 	/**
 	 * @return the categorias
 	 */
 	public List<Categoria> getCategorias() {
 		return categorias;
 	}
+
 	/**
 	 * @param categorias the categorias to set
 	 */
 	public void setCategorias(List<Categoria> categorias) {
 		this.categorias = categorias;
 	}
+
 	/**
 	 * @return the tipos
 	 */
 	public List<String> getTipos() {
 		return tipos;
 	}
+
 	/**
 	 * @param tipos the tipos to set
 	 */
 	public void setTipos(List<String> tipos) {
 		this.tipos = tipos;
 	}
+
 	/**
 	 * @return the generos
 	 */
 	public List<String> getGeneros() {
 		return generos;
 	}
+
 	/**
 	 * @param generos the generos to set
 	 */
 	public void setGeneros(List<String> generos) {
 		this.generos = generos;
+	}
+
+	/**
+	 * @return the sessionController
+	 */
+	public SessionController getSessionController() {
+		return sessionController;
+	}
+
+	/**
+	 * @param sessionController the sessionController to set
+	 */
+	public void setSessionController(SessionController sessionController) {
+		this.sessionController = sessionController;
+	}
+
+	/**
+	 * @return the servicioCategoria
+	 */
+	public ServicioCategoria getServicioCategoria() {
+		return servicioCategoria;
+	}
+
+	/**
+	 * @param servicioCategoria the servicioCategoria to set
+	 */
+	public void setServicioCategoria(ServicioCategoria servicioCategoria) {
+		this.servicioCategoria = servicioCategoria;
+	}
+
+	/**
+	 * @return the servicioProducto
+	 */
+	public ServicioProducto getServicioProducto() {
+		return servicioProducto;
+	}
+
+	/**
+	 * @param servicioProducto the servicioProducto to set
+	 */
+	public void setServicioProducto(ServicioProducto servicioProducto) {
+		this.servicioProducto = servicioProducto;
 	}
 }

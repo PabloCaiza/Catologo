@@ -1,13 +1,16 @@
 package com.marcos.beans;
 
+import java.io.IOException;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import com.marcos.dto.Persona;
 import com.marcos.dto.Producto;
+import com.marcos.utils.CommonUtils;
 import com.paypal.http.HttpResponse;
 import com.paypal.orders.Order;
 
@@ -30,7 +33,18 @@ public class SessionController implements Serializable {
 		System.out.println("ingresamos a una nueva sesion");
 
 	}
-
+	public void cargarProducto(Producto pro) {
+		this.selectProduct= pro;
+		rediccionar("http://localhost:8080/app-marcos-01/pages/admin/modificar.xhtml");
+	}
+	public void rediccionar(String pagina) {
+		try {
+			FacesContext.getCurrentInstance().getExternalContext().redirect(pagina);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	public Persona getPersona() {
 
 		return persona;

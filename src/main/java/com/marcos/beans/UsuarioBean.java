@@ -19,6 +19,8 @@ public class UsuarioBean implements Serializable{
 	@Inject
 	private ServicioUsuario servicio;
 	@PostConstruct
+	
+
 	public void init() {
 		usuario=new Usuario();
 	}
