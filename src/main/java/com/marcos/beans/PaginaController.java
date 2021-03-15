@@ -31,13 +31,6 @@ public class PaginaController  implements Serializable {
 		}
 	}
 	
-	public void redireccionar(String url) {
-		System.out.println("entramos al redireccionae");
-		try {
-			FacesContext.getCurrentInstance().getExternalContext().redirect(url);
-		} catch (IOException e) {
-			CommonUtils.mostarMensaje(FacesMessage.SEVERITY_ERROR, "ups !", "no se pudo cargar la  pagina");
-		}
-	}
+	
 
 }
