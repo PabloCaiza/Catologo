@@ -6,12 +6,13 @@ import java.io.Serializable;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 import com.marcos.utils.CommonUtils;
 
 @Named("paginaController")
-@RequestScoped
+@ViewScoped
 public class PaginaController  implements Serializable {
 	
 	
@@ -25,6 +26,15 @@ public class PaginaController  implements Serializable {
 		System.out.println("entramos al redireccionae");
 		try {
 			CommonUtils.redireccionarPagina(url);
+		} catch (IOException e) {
+			CommonUtils.mostarMensaje(FacesMessage.SEVERITY_ERROR, "ups !", "no se pudo cargar la  pagina");
+		}
+	}
+	
+	public void redireccionar(String url) {
+		System.out.println("entramos al redireccionae");
+		try {
+			FacesContext.getCurrentInstance().getExternalContext().redirect(url);
 		} catch (IOException e) {
 			CommonUtils.mostarMensaje(FacesMessage.SEVERITY_ERROR, "ups !", "no se pudo cargar la  pagina");
 		}

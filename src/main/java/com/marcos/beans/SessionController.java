@@ -33,18 +33,7 @@ public class SessionController implements Serializable {
 		System.out.println("ingresamos a una nueva sesion");
 
 	}
-	public void cargarProducto(Producto pro) {
-		this.selectProduct= pro;
-		rediccionar("http://localhost:8080/app-marcos-01/pages/admin/modificar.xhtml");
-	}
-	public void rediccionar(String pagina) {
-		try {
-			FacesContext.getCurrentInstance().getExternalContext().redirect(pagina);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+	
 	public Persona getPersona() {
 
 		return persona;

@@ -5,17 +5,18 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 	<h:form>
 		<div class="card">
-			
+
 			<p:menu>
 				<p:submenu label="Options">
-					<p:menuitem value="Home" 
-						 ajax="false" icon="pi pi-save" />
-					<p:menuitem value="Ingresar" action="#{paginaController.redireccionarPagina('/pages/admin/ingresoProductos.xhtml')}"
-						 icon="pi pi-refresh" />
-					<p:menuitem value="Modificar" action="#{paginaController.redireccionarPagina('/pages/admin/modificarProducto.xhtml')}"
-						 icon="pi pi-times" />
+					<p:menuitem value="Home" ajax="false" icon="pi pi-save" />
+					<p:menuitem value="Ingresar" immediate="true"
+						url='http://localhost:8080/app-marcos-01/pages/admin/ingresoProductos.xhtml'
+						icon="pi pi-refresh" />
+					<p:menuitem value="Modificar" immediate="true"
+						url='http://localhost:8080/app-marcos-01/pages/admin/modificarProducto.xhtml'
+						icon="pi pi-times" />
 				</p:submenu>
-				
+
 			</p:menu>
 		</div>
 	</h:form>

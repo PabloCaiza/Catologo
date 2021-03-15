@@ -49,9 +49,9 @@ public class RegistroProductoController implements Serializable {
 		categorias = this.servicioCategoria.listarCategoria();
 		this.listarTipos();
 		this.listarGeneros();
-		if(producto !=null ) {
-		this.genero=this.sessionController.getSelectProduct().getCategoria().getGenero();
-		this.tipo=this.sessionController.getSelectProduct().getCategoria().getTipo();
+		if (this.sessionController.getSelectProduct() != null) {
+			this.genero = this.sessionController.getSelectProduct().getCategoria().getGenero();
+			this.tipo = this.sessionController.getSelectProduct().getCategoria().getTipo();
 		}
 	}
 
@@ -64,6 +64,7 @@ public class RegistroProductoController implements Serializable {
 		}
 
 	}
+
 
 	public Producto getProducto() {
 		return producto;
@@ -125,11 +126,13 @@ public class RegistroProductoController implements Serializable {
 
 			servicioProducto.crear(this.sessionController.getSelectProduct());
 			System.out.println("Ent");
-            rediccionar("http://localhost:8080/app-marcos-01/pages/admin/modificarProducto.xhtml");
+			this.sessionController.setSelectProduct(null);
+			rediccionar("http://localhost:8080/app-marcos-01/pages/admin/modificarProducto.xhtml");
 		} catch (Exception e) {
 			System.out.println("E");
 		}
 	}
+
 	public void rediccionar(String pagina) {
 		try {
 			FacesContext.getCurrentInstance().getExternalContext().redirect(pagina);
@@ -138,8 +141,10 @@ public class RegistroProductoController implements Serializable {
 			e.printStackTrace();
 		}
 	}
+
 	public void cargarProducto(Producto pro) {
-		this.producto = pro;
+		this.sessionController.setSelectProduct(pro);
+		rediccionar("http://localhost:8080/app-marcos-01/pages/admin/modificar.xhtml");
 	}
 
 	public void listarTipos() {
