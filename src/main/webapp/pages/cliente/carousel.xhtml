@@ -17,10 +17,12 @@
                         </div>
                        
                     </div>
-                    <div class="product-grid-item-content" style="margin-bottom: 20px">
+                    <div class="product-grid-item-content p-d-flex p-ai-center p-flex-column" style="margin-bottom: 20px">
                     
                     	<div style="height: 300px;width: 300px;">
+                    	<p:commandLink action="#{productoB.showDetail(product)}">
                     		<p:graphicImage name="imgs/producto/#{product.imagen}" style="width:100%;object-fit: cover;height:100%"/>
+                    	</p:commandLink>
                     	</div>
                         
                         

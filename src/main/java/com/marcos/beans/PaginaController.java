@@ -12,7 +12,7 @@ import javax.inject.Named;
 import com.marcos.utils.CommonUtils;
 
 @Named("paginaController")
-@ViewScoped
+@RequestScoped
 public class PaginaController  implements Serializable {
 	
 	

@@ -25,6 +25,7 @@
 			<div style="width: 80%">
 				<h:form id="registryForm">
 					<p:growl id="growl" showDetail="true" />
+					<p:growl id="messages" showSummary="true" showDetail="true" skipDetailIfEqualsSummary="true"></p:growl>
 					<div class="card">
 						<p:panel id="pnlLogin" header="Registre el producto deseado"
 							style="text-align:center ">
@@ -94,7 +95,7 @@
 						</p:panel>
 						<p:commandButton value="Registrar"
 							action="#{registroProductoController.crearProducto}"
-							update="registryForm,growl "
+							update="registryForm:pnlLogin"
 							styleClass="rounded-button p-shadow-7 p-text-bold"
 							style="background:#61D2C2;margin-top: 20px;width:200px">
 						</p:commandButton>
