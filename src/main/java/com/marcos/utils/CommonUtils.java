@@ -39,7 +39,7 @@ public class CommonUtils {
 	
 	public static void guardarImagen(String path, String nombreArchivo, InputStream inputStream) throws IOException {
 		Files.copy(inputStream, new File(path, nombreArchivo).toPath(), StandardCopyOption.REPLACE_EXISTING);
-		
+		Files.copy(inputStream, new File(System.getProperty("user.dir")+"/src/main/webapp/resources/imgs/producto", nombreArchivo).toPath(), StandardCopyOption.REPLACE_EXISTING);
 	 
 	}
 	

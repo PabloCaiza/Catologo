@@ -153,7 +153,7 @@ public class RegistroProductoController implements Serializable {
 		try {
 			CommonUtils.guardarImagen(this.absolutePath, this.uploadedFile.getFileName(), this.inputStream);
 		} catch (IOException e) {
-			e.printStackTrace();
+			
 		}
 		this.producto.setImagen(this.uploadedFile.getFileName());
 		try {
