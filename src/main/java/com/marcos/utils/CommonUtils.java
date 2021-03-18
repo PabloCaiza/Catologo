@@ -1,6 +1,10 @@
 package com.marcos.utils;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.application.FacesMessage.Severity;
@@ -32,5 +36,12 @@ public class CommonUtils {
 	public static void mostarMensaje(Severity severity,String summary,String detail) {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(severity,summary,detail));
 	}
+	
+	public static void guardarImagen(String path, String nombreArchivo, InputStream inputStream) throws IOException {
+		Files.copy(inputStream, new File(path, nombreArchivo).toPath(), StandardCopyOption.REPLACE_EXISTING);
+		
+	 
+	}
+	
 
 }

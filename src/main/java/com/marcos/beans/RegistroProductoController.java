@@ -4,6 +4,7 @@
 package com.marcos.beans;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.Serializable;
 import java.util.List;
 
@@ -14,6 +15,10 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.file.UploadedFile;
+
+import com.marcos.utils.CommonUtils;
 import com.marcos.dao.ServicioCategoria;
 import com.marcos.dao.ServicioProducto;
 import com.marcos.dto.Categoria;
@@ -35,6 +40,19 @@ public class RegistroProductoController implements Serializable {
 	List<Categoria> categorias;
 
 	/**
+	 * Directorio donde se almacenan las imagenes de productos del proyecto.
+	 */
+	String absolutePath = null;
+	/**
+	 * Objeto que contendra el flujo de bytes del archivo de imagen a cargar.
+	 */
+	private InputStream inputStream;
+	/**
+	 * /** Objeto que se utiliza para almacenar el archivo de la imagen del producto
+	 * a cargar de forma temporal.
+	 */
+	private UploadedFile uploadedFile;
+	/**
 	 * @return the producto
 	 */
 	@Inject
@@ -50,6 +68,10 @@ public class RegistroProductoController implements Serializable {
 		categorias = this.servicioCategoria.listarCategoria();
 		this.listarTipos();
 		this.listarGeneros();
+
+		String relativePath = "resources/imgs/producto";
+		this.absolutePath = FacesContext.getCurrentInstance().getExternalContext().getRealPath(relativePath);
+
 		if (this.sessionController.getSelectProduct() != null) {
 			this.genero = this.sessionController.getSelectProduct().getCategoria().getGenero();
 			this.tipo = this.sessionController.getSelectProduct().getCategoria().getTipo();
@@ -65,7 +87,6 @@ public class RegistroProductoController implements Serializable {
 		}
 
 	}
-
 
 	public Producto getProducto() {
 		return producto;
@@ -106,9 +127,35 @@ public class RegistroProductoController implements Serializable {
 		this.genero = genero;
 	}
 
+	/**
+	 * Metodo que permite inicializar una imagen de carga temporal para un album.
+	 * 
+	 * @param fileUploadEvent {@link FileUploadEvent} objeto que carga la imagen de
+	 *                        forma temporal.
+	 */
+	public void handleFileUpload(FileUploadEvent fileUploadEvent) {
+
+		// :Se guarda el file en esta variable
+		this.uploadedFile = fileUploadEvent.getFile();
+
+		try {
+			this.inputStream = fileUploadEvent.getFile().getInputStream();
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+	}
+
 	public void crearProducto() {
 		System.out.println(producto);
 		identificaCategoria();
+
+		try {
+			CommonUtils.guardarImagen(this.absolutePath, this.uploadedFile.getFileName(), this.inputStream);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		this.producto.setImagen(this.uploadedFile.getFileName());
 		try {
 			servicioProducto.crear(producto);
 			FacesContext.getCurrentInstance().addMessage("registryForm",
@@ -123,15 +170,15 @@ public class RegistroProductoController implements Serializable {
 	}
 
 	public void actualizarProducto() {
-
+        
 		try {
-
-			servicioProducto.crear(this.sessionController.getSelectProduct());
+			this.producto=this.sessionController.getSelectProduct();
+			crearProducto();
 			System.out.println("Ent");
 			this.sessionController.setSelectProduct(null);
 			rediccionar("http://localhost:8080/app-marcos-01/pages/admin/modificarProducto.xhtml");
 		} catch (Exception e) {
-			System.out.println("E");
+			e.printStackTrace();
 		}
 	}
 
