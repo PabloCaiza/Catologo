@@ -1,0 +1,36 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+
+
+	<div class="p-d-flex p-flex-column" style="width: 15%;">
+	
+		<p:commandLink id="Inicio" styleClass="titulo">
+			<h:outputText value="INICIO" style="color:#000" />
+		</p:commandLink>
+
+		<p:repeat var="category" value="#{categoriaController.categories}">
+			<p:commandLink  style="margin-right:20px;"
+				styleClass="titulo"
+				action="#{productoB.consultarPorGenero(category.gender)}"
+				update="formDashboard:pnlResultados"
+				>
+				<h:outputText value="#{category.gender}" style="color:#000" />
+			</p:commandLink>
+			<p:repeat var="type" value="#{category.types}">
+				<p:commandLink style="margin-right:20px;"
+					styleClass="subtitulos" action="#{productoB.consultarPorCategoria(category.gender,type)}"
+					update="formDashboard:pnlResultados"
+					>
+					<h:outputText value="#{type}" style="color:#000" />
+				</p:commandLink>
+			</p:repeat>
+
+
+		</p:repeat>
+		
+	</div>
+</ui:composition>

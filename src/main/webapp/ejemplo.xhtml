@@ -1,0 +1,234 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta content='text/html; charset=UTF-8' http-equiv="Content-Type" />
+	<title>Estudio Actuarial</title>
+	
+
+	
+	
+	
+</h:head>
+
+<h:body> 
+	<h:outputStylesheet library="css" name="primeflex.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+
+		<p:commandButton icon="pi pi-shopping-cart" action="#{detalleController.agregarProductoCarrito(sessionController.selectProduct)}"
+										update="formDetalle:btnShopping"></p:commandButton>
+	
+		<div class="header">
+		
+			<div class="p-d-flex p-jc-center p-ai-center headerContenido">
+				
+				<div class="Card textoHeader">	
+					<h1>VANATCI</h1>
+					<h3>Ropa Industrial de la mejor calidad y al mejor precio</h3>
+					<p:button value="Secondary" styleClass="ui-button-outlined" style="color:#fff" />
+						
+				</div>
+				
+				
+				<div class="" style="whith:50%">
+					<img src="resources/images/inicio.svg" class="imgInicio"></img>
+				</div>
+			
+				
+				
+			
+			
+			</div>
+			
+			 <div class="wave-bottom" style="height: 150px; overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M0.00,49.98 C150.39,136.47 332.11,-25.37 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: #fff;"></path></svg></div>
+			
+
+		</div>
+	
+</h:body>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<ui:include src="/pages/commons/scripts.xhtml"></ui:include>
+	<script src="https://kit.fontawesome.com/145ec6c83c.js"
+		crossorigin="anonymous"></script>
+	<h:outputStylesheet library="css" name="primeflex.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="estilosFooter.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="estilosNavBar"></h:outputStylesheet>
+</h:head>
+
+<h:body style="margin: 0; padding: 0; box-sizing: border-box;">
+
+	<div class="ui-fluid"
+		style="overflow: hidden; margin: 5px 20px; margin: 5px 70px">
+		<h:form id="formDetalle">
+
+			<div>
+				<ui:include src="/pages/commons/navbar.xhtml">
+
+				</ui:include>
+				<ui:include src="/pages/commons/navegacion.xhtml">
+
+				</ui:include>
+
+
+			</div>
+
+
+
+
+			<div class="p-grid sample-layout p-d-flex p-jc-around "
+				style="margin-top: 50px; margin-bottom: 170px; background-image: url(//cdn.shopify.com/s/files/1/0058/9276/7855/files/background-palomas-fondo-de-agua_1920x.jpg?v=1566330730); background-size: contain; background-attachment: inherit; background-repeat-x: repeat; background-repeat-y: repeat;">
+
+				<ui:include src="/pages/commons/categorias.xhtml">
+
+				</ui:include>
+
+
+
+
+				<div class="p-col-12 p-md-10 p-col-nogutter p-color"
+					style="border: 1px solid #A8A8A8;">
+					<div class="p-Grid" style="">
+						<div class="p-col-12" style="">
+							<p:panelGrid columns="3"
+								columnClasses="ui-g-12 ui-md-4, ui-g-12 ui-md-6, ui-g-12 ui-md-2"
+								layout="grid" styleClass="ui-panelgrid-blank  ui-fluid">
+
+								<p:graphicImage
+									name="imgs/producto/#{sessionController.selectProduct.imagen}"
+									width="100%"></p:graphicImage>
+								<p:panelGrid columns="1" columnClasses="ui-g-12 ui-md-12"
+									layout="grid" styleClass="ui-panelgrid-blank  ui-fluid">
+									<p:panelGrid columns="2"
+										columnClasses="ui-g-12 ui-md-4, ui-g-12 ui-md-6" layout="grid"
+										styleClass="ui-panelgrid-blank  ui-fluid">
+										<p:outputLabel value="Nombre" styleClass="p-text-bold"></p:outputLabel>
+										<p:outputLabel
+											value="#{sessionController.selectProduct.nombre}"></p:outputLabel>
+
+
+										<p:outputLabel value="Precio" styleClass="p-text-bold"></p:outputLabel>
+										<p:outputLabel
+											value="#{sessionController.selectProduct.precio}">
+
+											<f:convertNumber type="currency" currencySymbol="$"></f:convertNumber>
+
+										</p:outputLabel>
+
+										<p:commandButton icon="pi pi-shopping-cart"
+											action="#{detalleController.agregarProductoCarrito(sessionController.selectProduct)}"
+											update="formDetalle:btnShopping" value="Add to Card"
+											styleClass="p-shadow-6" style="color:#000;background:#61D2C2"></p:commandButton>
+
+
+
+										<p:selectOneMenu id="cboCantidad"
+											value="#{detalleController.cantidadProductoSelecionado}">
+
+
+
+
+											<f:selectItem itemValue="1" itemLabel="1"
+												noSelectionOption="true"></f:selectItem>
+											<f:selectItem itemValue="2" itemLabel="2"></f:selectItem>
+											<f:selectItem itemValue="3" itemLabel="3"></f:selectItem>
+											<f:selectItem itemValue="4" itemLabel="4"></f:selectItem>
+											<f:selectItem itemValue="5" itemLabel="5"></f:selectItem>
+										</p:selectOneMenu>
+
+									</p:panelGrid>
+
+									<p:panel header="Descipcion">
+										<p:outputLabel
+											value="#{sessionController.selectProduct.descripcion}"></p:outputLabel>
+
+
+									</p:panel>
+
+
+
+								</p:panelGrid>
+							</p:panelGrid>
+
+						</div>
+					</div>
+
+
+
+				</div>
+
+			</div>
+
+		</h:form>
+		<!--  
+		<h:form id="formComentario">
+
+
+	
+			<div class="p-col-12">
+				<p:panelGrid columns="2"
+					columnClasses="ui-g-12 ui-md-2,ui-g-12 ui-md-10" layout="grid"
+					styleClass="ui-panelgrid-blank ">
+
+					<p:outputLabel></p:outputLabel>
+
+					<p:panelGrid columns="1" layout="grid"
+						styleClass="ui-panelgrid-blank ">
+						<p:panel header="Ingrese un comentario">
+
+							<p:outputLabel
+								value="Nombre: #{sessionController.persona.nombre}"></p:outputLabel>
+							<p:rating value="#{detalleController.comentario.rating}" />
+							<br />
+							<p:inputTextarea required="true"
+								value="#{detalleController.comentario.comentario}"
+								requiredMessage="ingrese un comentario"></p:inputTextarea>
+							<br />
+							<p:commandButton value="comentar"
+								style="width:fit-content; flex-layout:right"
+								action="#{detalleController.agregarComentario}"
+								update="formComentario,pnlComment"></p:commandButton>
+						</p:panel>
+
+
+					</p:panelGrid>
+
+
+
+
+
+					<p:outputLabel></p:outputLabel>
+					<p:repeat value="#{detalleController.comentarios}" var="comment"
+						id="pnlComment">
+						<p:outputLabel value="#{comment.persona.nombre}"></p:outputLabel>
+						<p:rating value="#{comment.rating}" readonly="true" />
+						<p:outputLabel value="#{comment.fecha}">
+							<f:convertDateTime pattern="dd/MM/YYYY"></f:convertDateTime>
+
+						</p:outputLabel>
+						<br />
+						<p:outputLabel value="#{comment.comentario}"></p:outputLabel>
+						<br />
+						<p:separator />
+					</p:repeat>
+				</p:panelGrid>
+			</div>
+
+
+		</h:form>
+-->
+
+	</div>
+	<ui:include src="/pages/commons/footer.xhtml"></ui:include>
+
+</h:body>
+</html>
+</html>

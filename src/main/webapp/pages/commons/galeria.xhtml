@@ -1,0 +1,23 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+
+	<div class="card" style="margin-bottom:25px">
+		<p:galleria value="#{ima.images}" var="image" panelWidth="1355" 
+			panelHeight="613" showCaption="true">
+			<img src="../../resources/imgs/modelo/#{image}"
+				style="width: 100%; object-fit: cover;"></img>
+		</p:galleria>
+		
+	</div>
+
+	 <!-- ../../resources/imgs/modelo/#{image} -->
+
+
+
+
+
+</ui:composition>

@@ -1,0 +1,56 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+
+ <div class="card" style="margin-bottom:25px;background:#fff;">
+        <p:carousel value="#{productoB.productos}" var="product" responsive="true" style="background:#fff">
+            <div class="product">
+                <div class="product-grid-item p-p-5">
+                    <div class="product-grid-item-top">
+                        <div style="padding-bottom: 10px">
+                            <i class="pi pi-tag product-category-icon"/>
+                            <span class="product-category">#{product.categoria.tipo}</span>
+                        </div>
+                       
+                    </div>
+                    <div class="product-grid-item-content p-d-flex p-ai-center p-flex-column" style="margin-bottom: 20px">
+                    
+                    	<div style="height: 300px;width: 300px;">
+                    	<p:commandLink action="#{productoB.showDetail(product)}">
+                    		<p:graphicImage name="imgs/producto/#{product.imagen}" style="width:100%;object-fit: cover;height:100%"/>
+                    	</p:commandLink>
+                    	</div>
+                        
+                        
+                        <div class="product-name">
+                        	<h3 style="text-align:center">#{product.nombre}</h3>
+                        </div>
+                        <div class="product-description">
+                        	<p style="text-align:center">#{product.descripcion}</p>
+                        </div>
+                      
+                    </div>
+                    <div class="product-grid-item-bottom p-d-flex p-jc-around p-ai-center" style="margin: 10px 0px">
+                        <h:outputText value="#{product.precio}" styleClass="product-price p-text-bold">
+                            <f:convertNumber currencySymbol="$" type="currency"/>
+                        </h:outputText>
+                        
+                        <div style="width: 50%">
+                        	 <p:commandButton type="button" value="Add to Card" icon="pi pi-shopping-cart" styleClass="p-shadow-6" style="color:#000;background:#61D2C2" />
+                        </div>
+                        
+                        
+
+                    </div>
+                </div>
+            </div>
+
+        </p:carousel>
+    </div>
+
+
+</ui:composition>

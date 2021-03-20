@@ -1,0 +1,9 @@
+Para adjuntar tus cambios
+git add 
+git commit -m "nombre_de_cambio"
+git push -u origin main 
+
+Para actualizar o refrescar 
+git pull
+
+probando cambios

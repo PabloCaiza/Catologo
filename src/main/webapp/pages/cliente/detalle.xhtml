@@ -1,0 +1,243 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+<h:head>
+	<ui:include src="/pages/commons/scripts.xhtml"></ui:include>
+	<script src="https://kit.fontawesome.com/145ec6c83c.js"
+		crossorigin="anonymous"></script>
+	<h:outputStylesheet library="css" name="primeflex.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="estilosFooter.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="estilosNavBar"></h:outputStylesheet>
+	<h:outputScript library="js" name="zoom.js" target="body" />
+
+
+
+
+
+</h:head>
+
+<h:body style="margin: 0; padding: 0; box-sizing: border-box;">
+
+	<div class="ui-fluid"
+		style="overflow: hidden; margin: 5px 20px; margin: 5px 70px">
+		<h:form id="formDetalle">
+
+			<div>
+				<ui:include src="/pages/commons/navbar.xhtml">
+
+				</ui:include>
+				<ui:include src="/pages/commons/navegacion.xhtml">
+
+				</ui:include>
+
+
+			</div>
+
+
+
+
+			<div class="p-grid sample-layout p-d-flex p-jc-around " 
+				style="border-top:1px solid #A8A8A8;border-right:1px solid #A8A8A8;border-left:1px solid #A8A8A8;margin-top: 50px; margin-bottom: 0px; background-image: url(//cdn.shopify.com/s/files/1/0058/9276/7855/files/background-palomas-fondo-de-agua_1920x.jpg?v=1566330730); background-size: contain; background-attachment: inherit; background-repeat-x: repeat; background-repeat-y: repeat;">
+
+				<!-- 				<ui:include src="/pages/commons/categorias.xhtml">
+
+				</ui:include> -->
+
+
+
+
+				<div class="p-col-12 p-md-12 " style="">
+					<div class="p-Grid" style="">
+						<div class="p-col-12" style="">
+							<p:panelGrid columns="4"
+								columnClasses="ui-g-12 ui-md-2,ui-g-12 ui-md-3, ui-g-12 ui-md-5,ui-g-12 ui-md-5,ui-g-12 ui-md-0 "
+								layout="grid" styleClass="ui-panelgrid-blank  ui-fluid">
+
+								<p:panelGrid columns="1" columnClasses="ui-g-10 ui-md-8" >
+									<p:dataList var="image"
+										value="#{sessionController.selectProduct.imagenes}"
+										type="definition">
+										<p:commandLink
+											action="#{detalleController.changeImage(image)}"
+											update="formDetalle"
+											onclick="location.reload()"
+											>
+
+											<p:graphicImage name="imgs/producto/#{image.nombre}"
+												width="100%">
+											</p:graphicImage>
+										</p:commandLink>
+										<h:outputText value="&lt;br/&gt;" escape="false" />
+										<h:outputText value="&lt;br/&gt;" escape="false" />
+										
+
+
+									</p:dataList>
+
+								</p:panelGrid>
+
+
+								<p:panelGrid columns="1" columnClasses="ui-g-12 ui-md-12" >
+									
+									<h:graphicImage id="productImage"
+										name="imgs/producto/#{sessionController.selectProduct.imagen}"
+										width="100%"
+										style="position: relative; cursor: zoom-in;"
+										>
+										
+
+
+
+
+									</h:graphicImage>
+								</p:panelGrid>
+
+
+
+								<div id="result" class="img-zoom-result">
+								
+								</div>
+
+
+
+
+
+								<p:panelGrid columns="1" columnClasses="ui-g-12 ui-md-12"
+									layout="grid" styleClass="ui-panelgrid-blank  ui-fluid"
+									id="pnlProduct" style="display:none">
+									<p:panelGrid columns="2"
+										columnClasses="ui-g-12 ui-md-4, ui-g-12 ui-md-6" layout="grid"
+										styleClass="ui-panelgrid-blank  ui-fluid">
+										<p:outputLabel value="Nombre" styleClass="p-text-bold"></p:outputLabel>
+										<p:outputLabel
+											value="#{sessionController.selectProduct.nombre}"></p:outputLabel>
+
+
+										<p:outputLabel value="Precio" styleClass="p-text-bold"></p:outputLabel>
+										<p:outputLabel
+											value="#{sessionController.selectProduct.precio}">
+
+											<f:convertNumber type="currency" currencySymbol="$"></f:convertNumber>
+
+										</p:outputLabel>
+
+										<p:commandButton icon="pi pi-shopping-cart"
+											action="#{detalleController.agregarProductoCarrito(sessionController.selectProduct)}"
+											update="formDetalle:btnShopping" value="Add to Card"
+											styleClass="p-shadow-6" style="color:#000;background:#61D2C2"></p:commandButton>
+
+
+
+										<p:selectOneMenu id="cboCantidad"
+											value="#{detalleController.cantidadProductoSelecionado}">
+
+
+
+
+											<f:selectItem itemValue="1" itemLabel="1"
+												noSelectionOption="true"></f:selectItem>
+											<f:selectItem itemValue="2" itemLabel="2"></f:selectItem>
+											<f:selectItem itemValue="3" itemLabel="3"></f:selectItem>
+											<f:selectItem itemValue="4" itemLabel="4"></f:selectItem>
+											<f:selectItem itemValue="5" itemLabel="5"></f:selectItem>
+										</p:selectOneMenu>
+
+									</p:panelGrid>
+
+									<p:panel header="Descipcion">
+										<p:outputLabel
+											value="#{sessionController.selectProduct.descripcion}"></p:outputLabel>
+
+
+									</p:panel>
+
+
+
+
+								</p:panelGrid>
+
+
+
+
+
+							</p:panelGrid>
+
+						</div>
+					</div>
+
+
+
+				</div>
+
+			</div>
+
+		</h:form>
+
+		<h:form id="formComentario">
+
+
+
+			<div class="p-col-12" style="width: 100%;border-right:1px solid #A8A8A8;border-left:1px solid #A8A8A8;border-bottom:1px solid #A8A8A8;margin-bottom:50px">
+				<p:panelGrid columns="2"
+					columnClasses="ui-g-12 ui-md-2,ui-g-12 ui-md-12" layout="grid"
+					styleClass="ui-panelgrid-blank ">
+
+					<p:outputLabel></p:outputLabel>
+
+					<p:panelGrid columns="1" layout="grid"
+						styleClass="ui-panelgrid-blank ">
+						<p:panel header="Ingrese un comentario">
+
+							<p:outputLabel style="padding: 15px 0px"
+								value="Nombre: #{sessionController.persona.nombre}" ></p:outputLabel>
+							<p:rating value="#{detalleController.comentario.rating}" style="padding-top: 15px"/>
+							<br />
+							<p:inputTextarea required="true"
+								value="#{detalleController.comentario.comentario}"
+								requiredMessage="ingrese un comentario"></p:inputTextarea>
+							<br />
+							<p:commandButton value="comentar"
+								style="width:fit-content; flex-layout:right; margin-top: 15px;color:#000;background:#61D2C2"
+								action="#{detalleController.agregarComentario}"
+								update="formComentario,pnlComment" styleClass="p-shadow-6"></p:commandButton>
+						</p:panel>
+
+
+					</p:panelGrid>
+
+
+
+
+
+					<p:outputLabel></p:outputLabel>
+					<p:repeat value="#{detalleController.comentarios}" var="comment"
+						id="pnlComment">
+						<p:outputLabel value="#{comment.persona.nombre}"></p:outputLabel>
+						<p:rating value="#{comment.rating}" readonly="true" />
+						<p:outputLabel value="#{comment.fecha}">
+							<f:convertDateTime pattern="dd/MM/YYYY"></f:convertDateTime>
+
+						</p:outputLabel>
+						<br />
+						<p:outputLabel value="#{comment.comentario}"></p:outputLabel>
+						<br />
+						<p:separator />
+					</p:repeat>
+				</p:panelGrid>
+			</div>
+
+
+		</h:form>
+
+
+	</div>
+	<ui:include src="/pages/commons/footer.xhtml"></ui:include>
+
+
+
+</h:body>
+</html>

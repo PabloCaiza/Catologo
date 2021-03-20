@@ -1,0 +1,71 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<meta content='text/html; charset=UTF-8' http-equiv="Content-Type" />
+	<title>Estudio Actuarial</title>
+	<h:outputStylesheet library="css" name="primeflex.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+
+
+
+
+</h:head>
+
+<h:body style="margin: 0; padding: 0; box-sizing: border-box;">
+	<div class="ui-fluid" style="overflow: hidden; margin: 5px 70px">
+		<ui:include src="pages/commons/navbar.xhtml">
+	
+		</ui:include>
+	
+		<h:form>
+			<p:outputLabel
+				value="Bienvenido #{sessionController.persona.nombre}    "></p:outputLabel>
+			<p:commandButton value="Cerrar Sesion"
+				action="#{sessionClosedController.closeSession}"></p:commandButton>
+		</h:form>
+
+		<h:form id="personaForm">
+			<div align="center">
+				<h2>Registro de Productos</h2>
+				<p:panelGrid columns="2">
+					<p:outputLabel>Nombre</p:outputLabel>
+
+
+					<p:inputText value="#{productoB.producto.nombre}" />
+
+					<p:outputLabel>precio</p:outputLabel>
+					<p:inputText value="#{productoB.producto.precio}" type="number" />
+
+					<p:outputLabel>Descripcion</p:outputLabel>
+					<p:inputText value="#{productoB.producto.descripcion}" type="text"></p:inputText>
+
+					<p:outputLabel>imagen</p:outputLabel>
+					<p:inputText value="#{productoB.producto.imagen}" type="text"></p:inputText>
+
+
+					<p:inputText value="#{productoB.categoria}"></p:inputText>
+
+
+					<p:commandButton value="Grabar"
+						actionListener="#{productoB.setProducto}" update="personaForm" />
+				</p:panelGrid>
+			</div>
+
+			<br />
+
+		</h:form>
+
+
+	</div>
+
+
+
+
+
+
+</h:body>
+</html>

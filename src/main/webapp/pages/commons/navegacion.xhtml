@@ -1,0 +1,37 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+
+
+
+	<div class="card " style="width: 100%; margin: 10px 0">
+		<p:menubar styleClass="p-d-flex " style="background:#fff">
+			<p:menuitem value="SUDADERAS"
+				style="margin-left:35px;margin-right:30px" styleClass="p-text-bold" />
+			<p:menuitem value="ACCESORIOS"
+				style="margin-left:35px;margin-right:30px" styleClass="p-text-bold" />
+			<p:menuitem value="MOCHILAS"
+				style="margin-left:35px;margin-right:30px" styleClass="p-text-bold" />
+			<p:menuitem value="PRENDA EXTERIOR"
+				style="margin-left:35px;margin-right:30px" styleClass="p-text-bold" />
+			<p:menuitem value="SUETER"
+				action="#{navBarController.redireccionarProductos}"
+				style="margin-left:35px;margin-right:30px" styleClass="p-text-bold" />
+			<p:menuitem value="CHOMPAS"
+				action="#{navBarController.redireccionarProductos}"
+				style="margin-left:35px;margin-right:30px" styleClass="p-text-bold" />
+
+		</p:menubar>
+
+	</div>
+
+	<!-- ../../resources/imgs/modelo/#{image} -->
+
+
+
+
+
+</ui:composition>

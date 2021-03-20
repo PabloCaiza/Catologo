@@ -1,0 +1,128 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+<h:head>
+	<h:outputStylesheet library="css" name="primeflex.css"></h:outputStylesheet>
+	<title>Registro de Productos</title>
+
+</h:head>
+
+<h:body style="margin: 0; padding: 0; box-sizing: border-box;">
+
+	<div class="ui-fluid" style="overflow: hidden; margin: 5px 70px">
+		<ui:include src="/pages/admin/navbarAdmin.xhtml">
+
+		</ui:include>
+
+		<div class="p-d-flex p-jc-between" style="padding: 20px 10px">
+			<ui:include src="/pages/admin/menuLateral.xhtml">
+
+			</ui:include>
+			<div style="width: 80%">
+				<h:form id="registryForm">
+					<p:growl id="growl" showDetail="true" />
+					<p:growl id="messages" showSummary="true" showDetail="true"
+						skipDetailIfEqualsSummary="true"></p:growl>
+					<div class="card">
+						<p:panel id="pnlLogin" header="Registre el producto deseado"
+							style="text-align:center ">
+							<p:panelGrid columns="4" layout="flex"
+								styleClass="customPanelGrid" contentStyleClass="ui-fluid">
+
+								<p:outputLabel value="Nombre"
+									style="float:center;font-size:20px" styleClass="p-text-bold"></p:outputLabel>
+								<p:inputText
+									value="#{registroProductoController.producto.nombre}"
+									required="true" requiredMessage="Nombre es requerido">
+								</p:inputText>
+
+								<p:outputLabel value="Precio"
+									style="float:center;font-size:20px" styleClass="p-text-bold"></p:outputLabel>
+								<p:inputNumber
+									value="#{registroProductoController.producto.precio}"
+									required="true" requiredMessage="Precio es Requerido"
+									decimalPlaces="2"></p:inputNumber>
+
+								<p:outputLabel value="Descripcion"
+									style="float:center;font-size:20px" styleClass="p-text-bold"></p:outputLabel>
+								<p:inputText
+									value="#{registroProductoController.producto.descripcion}"
+									required="true" requiredMessage="descripción es requerida"></p:inputText>
+
+
+								<p:outputLabel for="@next" value="Tipo"
+									style="float:center;font-size:20px" styleClass="p-text-bold" />
+								<p:selectOneMenu id="tipo"
+									value="#{registroProductoController.tipo}">
+
+									<f:selectItems value="#{registroProductoController.tipos}" />
+								</p:selectOneMenu>
+
+								<p:outputLabel for="@next" value="Genero"
+									style="float:center;font-size:20px" styleClass="p-text-bold" />
+								<p:selectOneMenu id="genero"
+									value="#{registroProductoController.genero}">
+
+									<f:selectItems value="#{registroProductoController.generos}" />
+								</p:selectOneMenu>
+								<p:outputLabel value="" />
+								<p:outputLabel value="" />
+								<p:outputLabel for="@next" value="Imagenes: "
+									style="float:center;font-size:20px" styleClass="p-text-bold" />
+								<p:outputLabel value="" />
+								<f:facet name="footer">
+
+
+
+									<h:form>
+										<p:fileUpload listener="#{registroProductoController.handleFileUpload}"
+											mode="advanced" dragDropSupport="false" multiple="true"
+											update="messages" sizeLimit="100000" fileLimit="3"
+											allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+
+										<p:growl id="messages" showDetail="true" keepAlive="true" />
+									</h:form>
+
+
+								</f:facet>
+
+							</p:panelGrid>
+
+						</p:panel>
+						<p:commandButton value="Registrar"
+							action="#{registroProductoController.crearProducto}"
+							update="registryForm:pnlLogin"
+							styleClass="rounded-button p-shadow-7 p-text-bold"
+							style="background:#61D2C2;margin-top: 20px;width:200px">
+						</p:commandButton>
+					</div>
+
+
+
+
+
+				</h:form>
+
+
+			</div>
+
+		</div>
+
+
+
+
+	</div>
+
+
+
+
+
+</h:body>
+
+
+
+</html>

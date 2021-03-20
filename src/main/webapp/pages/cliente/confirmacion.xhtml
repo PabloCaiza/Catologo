@@ -1,0 +1,69 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<ui:include src="/pages/commons/scripts.xhtml"></ui:include>
+	<script src="https://kit.fontawesome.com/145ec6c83c.js"
+		crossorigin="anonymous"></script>
+	<h:outputStylesheet library="css" name="primeflex.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="estilosFooter.css"></h:outputStylesheet>
+
+</h:head>
+
+<h:body style="margin: 0; padding: 0; box-sizing: border-box;">
+	<div class="ui-fluid" style="overflow: hidden;margin: 5px 70px">
+		<h:form id="formConfirmacion">
+			<ui:include src="/pages/commons/navbar.xhtml">
+
+			</ui:include>
+
+			<div class="p-grid sample-layout" style="height:650px;background-image: url(//cdn.shopify.com/s/files/1/0058/9276/7855/files/background-palomas-fondo-de-agua_1920x.jpg?v=1566330730); background-size: contain; background-attachment: inherit; background-repeat-x: repeat; background-repeat-y: repeat;">
+
+				
+
+				<div class="p-col-12 p-md-10 p-col-nogutter" style="width: 100%;padding-top:20px;padding-bottom:150px" >
+					<div class="p-Grid">
+						<div class="p-col-12">
+
+							<ui:include src="/pages/commons/steps.xhtml"></ui:include>
+
+							<div class="p-col"
+								style="width: 90%; margin: 0px auto; text-align: center;">
+								<p:panelGrid columns="1" columnClasses="ui-g-12 ui-md-12"
+									layout="grid">
+									
+									<p:outputLabel value="Compra Exitosa!" id="lblCompraExitosa" styleClass="p-text-bold"></p:outputLabel>
+									<p:graphicImage name="imgs/ok.png" width="300px"></p:graphicImage>
+
+								</p:panelGrid>
+
+
+
+							</div>
+
+
+
+
+
+
+
+						</div>
+					</div>
+				</div>
+
+
+
+			</div>
+
+
+		</h:form>
+
+
+	</div>
+	<ui:include src="/pages/commons/footer.xhtml"></ui:include>
+
+</h:body>
+</html>

@@ -1,0 +1,57 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta content='text/html; charset=UTF-8' http-equiv="Content-Type" />
+	<title>Catologo de productos</title>
+	<h:outputStylesheet library="css" name="primeflex.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+
+
+
+
+</h:head>
+
+<h:body>
+
+	<h:form>
+		<p:outputLabel
+			value="Bienvenido #{sessionController.persona.nombre}    "></p:outputLabel>
+		<p:outputLabel></p:outputLabel>
+		<p:commandButton value="Cerrar Sesion"
+			action="#{sessionClosedController.closeSession}"></p:commandButton>
+
+	</h:form>
+
+	<div class="product card">
+		<p:dataGrid value="#{productoB.productos}" var="producto"
+			layout="grid" columns="3">
+			<p:card style="width: 25em">
+				<f:facet name="header">
+					<img alt="user header" src="#{producto.imagen}" />
+				</f:facet>
+				<f:facet name="title">
+        #{producto.nombre}
+    </f:facet>
+				<f:facet name="subtitle">
+       #{producto.precio}
+    </f:facet>
+
+				<p>#{producto.descripcion}</p>
+
+				<f:facet name="footer">
+					<p:commandButton icon="pi pi-check" value="Save" />
+					<p:commandButton icon="pi pi-times" value="Cancel"
+						styleClass="ui-ui-button-secondary" style="margin-left: .5em" />
+				</f:facet>
+
+			</p:card>
+
+		</p:dataGrid>
+
+	</div>
+
+</h:body>
+</html>
