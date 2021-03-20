@@ -13,13 +13,26 @@
 		<div class="p-col"
 			style="background-image: url(//cdn.shopify.com/s/files/1/0058/9276/7855/files/background-palomas-fondo-de-agua_1920x.jpg?v=1566330730); background-size: contain; background-attachment: inherit; background-repeat-x: repeat; background-repeat-y: repeat;">
 
-			<div class="ui-inputgroup" style="display: block;">
-				<p:inputText id="txtBuscador" style="width:30%;margin-bottom:15px"
-					value="#{productoB.filtroPorNombre}" placeholder="Producto">
-					<p:ajax event="keyup" listener="#{productoB.consultarPorFiltro}"
-						update="pnlResultados"></p:ajax>
+			<div class="ui-inputgroup p-d-flex p-jc-between" style="display: block;">
+				<div style="width: 45%">
+					<p:inputText id="txtBuscador" style="width:100%;margin-bottom:15px"
+						value="#{productoB.filtroPorNombre}" placeholder="Producto">
+						<p:ajax event="keyup" listener="#{productoB.consultarPorFiltro}"
+							update="pnlResultados"></p:ajax>
 
-				</p:inputText>
+					</p:inputText>
+				</div>
+				<div>
+					<h:form>
+						<p:selectCheckboxMenu id="menu"
+							value="#{checkboxView.selectedCities}" label="Cities"
+							style="width: 15rem" filter="true" filterMatchMode="startsWith"
+							panelStyle="width: 15rem" scrollHeight="250">
+							<f:selectItems value="#{checkboxView.cities}" />
+						</p:selectCheckboxMenu>
+
+					</h:form>
+				</div>
 
 			</div>
 
@@ -50,7 +63,7 @@
 
 										<p:commandLink action="#{productoB.showDetail(product)}">
 											<p:graphicImage name="imgs/producto/#{product.imagen}"
-												width="100%" height="400px" style="object-fit: cover"/>
+												width="100%" height="400px" style="object-fit: cover" />
 
 										</p:commandLink>
 
@@ -90,38 +103,42 @@
 									style="margin-bottom: 30px; width: 100%">
 
 									<div class="product-grid-item-top" style="width: 40%">
-											<i class="pi pi-tag product-category-icon" /> <span
-												class="product-category">#{product.categoria.tipo}</span>
-												
-											<p:commandLink action="#{productoB.showDetail(product)}">
-												<p:graphicImage name="imgs/producto/#{product.imagen}"
-													width="100%" height="400px" />
+										<i class="pi pi-tag product-category-icon" /> <span
+											class="product-category">#{product.categoria.tipo}</span>
 
-											</p:commandLink>
-										
+										<p:commandLink action="#{productoB.showDetail(product)}">
+											<p:graphicImage name="imgs/producto/#{product.imagen}"
+												width="100%" height="400px" />
+
+										</p:commandLink>
+
 
 									</div>
 
 
 									<div style="margin-left: 70px">
-										<div class="product-grid-item-content" >
+										<div class="product-grid-item-content">
 
 											<div class="product-name">
-											<h2 style="padding-bottom: 15px">#{product.nombre}</h2></div>
+												<h2 style="padding-bottom: 15px">#{product.nombre}</h2>
+											</div>
 											<div class="product-description">
-											<p style="padding-bottom:25px">#{product.descripcion}</p></div>
+												<p style="padding-bottom: 25px">#{product.descripcion}</p>
+											</div>
 
 										</div>
 
 
-										<div class="product-grid-item-bottom p-d-flex p-jc-between" style="width:250px">
+										<div class="product-grid-item-bottom p-d-flex p-jc-between"
+											style="width: 250px">
 											<h:outputText value="#{product.precio}"
 												styleClass="product-price p-text-bold">
 												<f:convertNumber currencySymbol="$" type="currency" />
 											</h:outputText>
 											<p:commandButton icon="pi pi-shopping-cart"
 												action="#{productoB.agregarProducto(product)}"
-												update="formDashboard:btnShopping" styleClass="p-shadow-6" style="color:#000;background:#61D2C2" value="Add to Card">
+												update="formDashboard:btnShopping" styleClass="p-shadow-6"
+												style="color:#000;background:#61D2C2" value="Add to Card">
 
 											</p:commandButton>
 
