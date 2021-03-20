@@ -3,9 +3,17 @@
  */
 package com.marcos.beans;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
+import java.nio.file.FileSystem;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -16,12 +24,16 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.primefaces.event.FileUploadEvent;
+import org.primefaces.event.FilesUploadEvent;
 import org.primefaces.model.file.UploadedFile;
+import org.primefaces.model.file.UploadedFiles;
 
 import com.marcos.utils.CommonUtils;
 import com.marcos.dao.ServicioCategoria;
+import com.marcos.dao.ServicioImagen;
 import com.marcos.dao.ServicioProducto;
 import com.marcos.dto.Categoria;
+import com.marcos.dto.Imagen;
 import com.marcos.dto.Producto;
 
 /**
@@ -39,31 +51,38 @@ public class RegistroProductoController implements Serializable {
 	private List<String> generos;
 	List<Categoria> categorias;
 
+	private List<String> imagenesName;
+
 	/**
 	 * Directorio donde se almacenan las imagenes de productos del proyecto.
 	 */
 	String absolutePath = null;
+
 	/**
 	 * Objeto que contendra el flujo de bytes del archivo de imagen a cargar.
 	 */
-	private InputStream inputStream;
+	private List<InputStream> inputStream = new ArrayList();
 	/**
 	 * /** Objeto que se utiliza para almacenar el archivo de la imagen del producto
 	 * a cargar de forma temporal.
 	 */
-	private UploadedFile uploadedFile;
+	private UploadedFiles uploadedFile;
 	/**
 	 * @return the producto
 	 */
+
 	@Inject
 	SessionController sessionController;
 	@Inject
 	ServicioCategoria servicioCategoria;
 	@Inject
 	ServicioProducto servicioProducto;
+	@Inject
+	ServicioImagen servicioImagen;
 
 	@PostConstruct
 	public void init() {
+		this.imagenesName = new ArrayList<String>();
 		producto = new Producto();
 		categorias = this.servicioCategoria.listarCategoria();
 		this.listarTipos();
@@ -119,7 +138,7 @@ public class RegistroProductoController implements Serializable {
 	public String getGenero() {
 		return genero;
 	}
-
+	
 	/**
 	 * @param genero the genero to set
 	 */
@@ -133,29 +152,64 @@ public class RegistroProductoController implements Serializable {
 	 * @param fileUploadEvent {@link FileUploadEvent} objeto que carga la imagen de
 	 *                        forma temporal.
 	 */
-	public void handleFileUpload(FileUploadEvent fileUploadEvent) {
-
-		// :Se guarda el file en esta variable
-		this.uploadedFile = fileUploadEvent.getFile();
-
-		try {
-			this.inputStream = fileUploadEvent.getFile().getInputStream();
+	
+	
+	public void handleFileUpload(FileUploadEvent event) {
+        
+		this.imagenesName.add(event.getFile().getFileName());
+        try {
+			this.inputStream.add(event.getFile().getInputStream());
 		} catch (IOException e) {
-
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		FacesMessage message = new FacesMessage("Successful", event.getFile().getFileName() + " is uploaded.");
+        
+        FacesContext.getCurrentInstance().addMessage(null, message);
+        System.out.println("::::::::::::::::::::::::" + this.imagenesName.size());
+    }
+	
+	
+	public void handleFilesUpload(FilesUploadEvent filesUploadEvent) {
+		for (UploadedFile aux : filesUploadEvent.getFiles().getFiles()) {
+			this.imagenesName.add(aux.getFileName());
+			try {
+				this.inputStream.add(aux.getInputStream());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		System.out.println("::::::::::::::::::::::::" + this.inputStream.size());
+		System.out.println("::::::::::::::::::::::::" + this.imagenesName.size());
 	}
 
 	public void crearProducto() {
-		System.out.println(producto);
+
 		identificaCategoria();
+		int longitud = this.inputStream.size();
 
 		try {
-			CommonUtils.guardarImagen(this.absolutePath, this.uploadedFile.getFileName(), this.inputStream);
+			for (int i = 0; i < longitud; i++) {
+				CommonUtils.guardarImagen(this.absolutePath, this.imagenesName.get(i), this.inputStream.get(i));
+			}
+
 		} catch (IOException e) {
-			
+			e.printStackTrace();
 		}
-		this.producto.setImagen(this.uploadedFile.getFileName());
+
+		this.producto.setImagen(this.imagenesName.get(0));
+
+		List<Imagen> imagenes = new ArrayList();
+
+		for (int j = 0; j < longitud; j++) {
+			Imagen aux = new Imagen();
+			aux.setNombre(this.imagenesName.get(j));
+			aux.setProducto(producto);
+			imagenes.add(aux);
+		}
+		producto.setImagenes(imagenes);
+
 		try {
 			servicioProducto.crear(producto);
 			FacesContext.getCurrentInstance().addMessage("registryForm",
@@ -170,9 +224,9 @@ public class RegistroProductoController implements Serializable {
 	}
 
 	public void actualizarProducto() {
-        
+
 		try {
-			this.producto=this.sessionController.getSelectProduct();
+			this.producto = this.sessionController.getSelectProduct();
 			crearProducto();
 			System.out.println("Ent");
 			this.sessionController.setSelectProduct(null);
@@ -286,5 +340,68 @@ public class RegistroProductoController implements Serializable {
 	 */
 	public void setServicioProducto(ServicioProducto servicioProducto) {
 		this.servicioProducto = servicioProducto;
+	}
+
+	/**
+	 * @return the absolutePath
+	 */
+	public String getAbsolutePath() {
+		return absolutePath;
+	}
+
+	/**
+	 * @param absolutePath the absolutePath to set
+	 */
+	public void setAbsolutePath(String absolutePath) {
+		this.absolutePath = absolutePath;
+	}
+
+	/**
+	 * @return the inputStream
+	 */
+	public List<InputStream> getInputStream() {
+		return inputStream;
+	}
+
+	/**
+	 * @param inputStream the inputStream to set
+	 */
+	public void setInputStream(List<InputStream> inputStream) {
+		this.inputStream = inputStream;
+	}
+
+	/**
+	 * @return the uploadedFile
+	 */
+	public UploadedFiles getUploadedFile() {
+		return uploadedFile;
+	}
+
+	/**
+	 * @param uploadedFile the uploadedFile to set
+	 */
+	public void setUploadedFile(UploadedFiles uploadedFile) {
+		this.uploadedFile = uploadedFile;
+	}
+
+	/**
+	 * @return the servicioImagen
+	 */
+	public ServicioImagen getServicioImagen() {
+		return servicioImagen;
+	}
+
+	/**
+	 * @param servicioImagen the servicioImagen to set
+	 */
+	public void setServicioImagen(ServicioImagen servicioImagen) {
+		this.servicioImagen = servicioImagen;
+	}
+
+	/**
+	 * @return the serialversionuid
+	 */
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 }

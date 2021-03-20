@@ -77,15 +77,13 @@
 									<h:form style="width:100%">
 										<p:growl id="messages" showDetail="true" />
 
-										<p:fileUpload mode="advanced" multiple="false"
+										<p:fileUpload mode="advanced" multiple="true"
 											style="width: 100%" sizeLimit="102400"
 											allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
 											invalidSizeMessage="Maximum file size allowed is 100 KB"
 											invalidFileMessage="only gif | jpg | jpeg | png is allowed"
 											update="messages"
-											listener="#{registroProductoController.handleFileUpload}" />
-
-
+											  listener="#{registroProductoController.handleFileUpload}"/>
 									</h:form>
 
 								</f:facet>
