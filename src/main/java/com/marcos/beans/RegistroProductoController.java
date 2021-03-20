@@ -52,7 +52,7 @@ public class RegistroProductoController implements Serializable {
 	private UploadedFile file;
 	private UploadedFiles files;
 	List<Categoria> categorias;
-
+	private boolean registroHabilitado;
 	private List<String> imagenesName;
 
 	/**
@@ -89,7 +89,7 @@ public class RegistroProductoController implements Serializable {
 		categorias = this.servicioCategoria.listarCategoria();
 		this.listarTipos();
 		this.listarGeneros();
-
+		this.registroHabilitado = false;
 		String relativePath = "resources/imgs/producto";
 		this.absolutePath = FacesContext.getCurrentInstance().getExternalContext().getRealPath(relativePath);
 
@@ -116,17 +116,17 @@ public class RegistroProductoController implements Serializable {
 		this.inputStream.add(event.getFile().getInputStream());
 		System.out.println(this.imagenesName.size());
 		System.out.println(this.inputStream.size());
+		this.registroHabilitado = false;
 	}
-	
+
 	public void createImages() throws IOException {
 		int longitud = this.inputStream.size();
-		
+
 		for (int i = 0; i < longitud; i++) {
 			CommonUtils.guardarImagen(this.absolutePath, this.imagenesName.get(i), this.inputStream.get(i));
 		}
 		List<Imagen> imagenes = new ArrayList<Imagen>();
-		
-		
+
 		for (int j = 0; j < longitud; j++) {
 			Imagen img = new Imagen();
 			img.setNombre(this.imagenesName.get(j));
@@ -134,39 +134,28 @@ public class RegistroProductoController implements Serializable {
 			servicioProducto.crearImagen(img);
 			imagenes.add(img);
 		}
-		
+
 		producto.setImagenes(imagenes);
-		
-		
-		
+
 	}
+
 	public void crearProducto() {
 
 		identificaCategoria();
-//		int longitud = this.inputStream.size();
-//
-//		try {
-//			for (int i = 0; i < longitud; i++) {
-//				CommonUtils.guardarImagen(this.absolutePath, this.imagenesName.get(i), this.inputStream.get(i));
-//			}
-//
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
 
-		this.producto.setImagen(this.imagenesName.get(0));
+		if (this.imagenesName.size() > 0) {
+			this.producto.setImagen(this.imagenesName.get(0));
+		} else if (this.registroHabilitado) {
 
-//		List<Imagen> imagenes = new ArrayList<Imagen>();
-//
-//		for (int j = 0; j < longitud; j++) {
-//			Imagen aux = new Imagen();
-//			aux.setNombre(this.imagenesName.get(j));
-//			
-//			imagenes.add(aux);
-//		}
-//		producto.setImagenes(imagenes);
+		} else {
+			FacesContext.getCurrentInstance().addMessage("registryForm",
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "No hay imagen", ""));
+
+			return;
+		}
 
 		try {
+
 			servicioProducto.crear(producto);
 			createImages();
 			FacesContext.getCurrentInstance().addMessage("registryForm",
@@ -177,15 +166,15 @@ public class RegistroProductoController implements Serializable {
 			producto = new Producto();
 			this.imagenesName.clear();
 			this.inputStream.clear();
-
+			this.registroHabilitado = false;
 		}
-
 	}
 
 	public void actualizarProducto() {
 
 		try {
 			this.producto = this.sessionController.getSelectProduct();
+			this.registroHabilitado = true;
 			crearProducto();
 
 			this.sessionController.setSelectProduct(null);
@@ -216,7 +205,6 @@ public class RegistroProductoController implements Serializable {
 	public void listarGeneros() {
 		generos = this.servicioCategoria.listarGeneros();
 	}
-	
 
 	public Producto getProducto() {
 		return producto;
@@ -272,8 +260,6 @@ public class RegistroProductoController implements Serializable {
 	public void setFiles(UploadedFiles files) {
 		this.files = files;
 	}
-
-
 
 	/**
 	 * @return the categorias
@@ -420,5 +406,33 @@ public class RegistroProductoController implements Serializable {
 	 */
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	/**
+	 * @return the registroHabilitado
+	 */
+	public boolean isRegistroHabilitado() {
+		return registroHabilitado;
+	}
+
+	/**
+	 * @param registroHabilitado the registroHabilitado to set
+	 */
+	public void setRegistroHabilitado(boolean registroHabilitado) {
+		this.registroHabilitado = registroHabilitado;
+	}
+
+	/**
+	 * @return the imagenesName
+	 */
+	public List<String> getImagenesName() {
+		return imagenesName;
+	}
+
+	/**
+	 * @param imagenesName the imagenesName to set
+	 */
+	public void setImagenesName(List<String> imagenesName) {
+		this.imagenesName = imagenesName;
 	}
 }
