@@ -8,6 +8,25 @@
 <h:head>
 	<h:outputStylesheet library="css" name="primeflex.css"></h:outputStylesheet>
 	<title>Registro de Productos</title>
+	
+	<style type="text/css">
+	
+	@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+	
+	@keyframes App-logo-spin {
+  	from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+	
+	</style>
 
 </h:head>
 
@@ -18,17 +37,21 @@
 
 		</ui:include>
 
-		<div>
-			<ui:include src="/pages/admin/menuLateral.xhtml">
+		<div class="p-d-flex p-jc-between" >
+			
+				<ui:include src="/pages/admin/menuLateral.xhtml">
 
-			</ui:include>
-			
-			
-			
+				</ui:include>
+	
+			<div style="width:90%">
+				<img src="../../resources/imgs/logoAdmin.svg" style="width:100%;max-height:500px" class="App-logo"></img>
+			</div>
+
+
 		</div>
 
 
-		
+
 
 	</div>
 
