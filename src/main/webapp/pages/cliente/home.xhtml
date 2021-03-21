@@ -13,7 +13,8 @@
 		<div class="p-col"
 			style="background-image: url(//cdn.shopify.com/s/files/1/0058/9276/7855/files/background-palomas-fondo-de-agua_1920x.jpg?v=1566330730); background-size: contain; background-attachment: inherit; background-repeat-x: repeat; background-repeat-y: repeat;">
 
-			<div class="ui-inputgroup p-d-flex p-jc-between" style="display: block;">
+			<div class="ui-inputgroup p-d-flex p-jc-between"
+				style="display: block;">
 				<div style="width: 45%">
 					<p:inputText id="txtBuscador" style="width:100%;margin-bottom:15px"
 						value="#{productoB.filtroPorNombre}" placeholder="Producto">
@@ -24,12 +25,19 @@
 				</div>
 				<div>
 					<h:form>
-						<p:selectCheckboxMenu id="menu"
-							value="#{checkboxView.selectedCities}" label="Cities"
-							style="width: 15rem" filter="true" filterMatchMode="startsWith"
-							panelStyle="width: 15rem" scrollHeight="250">
-							<f:selectItems value="#{checkboxView.cities}" />
-						</p:selectCheckboxMenu>
+						<h:panelGrid columns="2" cellpadding="5">
+
+							<p:commandButton icon="pi pi-search" styleClass="p-shadow-6" style="background:#61D2C2;margin:0 10px;color:#000" />
+							<p:selectOneMenu id="country" style="width:200px">
+
+								<f:selectItem itemLabel="Ordenar A-Z" itemValue="" />
+								<f:selectItem itemLabel="Ordenar Z-A" itemValue="" />
+								<f:selectItem itemLabel="Precio: Bajo a Alto" itemValue="" />
+								<f:selectItem itemLabel="Precio: Alto a Bajo" itemValue="" />
+							</p:selectOneMenu>
+
+						</h:panelGrid>
+
 
 					</h:form>
 				</div>
