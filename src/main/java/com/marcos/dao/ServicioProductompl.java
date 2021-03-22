@@ -85,19 +85,6 @@ public class ServicioProductompl implements ServicioProducto {
 
 	}
 
-	@Override
-	public void crearImagen(Imagen image) {
-		em.getTransaction().begin();
-		try {
-			em.persist(image);
-			em.getTransaction().commit();
-		}catch (Exception e) {
-			em.getTransaction().rollback();
-		}finally {
-			
-		}
-	
-		
-	}
+
 
 }

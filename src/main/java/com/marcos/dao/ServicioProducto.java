@@ -13,6 +13,6 @@ public interface ServicioProducto {
 	List<Producto> queryByNameFilter(String filter);
 	List<Producto> queryByCategoria(String genero,String tipo);
 	List<Producto> queryByGenero(String genero);
-	void crearImagen(Imagen image);
+	
 
 }
