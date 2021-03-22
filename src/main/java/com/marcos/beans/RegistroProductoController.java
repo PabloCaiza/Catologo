@@ -131,7 +131,7 @@ public class RegistroProductoController implements Serializable {
 			Imagen img = new Imagen();
 			img.setNombre(this.imagenesName.get(j));
 			img.setProducto(this.producto);
-			servicioProducto.crearImagen(img);
+			servicioImagen.crear(img);
 			imagenes.add(img);
 		}
 
