@@ -1,5 +1,6 @@
 package com.marcos.dto;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.*;
@@ -17,6 +18,8 @@ public class Producto  implements Comparable<Producto> {
 	private String imagen;
 	private double precio;
 	private String descripcion;
+	private boolean estado ;
+	private LocalDateTime fecha_creacion;
 
 	@ManyToOne
 	@JoinColumn(name="id_categoria", nullable=false)
@@ -95,6 +98,30 @@ public class Producto  implements Comparable<Producto> {
 		}
 		
 		
+	}
+	/**
+	 * @return the estado
+	 */
+	public boolean isEstado() {
+		return estado;
+	}
+	/**
+	 * @param estado the estado to set
+	 */
+	public void setEstado(boolean estado) {
+		this.estado = estado;
+	}
+	/**
+	 * @return the fecha_creacion
+	 */
+	public LocalDateTime getFecha_creacion() {
+		return fecha_creacion;
+	}
+	/**
+	 * @param fecha_creacion the fecha_creacion to set
+	 */
+	public void setFecha_creacion(LocalDateTime fecha_creacion) {
+		this.fecha_creacion = fecha_creacion;
 	}
 	
 	

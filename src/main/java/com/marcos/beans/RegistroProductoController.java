@@ -12,6 +12,7 @@ import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -155,7 +156,10 @@ public class RegistroProductoController implements Serializable {
 		}
 
 		try {
-
+            if(!this.registroHabilitado) {
+            	producto.setFecha_creacion(LocalDateTime.now());
+            	producto.setEstado(true);
+            }
 			servicioProducto.crear(producto);
 			createImages();
 			FacesContext.getCurrentInstance().addMessage("registryForm",

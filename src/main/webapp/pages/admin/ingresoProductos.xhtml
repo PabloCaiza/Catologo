@@ -66,9 +66,12 @@
 									style="float:center;font-size:20px" styleClass="p-text-bold" />
 								<p:selectOneMenu id="genero"
 									value="#{registroProductoController.genero}">
-
 									<f:selectItems value="#{registroProductoController.generos}" />
 								</p:selectOneMenu>
+
+								
+
+
 								<p:outputLabel value="" />
 								<p:outputLabel value="" />
 								<p:outputLabel for="@next" value="Imagenes: "
@@ -78,11 +81,13 @@
 
 
 
-									<h:form >
-										<p:fileUpload listener="#{registroProductoController.handleFileUpload}" sequential="true"
-											mode="advanced" dragDropSupport="false" multiple="true"
-											update=" messages, registryForm:btnRegistrar" sizeLimit="1000000" fileLimit="3"
-											allowTypes="/(\.|\/)(gif|jpe?g|png)$/" required="true"/>
+									<h:form>
+										<p:fileUpload
+											listener="#{registroProductoController.handleFileUpload}"
+											sequential="true" mode="advanced" dragDropSupport="false"
+											multiple="true" update=" messages, registryForm:btnRegistrar"
+											sizeLimit="1000000" fileLimit="3"
+											allowTypes="/(\.|\/)(gif|jpe?g|png)$/" required="true" />
 										<p:growl id="messages" showDetail="true" keepAlive="true" />
 									</h:form>
 								</f:facet>

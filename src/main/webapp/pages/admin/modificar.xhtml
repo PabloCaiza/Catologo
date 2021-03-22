@@ -33,21 +33,19 @@
 
 								<p:outputLabel value="Nombre"
 									style="float:center;font-size:20px" styleClass="p-text-bold"></p:outputLabel>
-								<p:inputText
-									value="#{sessionController.selectProduct.nombre}"
+								<p:inputText value="#{sessionController.selectProduct.nombre}"
 									required="true" requiredMessage="Nombre es requerido">
 								</p:inputText>
 
 								<p:outputLabel value="Precio"
 									style="float:center;font-size:20px" styleClass="p-text-bold"></p:outputLabel>
-								<p:inputNumber
-									value="#{sessionController.selectProduct.precio}"
+								<p:inputNumber value="#{sessionController.selectProduct.precio}"
 									required="true" requiredMessage="Precio es Requerido"
 									decimalPlaces="2"></p:inputNumber>
 
 								<p:outputLabel value="Descripcion"
 									style="float:center;font-size:20px" styleClass="p-text-bold"></p:outputLabel>
-								<p:inputText 
+								<p:inputText
 									value="#{sessionController.selectProduct.descripcion}"
 									required="true" requiredMessage="descripción es requerida"></p:inputText>
 
@@ -56,18 +54,25 @@
 									style="float:center;font-size:20px" styleClass="p-text-bold" />
 								<p:selectOneMenu id="tipo"
 									value="#{registroProductoController.tipo}">
-									
-						
-									<f:selectItems value="#{registroProductoController.tipos}"  />
+
+
+									<f:selectItems value="#{registroProductoController.tipos}" />
 								</p:selectOneMenu>
 
 								<p:outputLabel for="@next" value="Genero"
 									style="float:center;font-size:20px" styleClass="p-text-bold" />
 								<p:selectOneMenu id="genero"
 									value="#{registroProductoController.genero}">
-                                    
+
 									<f:selectItems value="#{registroProductoController.generos}" />
 								</p:selectOneMenu>
+
+								<p:outputLabel id="lblEstatus" value="Estatus: "
+									style="float:center;font-size:20px" styleClass="p-text-bold"></p:outputLabel>
+								<p:inputSwitch id="inputEstatus"
+									value="#{sessionController.selectProduct.estado}"></p:inputSwitch>
+
+
 								<p:outputLabel value="" />
 								<p:outputLabel value="" />
 								<p:outputLabel for="@next" value="Imagenes: "
@@ -75,10 +80,11 @@
 								<p:outputLabel value="" />
 								<f:facet name="footer">
 									<h:form>
-										<p:fileUpload listener="#{registroProductoController.handleFileUpload}"
+										<p:fileUpload
+											listener="#{registroProductoController.handleFileUpload}"
 											mode="advanced" dragDropSupport="false" multiple="true"
 											update="messages" sizeLimit="1000000" fileLimit="3"
-											allowTypes="/(\.|\/)(gif|jpe?g|png)$/"  sequential="true" />
+											allowTypes="/(\.|\/)(gif|jpe?g|png)$/" sequential="true" />
 
 										<p:growl id="messages" showDetail="true" keepAlive="true" />
 									</h:form>
