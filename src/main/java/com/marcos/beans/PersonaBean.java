@@ -2,6 +2,7 @@ package com.marcos.beans;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,6 +33,7 @@ public class PersonaBean implements Serializable {
 	private String password;
 	private String correo;
 	private Persona persona;
+
 
 	@Inject
 	private ServicioPersonaI servicio;
@@ -171,4 +173,6 @@ public class PersonaBean implements Serializable {
 		}
 		return false;
 	}
+
+	
 }

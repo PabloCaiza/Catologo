@@ -2,6 +2,7 @@ package com.marcos.beans;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -29,13 +30,13 @@ import com.marcos.utils.CommonUtils;
 public class ProductoBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private static final org.apache.logging.log4j.Logger LOGGER=LogManager.getLogger(ProductoBean.class);
-	
-	
+	private static final org.apache.logging.log4j.Logger LOGGER = LogManager.getLogger(ProductoBean.class);
+
 	private Producto producto;
 	private List<Producto> productos;
 	private String categoria;
 	private String filtroPorNombre;
+	private String opcionOrdenado;
 	@Inject
 	private SessionController sessionController;
 	@Inject
@@ -51,29 +52,26 @@ public class ProductoBean implements Serializable {
 		LOGGER.warn("WARN");
 		LOGGER.error("ERROR");
 		LOGGER.fatal("FATAL");
-		
+
 		productos = servicio.listarProductos();
 		producto = new Producto();
 
 	}
-	
 
-	
 	public void showDetail(Producto producto) {
 		LOGGER.info(producto.getNombre());
-		
+
 		sessionController.setSelectProduct(producto);
 		try {
 			CommonUtils.redireccionarPagina("/pages/cliente/detalle.xhtml");
 		} catch (IOException e) {
 			CommonUtils.mostarMensaje(FacesMessage.SEVERITY_ERROR, "UPS!", "no se pudo ingresar");
 		}
-		
+
 	}
-	
-	
+
 	public void agregarProducto(Producto product) {
-		CarritoProducto carritoProducto=new CarritoProducto();
+		CarritoProducto carritoProducto = new CarritoProducto();
 		carritoProducto.setCarrito(sessionController.getPersona().getCarrito());
 		carritoProducto.setCantidad(1);
 		carritoProducto.setEstatus("PENDIENTE");
@@ -81,7 +79,7 @@ public class ProductoBean implements Serializable {
 		this.servicioCarrito.agregarProductoCarrito(carritoProducto);
 		this.sessionController.getPersona().getCarrito().getCarritosProducto().add(carritoProducto);
 	}
-	
+
 	public void crearProducto() {
 		try {
 			servicio.crear(producto);
@@ -128,14 +126,28 @@ public class ProductoBean implements Serializable {
 		}
 
 	}
-	
-	public void consultarPorCategoria(String genero,String tipo) {
-		productos=servicio.queryByCategoria(genero, tipo);
-		
+
+	public void consultarPorCategoria(String genero, String tipo) {
+		productos = servicio.queryByCategoria(genero, tipo);
+
 	}
-	
+
 	public void consultarPorGenero(String genero) {
-		productos=servicio.queryByGenero(genero);
+		productos = servicio.queryByGenero(genero);
+	}
+
+	public void ordenar() {
+		if (opcionOrdenado.equals("1")) {
+
+		} else if (opcionOrdenado.equals("2")) {
+
+		} else if (opcionOrdenado.equals("3")) {
+
+		} else if (opcionOrdenado.equals("4")) {
+			Collections.sort(productos);
+		} else {
+
+		}
 	}
 
 	public Producto getProducto() {
@@ -175,7 +187,19 @@ public class ProductoBean implements Serializable {
 	public void setFiltroPorNombre(String filtroPorNombre) {
 		this.filtroPorNombre = filtroPorNombre;
 	}
-	
-	
+
+	/**
+	 * @return the opcionOrdenado
+	 */
+	public String getOpcionOrdenado() {
+		return opcionOrdenado;
+	}
+
+	/**
+	 * @param opcionOrdenado the opcionOrdenado to set
+	 */
+	public void setOpcionOrdenado(String opcionOrdenado) {
+		this.opcionOrdenado = opcionOrdenado;
+	}
 
 }

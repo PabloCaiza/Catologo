@@ -24,22 +24,24 @@
 					</p:inputText>
 				</div>
 				<div>
-					<h:form>
-						<h:panelGrid columns="2" cellpadding="5">
 
-							<p:commandButton icon="pi pi-search" styleClass="p-shadow-6" style="background:#61D2C2;margin:0 10px;color:#000" />
-							<p:selectOneMenu id="country" style="width:200px">
-
-								<f:selectItem itemLabel="Ordenar A-Z" itemValue="" />
-								<f:selectItem itemLabel="Ordenar Z-A" itemValue="" />
-								<f:selectItem itemLabel="Precio: Bajo a Alto" itemValue="" />
-								<f:selectItem itemLabel="Precio: Alto a Bajo" itemValue="" />
-							</p:selectOneMenu>
-
-						</h:panelGrid>
+					<h:panelGrid columns="2" cellpadding="5">
 
 
-					</h:form>
+						<p:selectOneMenu id="country" style="width:200px" value="#{productoB.opcionOrdenado}">
+
+							<f:selectItem itemLabel="Ordenar A-Z" itemValue="1" />
+							<f:selectItem itemLabel="Ordenar Z-A" itemValue="2" />
+							<f:selectItem itemLabel="Precio: Bajo a Alto" itemValue="3" />
+							<f:selectItem itemLabel="Precio: Alto a Bajo" itemValue="4" />
+							<p:ajax event="change" listener="#{productoB.ordenar}"
+								update="pnlResultados"></p:ajax>
+						</p:selectOneMenu>
+
+					</h:panelGrid>
+
+
+
 				</div>
 
 			</div>
