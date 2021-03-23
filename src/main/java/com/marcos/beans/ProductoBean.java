@@ -3,6 +3,7 @@ package com.marcos.beans;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -138,17 +139,22 @@ public class ProductoBean implements Serializable {
 
 	public void ordenar() {
 		if (opcionOrdenado.equals("1")) {
-
-		} else if (opcionOrdenado.equals("2")) {
-
-		} else if (opcionOrdenado.equals("3")) {
-
-		} else if (opcionOrdenado.equals("4")) {
 			Collections.sort(productos);
+		} else if (opcionOrdenado.equals("2")) {
+			Collections.sort(productos);
+			Collections.reverse(productos);
+		} else if (opcionOrdenado.equals("3")) {
+			 Collections.sort(productos,new Producto().new precioComparador());
+			 
+		} else if (opcionOrdenado.equals("4")) {
+			 Collections.sort(productos,new Producto().new precioComparador());
+			 Collections.reverse(productos);
 		} else {
 
 		}
 	}
+	
+	
 
 	public Producto getProducto() {
 		return producto;

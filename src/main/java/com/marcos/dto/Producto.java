@@ -1,6 +1,7 @@
 package com.marcos.dto;
 
 import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.persistence.*;
@@ -89,9 +90,9 @@ public class Producto  implements Comparable<Producto> {
 	@Override
 	public int compareTo(Producto o) {
 		 
-		if(o.getPrecio()==this.precio) {
+		if(o.getNombre().equals(this.nombre)) {
 			return 0;
-		}else if(this.precio>o.precio) {
+		}else if(this.nombre.compareTo(o.getNombre())>0){
 			return 1;
 		}else {
 			return -1;
@@ -99,6 +100,14 @@ public class Producto  implements Comparable<Producto> {
 		
 		
 	}
+	
+	public class precioComparador implements Comparator<Producto>{
+
+        @Override
+        public int compare(Producto t, Producto t1) {
+           return t.getPrecio() > t1.getPrecio() ? +1 : t.getPrecio() < t1.getPrecio() ? -1 : 0;
+        }
+     }
 	/**
 	 * @return the estado
 	 */
