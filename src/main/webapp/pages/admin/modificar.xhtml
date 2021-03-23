@@ -73,8 +73,8 @@
 									value="#{sessionController.selectProduct.estado}"></p:inputSwitch>
 
 
-								<p:outputLabel value="" />
-								<p:outputLabel value="" />
+							
+								
 								<p:outputLabel for="@next" value="Imagenes: "
 									style="float:center;font-size:20px" styleClass="p-text-bold" />
 								<p:outputLabel value="" />
@@ -83,7 +83,7 @@
 										<p:fileUpload
 											listener="#{registroProductoController.handleFileUpload}"
 											mode="advanced" dragDropSupport="false" multiple="true"
-											update="messages" sizeLimit="1000000" fileLimit="3"
+											update="messages" sizeLimit="1000000" fileLimit="3" label="Agregar"
 											allowTypes="/(\.|\/)(gif|jpe?g|png)$/" sequential="true" />
 
 										<p:growl id="messages" showDetail="true" keepAlive="true" />
