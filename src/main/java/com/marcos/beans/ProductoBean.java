@@ -149,8 +149,11 @@ public class ProductoBean implements Serializable {
 		} else if (opcionOrdenado.equals("4")) {
 			 Collections.sort(productos,new Producto().new precioComparador());
 			 Collections.reverse(productos);
-		} else {
-
+		} else if (opcionOrdenado.equals("5")){
+			 Collections.sort(productos,new Producto().new fechaComparador());
+			 Collections.reverse(productos);
+		}else if(opcionOrdenado.equals("6")){
+			Collections.sort(productos,new Producto().new fechaComparador());
 		}
 	}
 	

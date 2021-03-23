@@ -108,6 +108,17 @@ public class Producto  implements Comparable<Producto> {
            return t.getPrecio() > t1.getPrecio() ? +1 : t.getPrecio() < t1.getPrecio() ? -1 : 0;
         }
      }
+	
+	public class fechaComparador implements Comparator<Producto>{
+
+        @Override
+        public int compare(Producto t, Producto t1) {
+           return t.getFecha_creacion().compareTo(t1.getFecha_creacion());
+        }
+     }
+	
+	
+	
 	/**
 	 * @return the estado
 	 */
