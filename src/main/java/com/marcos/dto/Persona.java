@@ -31,6 +31,8 @@ public class Persona {
 	private String correo ;
 	@Column(name = "clave")
 	private String clave;
+
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idRol")
 	private Rol rol;
@@ -93,6 +95,10 @@ public class Persona {
 	public void setComentarios(List<Comentario> comentarios) {
 		this.comentarios = comentarios;
 	}
+	/**
+	 * @return the estado
+	 */
+
 	
 	
 	

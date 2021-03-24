@@ -33,7 +33,7 @@ public class PersonaBean implements Serializable {
 	private String password;
 	private String correo;
 	private Persona persona;
-
+	private int contador;
 
 	@Inject
 	private ServicioPersonaI servicio;
@@ -88,23 +88,30 @@ public class PersonaBean implements Serializable {
 	}
 
 	public void ingresar() {
+
 		Persona persona = coincidenCredenciales();
 
-		if (persona != null) {
-			if (persona.getRol().getNombre().equals("admin")) {
-				session.setPersona(persona);
-				rediccionar("pages/admin/admin.xhtml");
-			} else {
-				persona.getCarrito().setCarritosProducto(persona.getCarrito().getCarritosProducto().stream()
-						.filter(item -> item.getEstatus().equals("PENDIENTE")).collect(Collectors.toList()));
+		if (this.contador != 3) {
 
-				session.setPersona(persona);
-				rediccionar("pages/commons/dashBoard.xhtml");
+			if (persona != null) {
+				if (persona.getRol().getNombre().equals("admin")) {
+					session.setPersona(persona);
+					rediccionar("pages/admin/admin.xhtml");
+				} else {
+					persona.getCarrito().setCarritosProducto(persona.getCarrito().getCarritosProducto().stream()
+							.filter(item -> item.getEstatus().equals("PENDIENTE")).collect(Collectors.toList()));
+
+					session.setPersona(persona);
+					rediccionar("pages/commons/dashBoard.xhtml");
+				}
+			} else {
+				FacesContext.getCurrentInstance().addMessage("loginForm",
+						new FacesMessage(FacesMessage.SEVERITY_ERROR, "No coinciden las credenciales", ""));
+
 			}
 		} else {
-			FacesContext.getCurrentInstance().addMessage("loginForm",
-					new FacesMessage(FacesMessage.SEVERITY_ERROR, "No coinciden las credenciales", ""));
-
+			FacesContext.getCurrentInstance().addMessage("loginForm", new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					"Su intentos estan agotados intentelo mas tarde", ""));
 		}
 	}
 
@@ -118,13 +125,21 @@ public class PersonaBean implements Serializable {
 	}
 
 	public Persona coincidenCredenciales() {
-		for (int i = 0; i < personas.size(); i++) {
-			if (personas.get(i).getCorreo().equalsIgnoreCase(correo) && personas.get(i).getClave().equals(password)) {
-				return personas.get(i);
+		if (this.contador != 3) {
+			for (int i = 0; i < personas.size(); i++) {
+
+				if (personas.get(i).getCorreo().equalsIgnoreCase(correo)
+						&& personas.get(i).getClave().equals(password)) {
+					return personas.get(i);
+				} else if (personas.get(i).getCorreo().equalsIgnoreCase(correo)) {
+					this.contador += 1;
+					FacesContext.getCurrentInstance().addMessage("loginForm", new FacesMessage(
+							FacesMessage.SEVERITY_ERROR, "Le quedan " + (3 - this.contador) + " intentos ", ""));
+
+				}
+
 			}
-
 		}
-
 		return null;
 
 	}
@@ -174,5 +189,18 @@ public class PersonaBean implements Serializable {
 		return false;
 	}
 
-	
+	/**
+	 * @return the contador
+	 */
+	public int getContador() {
+		return contador;
+	}
+
+	/**
+	 * @param contador the contador to set
+	 */
+	public void setContador(int contador) {
+		this.contador = contador;
+	}
+
 }
