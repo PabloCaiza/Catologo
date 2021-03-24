@@ -2,26 +2,22 @@ package com.marcos.beans;
 
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.Collections;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
-import javax.faces.annotation.ManagedProperty;
+
 import javax.faces.application.FacesMessage;
-import javax.faces.application.FacesMessage.Severity;
-import javax.faces.bean.ViewScoped;
+
 import javax.faces.context.ExternalContext;
-import javax.faces.context.ExternalContextFactory;
+
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.marcos.dao.ServicioPersonaI;
 import com.marcos.dto.Persona;
-import com.marcos.utils.CommonUtils;
 
 @Named("personaBean")
 @javax.faces.view.ViewScoped

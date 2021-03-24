@@ -58,7 +58,7 @@ public class ServicioProductompl implements ServicioProducto {
 				.createQuery("select c from Categoria c WHERE c.genero = :gender AND c.tipo = :type", Categoria.class)
 				.setParameter("gender", genero).setParameter("type", tipo).getResultList().get(0);
 
-		return em.createQuery("select p from Producto p WHERE p.categoria = :categoria", Producto.class)
+		return em.createQuery("select p from Producto p WHERE p.categoria = :categoria AND p.estado = true", Producto.class)
 				.setParameter("categoria", categoria).getResultList();
 
 	}
@@ -66,25 +66,19 @@ public class ServicioProductompl implements ServicioProducto {
 	@Override
 	public List<Producto> queryByGenero(String genero) {
 
-		
-		
-		  List<Categoria> categorias=em.
-		  createQuery("select c from Categoria c WHERE c.genero = :gender ",
-		  Categoria.class).setParameter("gender", genero) .getResultList();
-		  
-		  
-		  
-		  return
-		  em.createQuery("select p from Producto p WHERE p.categoria IN :categorias",
-		  Producto.class) .setParameter("categorias", categorias).getResultList();
-		 
-		 
+		List<Categoria> categorias = em
+				.createQuery("select c from Categoria c WHERE c.genero = :gender ", Categoria.class)
+				.setParameter("gender", genero).getResultList();
 
-	
-		 
+		return em.createQuery("select p from Producto p WHERE p.categoria IN :categorias AND p.estado = true", Producto.class)
+				.setParameter("categorias", categorias).getResultList();
 
 	}
 
+	@Override
+	public List<Producto> listarProductosCliente() {
+		return em.createQuery("select p from Producto p WHERE p.estado = true", Producto.class).getResultList();
 
+	}
 
 }

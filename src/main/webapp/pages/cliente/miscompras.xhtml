@@ -14,7 +14,7 @@
 </h:head>
 
 <h:body style="margin: 0; padding: 0; box-sizing: border-box;">
-	<div class="ui-fluid" style="overflow: hidden; margin: 5px 70px">
+	<div class="ui-fluid" style="margin: 5px 70px">
 		<h:form id="formMisCompras" style="background:#fff">
 
 			<ui:include src="/pages/commons/navbar.xhtml">
@@ -22,7 +22,8 @@
 			</ui:include>
 
 
-			<div class="p-grid sample-layout p-d-flex p-jc-between " style="background-image: url(//cdn.shopify.com/s/files/1/0058/9276/7855/files/background-palomas-fondo-de-agua_1920x.jpg?v=1566330730); background-size: contain; background-attachment: inherit; background-repeat-x: repeat; background-repeat-y: repeat;height:650px;padding:50px 10px">
+			<div class="p-grid sample-layout p-d-flex p-jc-between "
+				style="background-image: url(//cdn.shopify.com/s/files/1/0058/9276/7855/files/background-palomas-fondo-de-agua_1920x.jpg?v=1566330730); background-size: contain; background-attachment: inherit; background-repeat-x: repeat; background-repeat-y: repeat; height: 650px; padding: 50px 10px">
 
 				<ui:include src="/pages/commons/header.xhtml"></ui:include>
 
@@ -33,12 +34,11 @@
 
 							<p:dataTable id="tblMisCompras" var="factura"
 								value="#{misComprasController.facturas}" rows="10"
-								paginator="true"
-								paginatorPosition="bottom"
+								paginator="true" paginatorPosition="bottom"
 								paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 								currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
-								rowsPerPageTemplate="5,10,{ShowAll|'All'}" reflow="true" >
-								
+								rowsPerPageTemplate="5,10,{ShowAll|'All'}" reflow="true">
+
 								<f:facet name="header">
 								Compras Realizadas
 								</f:facet>
@@ -76,18 +76,20 @@
 							<p:outputPanel id="opDetalleCompra" style="text-align:center">
 								<p:dataView var="item"
 									value="#{misComprasController.carritosProductos}" rows="12"
-									paginatorPosition="bottom"
-									paginator="true" rowsPerPageTemplate="6,12,16"
+									paginatorPosition="bottom" paginator="true"
+									rowsPerPageTemplate="6,12,16"
 									paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 									listIcon="pi pi-bars" id="dataViewDetalleCompra"
 									rendered="#{not empty misComprasController.carritosProductos}">
 
 									<p:dataViewListItem>
-										<h:panelGrid columns="4"  style="width:100%; text-align:center;" columnClasses="ui-g-12 ui-md-2,ui-g-12 ui-md-4,ui-g-12 ui-md-3,ui-g-12 ui-md-3" >
+										<h:panelGrid columns="4"
+											style="width:100%; text-align:center;"
+											columnClasses="ui-g-12 ui-md-2,ui-g-12 ui-md-4,ui-g-12 ui-md-3,ui-g-12 ui-md-3">
 											<p:graphicImage name="imgs/producto/#{item.producto.imagen}"
-												width="100%"  />
+												width="100%" />
 
-											<h:panelGrid columns="1" >
+											<h:panelGrid columns="1">
 												<h:panelGrid columns="2">
 													<p:outputLabel value="# Orden: "></p:outputLabel>
 													<p:outputLabel value="#{item.factura.orderId}"></p:outputLabel>
@@ -105,7 +107,8 @@
 
 											<p:outputLabel value="#{item.cantidad}"></p:outputLabel>
 
-											<p:outputLabel value="#{item.producto.precio * item.cantidad}">
+											<p:outputLabel
+												value="#{item.producto.precio * item.cantidad}">
 												<f:convertNumber type="currency" currencyCode="USD"
 													currencySymbol="$"></f:convertNumber>
 											</p:outputLabel>

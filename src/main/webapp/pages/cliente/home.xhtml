@@ -6,10 +6,6 @@
 
 	<div class="p-grid " style="margin: 20px 20px; background: #fff">
 
-
-
-
-
 		<div class="p-col"
 			style="background-image: url(//cdn.shopify.com/s/files/1/0058/9276/7855/files/background-palomas-fondo-de-agua_1920x.jpg?v=1566330730); background-size: contain; background-attachment: inherit; background-repeat-x: repeat; background-repeat-y: repeat;">
 
@@ -27,7 +23,6 @@
 
 					<h:panelGrid columns="2" cellpadding="5">
 
-
 						<p:selectOneMenu id="country" style="width:200px" value="#{productoB.opcionOrdenado}">
 
 							<f:selectItem itemLabel="Ordenar A-Z" itemValue="1" />
@@ -40,9 +35,7 @@
 						</p:selectOneMenu>
 
 					</h:panelGrid>
-
-
-
+					
 				</div>
 
 			</div>
@@ -58,7 +51,8 @@
 							gridIcon="pi pi-th-large" listIcon="pi pi-bars" layout="grid"
 							gridRowStyleClass="p-lg-6 p-xl-4" flex="true">
 
-							<p:dataViewGridItem>
+							<p:dataViewGridItem >
+
 								<div class="product-grid-item card border-1">
 									<div class="product-grid-item-top">
 
@@ -68,7 +62,6 @@
 										</div>
 
 									</div>
-
 
 									<div class="product-grid-item-content">
 
@@ -87,7 +80,6 @@
 										</div>
 
 									</div>
-
 
 									<div
 										class="product-grid-item-bottom p-d-flex p-jc-around p-ai-center"
@@ -109,7 +101,7 @@
 								</div>
 							</p:dataViewGridItem>
 
-							<p:dataViewListItem>
+							<p:dataViewListItem >
 								<div class="product-grid-item card border-1 p-d-flex"
 									style="margin-bottom: 30px; width: 100%">
 
@@ -123,9 +115,7 @@
 
 										</p:commandLink>
 
-
 									</div>
-
 
 									<div style="margin-left: 70px">
 										<div class="product-grid-item-content">
@@ -138,7 +128,6 @@
 											</div>
 
 										</div>
-
 
 										<div class="product-grid-item-bottom p-d-flex p-jc-between"
 											style="width: 250px">
@@ -153,35 +142,21 @@
 
 											</p:commandButton>
 
-
 										</div>
 
 									</div>
 
-
-
-
 								</div>
 							</p:dataViewListItem>
 
-
-
 						</p:dataView>
 
-
 					</div>
-
-
 
 				</p:panel>
 
 			</div>
 
-
 		</div>
 	</div>
-
-
-
-
 </ui:composition>

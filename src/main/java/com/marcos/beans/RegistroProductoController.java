@@ -3,18 +3,11 @@
  */
 package com.marcos.beans;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
-import java.nio.file.FileSystem;
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -25,7 +18,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.primefaces.event.FileUploadEvent;
-import org.primefaces.event.FilesUploadEvent;
 import org.primefaces.model.file.UploadedFile;
 import org.primefaces.model.file.UploadedFiles;
 
@@ -64,7 +56,7 @@ public class RegistroProductoController implements Serializable {
 	/**
 	 * Objeto que contendra el flujo de bytes del archivo de imagen a cargar.
 	 */
-	private List<InputStream> inputStream = new ArrayList();
+	private List<InputStream> inputStream = new ArrayList<InputStream>();
 	/**
 	 * /** Objeto que se utiliza para almacenar el archivo de la imagen del producto
 	 * a cargar de forma temporal.

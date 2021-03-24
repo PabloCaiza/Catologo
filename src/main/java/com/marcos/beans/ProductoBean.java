@@ -3,20 +3,18 @@ package com.marcos.beans;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Collections;
-import java.util.Comparator;
+
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
+
 import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
+
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.MarkerManager.Log4jMarker;
-import org.apache.logging.log4j.core.Logger;
 
 import com.marcos.dao.ServicioCarrito;
 import com.marcos.dao.ServicioCategoria;
@@ -35,6 +33,9 @@ public class ProductoBean implements Serializable {
 
 	private Producto producto;
 	private List<Producto> productos;
+
+
+
 	private String categoria;
 	private String filtroPorNombre;
 	private String opcionOrdenado;
@@ -53,8 +54,12 @@ public class ProductoBean implements Serializable {
 		LOGGER.warn("WARN");
 		LOGGER.error("ERROR");
 		LOGGER.fatal("FATAL");
+		if (sessionController.getPersona().getRol().getIdRol()==1) {
+			productos = servicio.listarProductos();
+		} else {
+			productos = servicio.listarProductosCliente();
+		}
 
-		productos = servicio.listarProductos();
 		producto = new Producto();
 
 	}
@@ -120,10 +125,9 @@ public class ProductoBean implements Serializable {
 	public void consultarPorFiltro() {
 
 		if (filtroPorNombre.length() == 0) {
-			productos = servicio.listarProductos();
+			productos = servicio.listarProductosCliente();
 		} else {
 			productos = servicio.queryByNameFilter(filtroPorNombre);
-
 		}
 
 	}
@@ -144,20 +148,18 @@ public class ProductoBean implements Serializable {
 			Collections.sort(productos);
 			Collections.reverse(productos);
 		} else if (opcionOrdenado.equals("3")) {
-			 Collections.sort(productos,new Producto().new precioComparador());
-			 
+			Collections.sort(productos, new Producto().new precioComparador());
+
 		} else if (opcionOrdenado.equals("4")) {
-			 Collections.sort(productos,new Producto().new precioComparador());
-			 Collections.reverse(productos);
-		} else if (opcionOrdenado.equals("5")){
-			 Collections.sort(productos,new Producto().new fechaComparador());
-			 Collections.reverse(productos);
-		}else if(opcionOrdenado.equals("6")){
-			Collections.sort(productos,new Producto().new fechaComparador());
+			Collections.sort(productos, new Producto().new precioComparador());
+			Collections.reverse(productos);
+		} else if (opcionOrdenado.equals("5")) {
+			Collections.sort(productos, new Producto().new fechaComparador());
+			Collections.reverse(productos);
+		} else if (opcionOrdenado.equals("6")) {
+			Collections.sort(productos, new Producto().new fechaComparador());
 		}
 	}
-	
-	
 
 	public Producto getProducto() {
 		return producto;
@@ -210,5 +212,7 @@ public class ProductoBean implements Serializable {
 	public void setOpcionOrdenado(String opcionOrdenado) {
 		this.opcionOrdenado = opcionOrdenado;
 	}
+
+	
 
 }

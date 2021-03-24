@@ -13,18 +13,20 @@
 </h:head>
 
 <h:body style="margin: 0; padding: 0; box-sizing: border-box;">
-	<div class="ui-fluid" style="overflow: hidden;margin: 5px 70px">
+	<div class="ui-fluid" style="overflow: hidden; margin: 5px 70px">
 		<h:form id="formCarrito">
-		
+
 			<ui:include src="/pages/commons/navbar.xhtml">
 
 			</ui:include>
 
-			<div class="p-grid sample-layout" style="background-image: url(//cdn.shopify.com/s/files/1/0058/9276/7855/files/background-palomas-fondo-de-agua_1920x.jpg?v=1566330730); background-size: contain; background-attachment: inherit; background-repeat-x: repeat; background-repeat-y: repeat;">
+			<div class="p-grid sample-layout"
+				style="background-image: url(//cdn.shopify.com/s/files/1/0058/9276/7855/files/background-palomas-fondo-de-agua_1920x.jpg?v=1566330730); background-size: contain; background-attachment: inherit; background-repeat-x: repeat; background-repeat-y: repeat;">
 
-				
 
-				<div class="p-col-12 p-md-10 p-col-nogutter" style="width: 100%;padding-top:20px;padding-bottom:150px">
+
+				<div class="p-col-12 p-md-10 p-col-nogutter"
+					style="width: 100%; padding-top: 20px; padding-bottom: 150px">
 					<div class="p-Grid">
 						<div class="p-col-12">
 
@@ -50,7 +52,7 @@
 													<h:outputText value="Nombre" styleClass="p-text-bold"></h:outputText>
 													<h:outputText value="#{itemCarrito.producto.nombre}"></h:outputText>
 
-													<h:outputText value="Precio"  styleClass="p-text-bold"></h:outputText>
+													<h:outputText value="Precio" styleClass="p-text-bold"></h:outputText>
 													<h:outputText value="#{itemCarrito.producto.precio}">
 														<f:convertNumber type="currency" currencySymbol="$"></f:convertNumber>
 													</h:outputText>
@@ -84,7 +86,8 @@
 
 											</p:selectOneMenu>
 
-											<p:commandButton icon="pi pi-trash" styleClass="p-shadow-6" style="color:#000;background:#61D2C2"
+											<p:commandButton icon="pi pi-trash" styleClass="p-shadow-6"
+												style="color:#000;background:#61D2C2"
 												action="#{carritoController.eliminarItemCarrito(itemCarrito)}"
 												update="formCarrito:menubar,formCarrito:dataViewDetalleCarrito,formCarrito:pnlTotalCompra,formCarrito:btnContinuar">
 
@@ -116,8 +119,9 @@
 									<p:outputLabel></p:outputLabel>
 									<p:outputLabel></p:outputLabel>
 									<p:outputLabel></p:outputLabel>
-									<p:outputLabel value="Total:"  styleClass="p-text-bold"></p:outputLabel>
-									<p:outputLabel value="#{carritoController.session.totalCompra}"  styleClass="p-text-bold">
+									<p:outputLabel value="Total:" styleClass="p-text-bold"></p:outputLabel>
+									<p:outputLabel value="#{carritoController.session.totalCompra}"
+										styleClass="p-text-bold">
 										<f:convertNumber type="currency" currencySymbol="$"></f:convertNumber>
 
 									</p:outputLabel>
@@ -126,10 +130,11 @@
 
 								</p:panelGrid>
 
-								<p:commandButton  id="btnContinuar" value="continuar"
+								<p:commandButton id="btnContinuar" value="continuar"
 									style="float:right;width:10%;margin-top:10px;color:#000;background:#61D2C2"
 									disabled="#{sessionController.persona.carrito.carritosProducto.size() == 0}"
-									action="#{pasosController.cambiarPaso('/pages/cliente/pago.xhtml',1)}" styleClass="p-shadow-6"    ></p:commandButton>
+									action="#{pasosController.cambiarPaso('/pages/cliente/pago.xhtml',1)}"
+									styleClass="p-shadow-6"></p:commandButton>
 
 
 

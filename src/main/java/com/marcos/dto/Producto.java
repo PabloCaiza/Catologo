@@ -7,7 +7,7 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
-@NamedQuery(name = "Producto.findByName",query = "SELECT p FROM Producto p WHERE p.nombre like :filter ")
+@NamedQuery(name = "Producto.findByName",query = "SELECT p FROM Producto p WHERE LOWER(p.nombre)  LIKE :filter AND p.estado = true ")
 @NamedQuery(name = "Producto.findAll",query = "SELECT E FROM Producto E")
 public class Producto  implements Comparable<Producto> {
 	@Id

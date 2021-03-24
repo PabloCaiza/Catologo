@@ -7,9 +7,9 @@
 
 
 	<div class="card" style="margin-bottom: 25px; background: #fff;">
-		<p:carousel value="#{productoB.productos}" var="product"
+		<p:carousel value="#{productoB.productos}" var="product" 
 			responsive="true" style="background:#fff">
-			<div class="product">
+			<p:panel class="product"  >
 				<div class="product-grid-item p-p-5">
 					<div class="product-grid-item-top">
 						<div style="padding-bottom: 10px">
@@ -22,12 +22,14 @@
 						class="product-grid-item-content p-d-flex p-ai-center p-flex-column"
 						style="margin-bottom: 20px">
 
-						
-							<p:commandLink action="#{productoB.showDetail(product)}" style="width:300px;height:300px">
-								
-								<img src="../../resources/imgs/producto/#{product.imagen}" style="width:100%;display:block;object-fit:cover;max-height:300px" ></img>	
-							</p:commandLink>
-						
+
+						<p:commandLink action="#{productoB.showDetail(product)}"
+							style="width:300px;height:300px">
+
+							<img src="../../resources/imgs/producto/#{product.imagen}"
+								style="width: 100%; display: block; object-fit: cover; max-height: 300px"></img>
+						</p:commandLink>
+
 
 
 						<div class="product-name">
@@ -45,18 +47,21 @@
 							styleClass="product-price p-text-bold">
 							<f:convertNumber currencySymbol="$" type="currency" />
 						</h:outputText>
-
+						
+						
+				
+							
+							
 						<div style="width: 50%">
-							<p:commandButton type="button" value="Add to Card"
+							<p:commandButton  value="Add to Card"
 								icon="pi pi-shopping-cart" styleClass="p-shadow-6"
-								style="color:#000;background:#61D2C2" />
+								action="#{productoB.agregarProducto(product)}"
+								style="color:#000;background:#61D2C2" immediate="true" update="formDashboard:btnShopping"/>
 						</div>
-
-
 
 					</div>
 				</div>
-			</div>
+			</p:panel>
 
 		</p:carousel>
 	</div>

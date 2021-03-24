@@ -6,8 +6,6 @@ import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.*;
 import javax.persistence.EntityManager;
-import javax.persistence.NamedQuery;
-import javax.persistence.TypedQuery;
 import com.marcos.dto.Categoria;
 import com.marcos.dto.Category;
 

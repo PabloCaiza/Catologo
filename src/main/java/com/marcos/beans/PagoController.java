@@ -3,18 +3,12 @@ package com.marcos.beans;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
-
 import javax.annotation.PostConstruct;
-import javax.faces.annotation.ManagedProperty;
 import javax.faces.application.FacesMessage;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.ws.rs.core.Response;
-
 import org.apache.logging.log4j.LogManager;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.marcos.client.ReportesServiceClient;
 import com.marcos.dao.ServicioCarrito;
 import com.marcos.dao.ServicioFactura;
@@ -30,6 +24,11 @@ import com.paypal.orders.Order;
 public class PagoController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * Objeto que permite mostrar los mensajes de LOG en la consola del servidor o
+	 * en un archivo externo.
+	 */
 	private static final org.apache.logging.log4j.Logger LOGGER = LogManager.getLogger(PagoController.class);
 	@Inject
 	SessionController session;
@@ -37,7 +36,6 @@ public class PagoController implements Serializable {
 	ServicioFactura sevicioFactura;
 	@Inject
 	ServicioCarrito servicioCarrito;
-	
 	@Inject
 	 ReportesServiceClient reportesServiceClient;
 
@@ -45,7 +43,9 @@ public class PagoController implements Serializable {
 	public void init() {
 		LOGGER.info("Iniciamos pagoController correctamente");
 	}
-
+/**
+ * Metodo que nos permite guardar la factura
+ */
 	public void guardarFactura() {
 		LOGGER.info("guardando factura");
 		HttpResponse<Order> order = this.session.getOrder();
@@ -68,23 +68,11 @@ public class PagoController implements Serializable {
 		}
 
 	}
-
-	public SessionController getSession() {
-		return session;
-	}
-
-	public void setSession(SessionController session) {
-		this.session = session;
-	}
-
-	public ReportesServiceClient getReportesServiceClient() {
-		return reportesServiceClient;
-	}
-
-	public void setReportesServiceClient(ReportesServiceClient reportesServiceClient) {
-		this.reportesServiceClient = reportesServiceClient;
-	}
-	
+/**
+ * Metodo que nospermite cambiar de pasos para el proceso de compra
+ * @param url {@link String} parametro con la informacion del url de la pantalla que queremos cargar
+ * @param paso {@link Integer} parametros con el numeros de paso al que queremos ir
+ */
 	public void cambiarPaso(String url,int paso) {
 		try {
 			session.setPaso(paso);
@@ -93,7 +81,22 @@ public class PagoController implements Serializable {
 		} catch (IOException e) {
 			CommonUtils.mostarMensaje(FacesMessage.SEVERITY_ERROR, "ups", "no se pudo avanzar el paso");
 		}
-		
+	}
+	
+	
+	public SessionController getSession() {
+		return session;
+	}
+
+	public void setSession(SessionController session) {
+		this.session = session;
+	}
+	public ReportesServiceClient getReportesServiceClient() {
+		return reportesServiceClient;
+	}
+
+	public void setReportesServiceClient(ReportesServiceClient reportesServiceClient) {
+		this.reportesServiceClient = reportesServiceClient;
 	}
 	
 }
