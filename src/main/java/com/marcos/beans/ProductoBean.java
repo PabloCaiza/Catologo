@@ -127,7 +127,8 @@ public class ProductoBean implements Serializable {
 		if (filtroPorNombre.length() == 0) {
 			productos = servicio.listarProductosCliente();
 		} else {
-			productos = servicio.queryByNameFilter(filtroPorNombre);
+			
+			productos = servicio.queryByNameFilter(filtroPorNombre.toLowerCase());
 		}
 
 	}
