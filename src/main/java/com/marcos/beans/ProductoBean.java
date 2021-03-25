@@ -36,6 +36,7 @@ public class ProductoBean implements Serializable {
 
 
 
+
 	private String categoria;
 	private String filtroPorNombre;
 	private String opcionOrdenado;
@@ -54,6 +55,7 @@ public class ProductoBean implements Serializable {
 		LOGGER.warn("WARN");
 		LOGGER.error("ERROR");
 		LOGGER.fatal("FATAL");
+		
 		if (sessionController.getPersona().getRol().getIdRol()==1) {
 			productos = servicio.listarProductos();
 		} else {
@@ -161,6 +163,11 @@ public class ProductoBean implements Serializable {
 			Collections.sort(productos, new Producto().new fechaComparador());
 		}
 	}
+	
+	
+	
+	
+	
 
 	public Producto getProducto() {
 		return producto;
@@ -213,6 +220,8 @@ public class ProductoBean implements Serializable {
 	public void setOpcionOrdenado(String opcionOrdenado) {
 		this.opcionOrdenado = opcionOrdenado;
 	}
+	
+
 
 	
 
