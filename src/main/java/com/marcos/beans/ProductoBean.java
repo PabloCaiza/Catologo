@@ -72,14 +72,11 @@ public class ProductoBean implements Serializable {
 
 	@PostConstruct
 	public void init() {
-		LOGGER.info("INFO");
-		LOGGER.warn("WARN");
-		LOGGER.error("ERROR");
-		LOGGER.fatal("FATAL");
-        this.productosReportes=this.servicio.consultar();
-        Collections.sort(this.productosReportes);
-        Collections.reverse(this.productosReportes);
+        
 		if (sessionController.getPersona().getRol().getIdRol() == 1) {
+			this.productosReportes=this.servicio.consultar();
+	        Collections.sort(this.productosReportes);
+	        Collections.reverse(this.productosReportes);
 			productos = servicio.listarProductos();
 		} else {
 			productos = servicio.listarProductosCliente();

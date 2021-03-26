@@ -40,7 +40,7 @@
 								<p:outputLabel value="Precio"
 									style="float:center;font-size:20px" styleClass="p-text-bold"></p:outputLabel>
 								<p:inputNumber value="#{sessionController.selectProduct.precio}"
-									required="true" requiredMessage="Precio es Requerido"
+									required="true" requiredMessage="Precio es Requerido" minValue="0" 
 									decimalPlaces="2"></p:inputNumber>
 
 								<p:outputLabel value="Descripcion"

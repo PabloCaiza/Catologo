@@ -6,8 +6,6 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.*;
 import javax.persistence.EntityManager;
 
-
-
 import com.marcos.dto.Categoria;
 
 import com.marcos.dto.Producto;
@@ -80,14 +78,16 @@ public class ServicioProductompl implements ServicioProducto {
 
 	@Override
 	public List<Producto> listarProductosCliente() {
-		return em.createQuery("select p from Producto p WHERE p.estado = true"+"", Producto.class).getResultList();
+		return em.createQuery("select p from Producto p WHERE p.estado = true" + "", Producto.class).getResultList();
 
 	}
 
 	@Override
 	public List<ProductoReportes> consultar() {
 		// TODO Auto-generated method stub
-		return em.createQuery("SELECT new com.marcos.dto.ProductoReportes(p ,SUM(cp.cantidad)as cantidadSuma) "+ "FROM CarritoProducto cp " + "INNER JOIN cp.producto p WHERE cp.estatus ='PAGADO' " + "GROUP BY p.id", ProductoReportes.class).getResultList();
+		return em.createQuery("SELECT new com.marcos.dto.ProductoReportes(p ,SUM(cp.cantidad)as cantidadSuma) "
+				+ "FROM CarritoProducto cp " + "INNER JOIN cp.producto p WHERE cp.estatus ='PAGADO' " + "GROUP BY p.id",
+				ProductoReportes.class).getResultList();
 	}
 
 }
