@@ -2,7 +2,10 @@ package com.marcos.dao;
 
 import java.util.List;
 
+
+
 import com.marcos.dto.Producto;
+import com.marcos.dto.ProductoReportes;
 
 /**
  * Servicio que contiene los metodos de logica de negocio para manejar las
@@ -63,4 +66,6 @@ public interface ServicioProducto {
 	List<Producto> queryByGenero(String genero);
 
 	List<Producto> listarProductosCliente();
+	
+	List<ProductoReportes> consultar(); 
 }

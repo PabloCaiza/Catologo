@@ -8,25 +8,24 @@
 <h:head>
 	<h:outputStylesheet library="css" name="primeflex.css"></h:outputStylesheet>
 	<title>Registro de Productos</title>
-	
+
 	<style type="text/css">
-	
-	@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+@media ( prefers-reduced-motion : no-preference) {
+	.App-logo {
+		animation: App-logo-spin infinite 20s linear;
+	}
 }
+
+@
+keyframes App-logo-spin {from { transform:rotate(0deg);
 	
-	@keyframes App-logo-spin {
-  	from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
-	
-	</style>
+
+to {
+	transform: rotate(360deg);
+}
+}
+</style>
 
 </h:head>
 
@@ -37,15 +36,38 @@
 
 		</ui:include>
 
-		<div class="p-d-flex p-jc-between" >
-			
-				<ui:include src="/pages/admin/menuLateral.xhtml">
+		<div class="p-d-flex p-jc-between">
 
-				</ui:include>
-	
-			<div style="width:90%">
-				<img src="../../resources/imgs/logoAdmin.svg" style="width:100%;max-height:500px" class="App-logo"></img>
+			<ui:include src="/pages/admin/menuLateral.xhtml">
+
+			</ui:include>
+
+			<div style="width: 90%">
+				<img src="../../resources/imgs/logoAdmin.svg"
+					style="width: 100%; max-height: 500px" class="App-logo"></img>
 			</div>
+
+			<h:form>
+				<p:dataTable id="tblProductos" var="producto"
+					value="#{productoB.productosReportes}" paginator="true"
+					rows="10"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} {Exporters}"
+					currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros"
+					reflow="true" rowsPerPageTemplate="5,10,15"
+					emptyMessage="No se encontraron registros">
+
+					<p:column headerText="Producto" >
+						<h:outputText value="#{producto.producto.nombre}"></h:outputText>
+					</p:column>
+
+					<p:column headerText="Ventas">
+						<h:outputText value="#{producto.cantidadSuma}"></h:outputText>
+					</p:column>
+
+				
+
+				</p:dataTable>
+			</h:form>
 
 
 		</div>

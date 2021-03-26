@@ -22,6 +22,7 @@ import com.marcos.dao.ServicioProducto;
 import com.marcos.dto.CarritoProducto;
 import com.marcos.dto.Categoria;
 import com.marcos.dto.Producto;
+import com.marcos.dto.ProductoReportes;
 import com.marcos.utils.CommonUtils;
 
 /**
@@ -44,7 +45,10 @@ public class ProductoBean implements Serializable {
 	 * Lista de productos
 	 */
 	private List<Producto> productos;
-
+    
+	
+	private List<ProductoReportes> productosReportes;
+	
 	/**
 	 * Categoria elegida por el usuario
 	 */
@@ -72,7 +76,9 @@ public class ProductoBean implements Serializable {
 		LOGGER.warn("WARN");
 		LOGGER.error("ERROR");
 		LOGGER.fatal("FATAL");
-
+        this.productosReportes=this.servicio.consultar();
+        Collections.sort(this.productosReportes);
+        Collections.reverse(this.productosReportes);
 		if (sessionController.getPersona().getRol().getIdRol() == 1) {
 			productos = servicio.listarProductos();
 		} else {
@@ -251,5 +257,24 @@ public class ProductoBean implements Serializable {
 	public void setOpcionOrdenado(String opcionOrdenado) {
 		this.opcionOrdenado = opcionOrdenado;
 	}
+
+	/**
+	 * @return the productosReportes
+	 */
+	public List<ProductoReportes> getProductosReportes() {
+		return productosReportes;
+	}
+
+	/**
+	 * @param productosReportes the productosReportes to set
+	 */
+	public void setProductosReportes(List<ProductoReportes> productosReportes) {
+		this.productosReportes = productosReportes;
+	}
+
+	/**
+	 * @return the productosReportes
+	 */
+
 
 }

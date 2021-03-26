@@ -6,9 +6,12 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.*;
 import javax.persistence.EntityManager;
 
+
+
 import com.marcos.dto.Categoria;
-import com.marcos.dto.Imagen;
+
 import com.marcos.dto.Producto;
+import com.marcos.dto.ProductoReportes;
 
 @ApplicationScoped
 public class ServicioProductompl implements ServicioProducto {
@@ -58,8 +61,8 @@ public class ServicioProductompl implements ServicioProducto {
 				.createQuery("select c from Categoria c WHERE c.genero = :gender AND c.tipo = :type", Categoria.class)
 				.setParameter("gender", genero).setParameter("type", tipo).getResultList().get(0);
 
-		return em.createQuery("select p from Producto p WHERE p.categoria = :categoria AND p.estado = true", Producto.class)
-				.setParameter("categoria", categoria).getResultList();
+		return em.createQuery("select p from Producto p WHERE p.categoria = :categoria AND p.estado = true",
+				Producto.class).setParameter("categoria", categoria).getResultList();
 
 	}
 
@@ -70,15 +73,21 @@ public class ServicioProductompl implements ServicioProducto {
 				.createQuery("select c from Categoria c WHERE c.genero = :gender ", Categoria.class)
 				.setParameter("gender", genero).getResultList();
 
-		return em.createQuery("select p from Producto p WHERE p.categoria IN :categorias AND p.estado = true", Producto.class)
-				.setParameter("categorias", categorias).getResultList();
+		return em.createQuery("select p from Producto p WHERE p.categoria IN :categorias AND p.estado = true",
+				Producto.class).setParameter("categorias", categorias).getResultList();
 
 	}
 
 	@Override
 	public List<Producto> listarProductosCliente() {
-		return em.createQuery("select p from Producto p WHERE p.estado = true", Producto.class).getResultList();
+		return em.createQuery("select p from Producto p WHERE p.estado = true"+"", Producto.class).getResultList();
 
+	}
+
+	@Override
+	public List<ProductoReportes> consultar() {
+		// TODO Auto-generated method stub
+		return em.createQuery("SELECT new com.marcos.dto.ProductoReportes(p ,SUM(cp.cantidad)as cantidadSuma) "+ "FROM CarritoProducto cp " + "INNER JOIN cp.producto p WHERE cp.estatus ='PAGADO' " + "GROUP BY p.id", ProductoReportes.class).getResultList();
 	}
 
 }
