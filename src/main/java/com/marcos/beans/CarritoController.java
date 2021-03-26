@@ -9,7 +9,11 @@ import javax.inject.Named;
 
 import com.marcos.dao.ServicioCarrito;
 import com.marcos.dto.CarritoProducto;
-
+/**
+ * Clase que controla el flujo de datos del carrito de compras
+ * @author c-ado
+ *
+ */
 @Named("carritoController")
 @ViewScoped
 public class CarritoController implements Serializable {

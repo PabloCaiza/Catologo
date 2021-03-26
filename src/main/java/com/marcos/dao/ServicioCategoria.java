@@ -5,8 +5,9 @@ import java.util.List;
 import com.marcos.dto.Categoria;
 import com.marcos.dto.Category;
 /**
+ * Servicio que contiene los metodos de logica de negocio para manejar las categorias
  * @author c-ado
- *Servicio que contiene los metodos de logica de negocio para manejar las categorias
+ *
  */
 public interface ServicioCategoria {
 	/**

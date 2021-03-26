@@ -5,11 +5,12 @@ import java.util.List;
 import com.marcos.dto.Persona;
 
 /**
+ * Servicio que contiene los metodos de logica de negocio para manejar las
+ * personas
  * 
  * @author c-ado
  * 
- *         Servicio que contiene los metodos de logica de negocio para manejar
- *         las personas
+ * 
  */
 public interface ServicioPersonaI {
 	/**

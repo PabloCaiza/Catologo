@@ -11,13 +11,23 @@ import javax.inject.Named;
 import com.marcos.dao.ServicioPersonaI;
 import com.marcos.dto.Persona;
 import com.marcos.utils.CommonUtils;
-
+/**
+ * Clase que controla el flujo de datos de la pantalla infopersonal.xhtml
+ * @author c-ado
+ *
+ */
 @Named("infoPersonalController")
 @ViewScoped
 public class InfoPersonalController implements Serializable{
 
 	private static final long serialVersionUID = 1L;
+	/**
+	 * Persona en sesion que esta revisando su informacion personal
+	 */
 	private Persona persona;
+	/**
+	 * Password de la persona en sesion
+	 */
 	private String password;
 	@Inject
 	SessionController session;
@@ -29,7 +39,9 @@ public class InfoPersonalController implements Serializable{
 		persona=session.getPersona();
 		password=persona.getClave();
 	}
-	
+	/**
+	 * Metodo que sirve para modificar los datos de la persona en sesion
+	 */
 	public void modificarUsuario() {
 		if(coicidenClaves()) {
 			Persona personaActualizada=servicioPersona.actualizar(persona);
@@ -41,7 +53,10 @@ public class InfoPersonalController implements Serializable{
 		}
 		
 	}
-	
+	/**
+	 * Metodo que permite verificar si las contraseñas coinciden
+	 * @return
+	 */
 	public boolean coicidenClaves() {
 		return this.persona.getClave().equals(password);
 	}

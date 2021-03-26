@@ -9,7 +9,11 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 import com.marcos.utils.CommonUtils;
-
+/**
+ * Clase que controla el flujo de datos de la pantalla navbar.xhtml
+ * @author c-ado
+ *
+ */
 @Named("navBarController")
 @ViewScoped
 public class NavBarController implements Serializable{
@@ -23,7 +27,9 @@ public class NavBarController implements Serializable{
 		System.out.println("hola");
 		
 	}
-	
+	/**
+	 * Metodo que nos sirve para redireccionar a la pantalla carrito.xhtml
+	 */
 	public void redireccionar() {
 		try {
 			CommonUtils.redireccionarPagina("/pages/cliente/carrito.xhtml");
@@ -31,7 +37,9 @@ public class NavBarController implements Serializable{
 			CommonUtils.mostarMensaje(FacesMessage.SEVERITY_ERROR, "UPS ", "no se pudo cargar la pagina");
 		}
 	}
-	
+	/**
+	 * Metodo que nos sirve para redireccionar a la pantalla BuscarProductos.xhtml
+	 */
 	public void redireccionarProductos() {
 		try {
 			CommonUtils.redireccionarPagina("/pages/cliente/BuscarProductos.xhtml");
@@ -39,7 +47,9 @@ public class NavBarController implements Serializable{
 			CommonUtils.mostarMensaje(FacesMessage.SEVERITY_ERROR, "UPS ", "no se pudo cargar la pagina");
 		}
 	}
-	
+	/**
+	 * Metodo que nos sirve para redireccionar a la pantalla dashBoard.xhtml
+	 */
 	public void redireccionarHome() {
 		try {
 			CommonUtils.redireccionarPagina("/pages/commons/dashBoard.xhtml");
@@ -47,7 +57,9 @@ public class NavBarController implements Serializable{
 			CommonUtils.mostarMensaje(FacesMessage.SEVERITY_ERROR, "UPS ", "no se pudo cargar la pagina");
 		}
 	}
-	
+	/**
+	 *  Metodo que nos sirve para redireccionar a la pantalla infopersonal.xhtml
+	 */
 	public void redireccionarUser() {
 		try {
 			CommonUtils.redireccionarPagina("/pages/cliente/infopersonal.xhtml");

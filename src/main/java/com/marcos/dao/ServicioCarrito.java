@@ -5,9 +5,9 @@ import java.util.List;
 import com.marcos.dto.CarritoProducto;
 import com.marcos.dto.Factura;
 /**
- * 
+ * Clase que contiene los metodos de la logica de negocio para manejar los productos del carrito
  * @author c-ado
- *Clase que contiene los metodos de la logica de negocio para manejar los productos del carrito
+ *
  */
 public interface ServicioCarrito {
 	/**

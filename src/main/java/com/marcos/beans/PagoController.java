@@ -18,7 +18,11 @@ import com.marcos.dto.Persona;
 import com.marcos.utils.CommonUtils;
 import com.paypal.http.HttpResponse;
 import com.paypal.orders.Order;
-
+/**
+ * Clase que controla el flujo de datos de la pantalla pago.xhtml
+ * @author c-ado
+ *
+ */
 @Named("pagoController")
 @ViewScoped
 public class PagoController implements Serializable {

@@ -11,7 +11,11 @@ import javax.inject.Named;
 import com.marcos.dao.ServicioFactura;
 import com.marcos.dto.CarritoProducto;
 import com.marcos.dto.Factura;
-
+/**
+ * Clase que controla el flujo de datos de la pantallas miscompras.xhtml
+ * @author c-ado
+ *
+ */
 @Named("misComprasController")
 @ViewScoped
 public class MisComprasController implements Serializable{
@@ -23,8 +27,13 @@ public class MisComprasController implements Serializable{
 	SessionController session;
 
 	private static final long serialVersionUID = 1L;
-	
+	/**
+	 * Lista de facturas de la persona en sesion
+	 */
 	private List<Factura>  facturas;
+	/**
+	 * Lista de los productos de la compra que desea revisar el cliente
+	 */
 	private List<CarritoProducto> carritosProductos;
 	
 	@PostConstruct

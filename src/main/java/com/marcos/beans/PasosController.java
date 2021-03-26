@@ -14,7 +14,11 @@ import org.apache.logging.log4j.LogManager;
 import com.marcos.utils.CommonUtils;
 
 
-
+/**
+ * Clase que controla el flujo de datos de la pantalla steps.xhtml
+ * @author c-ado
+ *
+ */
 @Named("pasosController")
 @ViewScoped
 public class PasosController implements Serializable{
@@ -28,7 +32,11 @@ public class PasosController implements Serializable{
 		LOGGER.info("se ejeucuto pasos contoller");
 	}
 	
-	
+	/**
+	 * Metodo que nos permite cambiar de paso de pago
+	 * @param url {@link String} de la pantalla del paso deseado
+	 * @param paso {@link Integer} numero del paso deseado 
+	 */
 	public void cambiarPaso(String url,int paso) {
 		try {
 			session.setPaso(paso);

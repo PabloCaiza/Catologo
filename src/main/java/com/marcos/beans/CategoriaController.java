@@ -11,7 +11,11 @@ import javax.inject.Named;
 import com.marcos.dao.ServicioCategoria;
 import com.marcos.dto.Category;
 
-
+/**
+ * Clase que controla el flujo de datos para poder listar las categorias en las diferentes pantallas del cliente
+ * @author c-ado
+ * 
+ */
 @Named("categoriaController")
 @ViewScoped
 public class CategoriaController implements Serializable {
@@ -20,7 +24,9 @@ public class CategoriaController implements Serializable {
 	
 	@Inject
 	private ServicioCategoria servicioCategoria;
-	
+	/**
+	 * Lista de las categorias existentes en la tienda
+	 */
 	private List<Category> categories;
 	
 	@PostConstruct

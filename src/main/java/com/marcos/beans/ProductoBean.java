@@ -24,21 +24,38 @@ import com.marcos.dto.Categoria;
 import com.marcos.dto.Producto;
 import com.marcos.utils.CommonUtils;
 
+/**
+ * Clase que controla el flujo de los productos en las pantallas
+ * 
+ * @author c-ado
+ *
+ */
 @Named("productoB")
 @ViewScoped
 public class ProductoBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private static final org.apache.logging.log4j.Logger LOGGER = LogManager.getLogger(ProductoBean.class);
-
+	/**
+	 * Producto seleccionado por el usuario
+	 */
 	private Producto producto;
+	/**
+	 * Lista de productos
+	 */
 	private List<Producto> productos;
 
-
-
-
+	/**
+	 * Categoria elegida por el usuario
+	 */
 	private String categoria;
+	/**
+	 * Filtro de busqueda en base al nombre
+	 */
 	private String filtroPorNombre;
+	/**
+	 * Forma de ordenar los productos elegida por el usuario
+	 */
 	private String opcionOrdenado;
 	@Inject
 	private SessionController sessionController;
@@ -55,8 +72,8 @@ public class ProductoBean implements Serializable {
 		LOGGER.warn("WARN");
 		LOGGER.error("ERROR");
 		LOGGER.fatal("FATAL");
-		
-		if (sessionController.getPersona().getRol().getIdRol()==1) {
+
+		if (sessionController.getPersona().getRol().getIdRol() == 1) {
 			productos = servicio.listarProductos();
 		} else {
 			productos = servicio.listarProductosCliente();
@@ -66,6 +83,11 @@ public class ProductoBean implements Serializable {
 
 	}
 
+	/**
+	 * Metodo que sirve para mostrar el detalle de un producto
+	 * 
+	 * @param producto {@link Producto} producto elegido
+	 */
 	public void showDetail(Producto producto) {
 		LOGGER.info(producto.getNombre());
 
@@ -78,6 +100,11 @@ public class ProductoBean implements Serializable {
 
 	}
 
+	/**
+	 * Metodo que sirve para agregar un producto al carrito
+	 * 
+	 * @param product
+	 */
 	public void agregarProducto(Producto product) {
 		CarritoProducto carritoProducto = new CarritoProducto();
 		carritoProducto.setCarrito(sessionController.getPersona().getCarrito());
@@ -88,6 +115,9 @@ public class ProductoBean implements Serializable {
 		this.sessionController.getPersona().getCarrito().getCarritosProducto().add(carritoProducto);
 	}
 
+	/**
+	 * Metod que sirve para crear un producto en el catalogo
+	 */
 	public void crearProducto() {
 		try {
 			servicio.crear(producto);
@@ -123,18 +153,24 @@ public class ProductoBean implements Serializable {
 		}
 
 	}
-
+/**
+ * Metodo que sirve para consultar un producto por un filtro
+ */
 	public void consultarPorFiltro() {
 
 		if (filtroPorNombre.length() == 0) {
 			productos = servicio.listarProductosCliente();
 		} else {
-			
+
 			productos = servicio.queryByNameFilter(filtroPorNombre.toLowerCase());
 		}
 
 	}
-
+/**
+ * Metodo que sirve para consulta los productos en base a una categoria
+ * @param genero {@link}
+ * @param tipo
+ */
 	public void consultarPorCategoria(String genero, String tipo) {
 		productos = servicio.queryByCategoria(genero, tipo);
 
@@ -163,11 +199,6 @@ public class ProductoBean implements Serializable {
 			Collections.sort(productos, new Producto().new fechaComparador());
 		}
 	}
-	
-	
-	
-	
-	
 
 	public Producto getProducto() {
 		return producto;
@@ -220,9 +251,5 @@ public class ProductoBean implements Serializable {
 	public void setOpcionOrdenado(String opcionOrdenado) {
 		this.opcionOrdenado = opcionOrdenado;
 	}
-	
-
-
-	
 
 }

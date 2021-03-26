@@ -17,12 +17,19 @@ import com.marcos.dto.Comentario;
 import com.marcos.dto.Imagen;
 import com.marcos.dto.Producto;
 
+/**
+ * Clase que controla el flujo de datos de la pantalla detalle.xhtml
+ * 
+ * @author c-ado
+ */
 @Named("detalleController")
 @ViewScoped
 public class DetalleController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
+	/**
+	 * Cantidad de unidades de un producto deseadas por un usuario
+	 */
 	private int cantidadProductoSelecionado;
 
 	@Inject
@@ -33,38 +40,64 @@ public class DetalleController implements Serializable {
 
 	@Inject
 	private ServicioComentario servicioComentario;
-
+	/**
+	 * Lista de comentarios del producto elegido por el usuario
+	 */
 	private List<Comentario> comentarios;
+	/**
+	 * Comentario temporal usado para agregar un comentario a un producto
+	 */
 	private Comentario comentario;
+	/**
+	 * Integerq que representa el zoom hecho a una imagen
+	 */
 	private int isZoom;
+	/**
+	 * Formato para la fecha usado en la pantalla
+	 */
 	private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
 	@PostConstruct
 	public void init() {
 		this.comentario = new Comentario();
 		this.cantidadProductoSelecionado = 1;
-		this.isZoom=0;
+		this.isZoom = 0;
 		comentarios = servicioComentario.listarComentaios(session.getSelectProduct());
 	}
 
+	/**
+	 * Metodo para cambiar la imagen principal del detalle
+	 * 
+	 * @param imagen {@link Imagen} imagen elegida por el usuario para ver
+	 */
 	public void changeImage(Imagen imagen) {
 		System.out.println(imagen.getId());
 		this.session.getSelectProduct().setImagen(imagen.getNombre());
 	}
-	
+
+	/**
+	 * Metodo para activar el zoom
+	 */
 	public void changeZoomStatusT() {
 		System.out.println(isZoom);
-		if(this.isZoom!=1) {
-		this.isZoom=1;
+		if (this.isZoom != 1) {
+			this.isZoom = 1;
 		}
 	}
+
+	/**
+	 * Metodo para desactivar el zoom
+	 */
 	public void changeZoomStatusF() {
 		System.out.println(isZoom);
-		if(this.isZoom!=0) {
-		this.isZoom=0;
+		if (this.isZoom != 0) {
+			this.isZoom = 0;
 		}
 	}
-	
+
+	/**
+	 * Metodo para poder agregar un comentario a un producto
+	 */
 	public void agregarComentario() {
 		this.prepareComment();
 		System.out.println("inserta un nuevo comentario");
@@ -73,12 +106,22 @@ public class DetalleController implements Serializable {
 		this.comentario = new Comentario();
 	}
 
+	/**
+	 * Metodo para poder inicializar los atributos de un comentario para que despues
+	 * se pueda guardar
+	 */
 	public void prepareComment() {
 		this.comentario.setPersona(session.getPersona());
 		this.comentario.setProducto(session.getSelectProduct());
 		this.comentario.setFecha(new Date());
 	}
 
+	/**
+	 * Metodo para agregar un producot al carrito
+	 * 
+	 * @param producto {@link Producto} producto elegido por el usuario para se
+	 *                 agregado al carrito
+	 */
 	public void agregarProductoCarrito(Producto producto) {
 		CarritoProducto carritoProducto = new CarritoProducto();
 
@@ -131,9 +174,5 @@ public class DetalleController implements Serializable {
 	public void setIsZoom(int isZoom) {
 		this.isZoom = isZoom;
 	}
-
-
-	
-	
 
 }

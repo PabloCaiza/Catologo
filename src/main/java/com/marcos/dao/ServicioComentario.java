@@ -6,9 +6,9 @@ import com.marcos.dto.Comentario;
 
 import com.marcos.dto.Producto;
 /**
- * 
+ * Servicio que contiene los metodos de logica de negocio para manejar los comentarios
  * @author c-ado
- *Servicio que contiene los metodos de logica de negocio para manejar los comentarios
+ *
  */
 public interface ServicioComentario {
 	/**

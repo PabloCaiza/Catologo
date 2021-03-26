@@ -6,9 +6,9 @@ import com.marcos.dto.Factura;
 import com.marcos.dto.Persona;
 import com.paypal.orders.Order;
 /**
- * 
+ * Servicio que contiene los metodos de logica de negocio para manejar las facturas
  * @author c-ado
- *Servicio que contiene los metodos de logica de negocio para manejar las facturas
+ *
  */
 public interface ServicioFactura {
 	/**

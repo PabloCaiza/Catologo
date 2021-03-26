@@ -9,17 +9,25 @@ import javax.inject.Named;
 
 import com.marcos.utils.CommonUtils;
 
+/**
+ * Clase que controla el redireccionamiento de pagina standar
+ * 
+ * @author c-ado
+ *
+ */
 @Named("paginaController")
 @RequestScoped
-public class PaginaController  implements Serializable {
-	
-	
-	
+public class PaginaController implements Serializable {
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Metodo que permite redireccionara una pagina 
+	 * @param url {@link String} de la pagina deseada
+	 */
 	public void redireccionarPagina(String url) {
 		System.out.println("entramos al redireccionae");
 		try {
@@ -28,7 +36,5 @@ public class PaginaController  implements Serializable {
 			CommonUtils.mostarMensaje(FacesMessage.SEVERITY_ERROR, "ups !", "no se pudo cargar la  pagina");
 		}
 	}
-	
-	
 
 }
