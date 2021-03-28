@@ -42,34 +42,30 @@ to {
 
 			</ui:include>
 
-			<div style="width: 90%">
-				<img src="../../resources/imgs/logoAdmin.svg"
-					style="width: 100%; max-height: 500px" class="App-logo"></img>
+			
+			<div style="width: 90%;padding-left: 50px">
+				<h:form>
+					<p:dataTable id="tblProductos" var="producto"
+						value="#{productoB.productosReportes}" paginator="true" rows="10"
+						paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} {Exporters}"
+						currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros"
+						reflow="true" rowsPerPageTemplate="5,10,15"
+						emptyMessage="No se encontraron registros">
+
+						<p:column headerText="Producto">
+							<h:outputText value="#{producto.producto.nombre}"></h:outputText>
+						</p:column>
+
+						<p:column headerText="Ventas">
+							<h:outputText value="#{producto.cantidadSuma}"></h:outputText>
+						</p:column>
+
+
+
+					</p:dataTable>
+				</h:form>
+
 			</div>
-
-			<h:form>
-				<p:dataTable id="tblProductos" var="producto"
-					value="#{productoB.productosReportes}" paginator="true"
-					rows="10"
-					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} {Exporters}"
-					currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros"
-					reflow="true" rowsPerPageTemplate="5,10,15"
-					emptyMessage="No se encontraron registros">
-
-					<p:column headerText="Producto" >
-						<h:outputText value="#{producto.producto.nombre}"></h:outputText>
-					</p:column>
-
-					<p:column headerText="Ventas">
-						<h:outputText value="#{producto.cantidadSuma}"></h:outputText>
-					</p:column>
-
-				
-
-				</p:dataTable>
-			</h:form>
-
-
 		</div>
 
 
