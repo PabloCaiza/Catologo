@@ -3,6 +3,7 @@ package com.marcos.dao;
 import java.util.List;
 
 import com.marcos.dto.Persona;
+import com.marcos.dto.ProductoReportes;
 
 /**
  * Servicio que contiene los metodos de logica de negocio para manejar las
@@ -41,5 +42,9 @@ public interface ServicioPersonaI {
 	 * @param id {@link Integer} del usuario a borrar
 	 */
 	void eliminar(int id);
+	
+	
+	List<ProductoReportes> consultarAltaFacturas();
+	
 
 }

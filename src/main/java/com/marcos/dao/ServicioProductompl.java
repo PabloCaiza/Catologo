@@ -90,4 +90,17 @@ public class ServicioProductompl implements ServicioProducto {
 				ProductoReportes.class).getResultList();
 	}
 
+	@Override
+	public List<ProductoReportes> consultarGenerosCompras() {
+		return em.createQuery("SELECT new com.marcos.dto.ProductoReportes(c.genero ,SUM(cp.cantidad)as sumatoria) "
+				+"FROM CarritoProducto cp " 
+				+"INNER JOIN cp.producto p "
+				+"INNER JOIN p.categoria c "
+				+"GROUP BY c.genero",
+				ProductoReportes.class).getResultList();
+	}
+	
+	
+	
+
 }

@@ -9,6 +9,7 @@ import javax.persistence.Persistence;
 
 import com.marcos.dto.Carrito;
 import com.marcos.dto.Persona;
+import com.marcos.dto.ProductoReportes;
 import com.marcos.dto.Rol;
 
 @ApplicationScoped
@@ -16,19 +17,19 @@ public class ServicioPersonaImpl implements ServicioPersonaI {
 
 //	@Inject
 //	private EntityManager em;
-	private static final EntityManagerFactory emf=Persistence.createEntityManagerFactory("pujpa");
+	private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("pujpa");
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Persona> listar() {
-		EntityManager em=emf.createEntityManager();
+		EntityManager em = emf.createEntityManager();
 		return em.createNamedQuery("Persona.findAll").getResultList();
 	}
 
 	@Override
 	public void crear(Persona persona) {
-		
-		EntityManager em=emf.createEntityManager();
+
+		EntityManager em = emf.createEntityManager();
 		// recuperar rol
 		Rol userRol = em.find(Rol.class, 2);
 		System.out.println(userRol.getNombre());
@@ -36,7 +37,7 @@ public class ServicioPersonaImpl implements ServicioPersonaI {
 		em.getTransaction().begin();
 		try {
 			em.persist(persona);
-			Carrito carrito=new Carrito();
+			Carrito carrito = new Carrito();
 			carrito.setPersona(persona);
 			em.persist(carrito);
 			em.getTransaction().commit();
@@ -50,24 +51,21 @@ public class ServicioPersonaImpl implements ServicioPersonaI {
 
 	@Override
 	public Persona actualizar(Persona persona) {
-		EntityManager em=emf.createEntityManager();
-		
+		EntityManager em = emf.createEntityManager();
+
 		em.getTransaction().begin();
 		try {
-			
+
 			em.merge(persona);
 			em.getTransaction().commit();
 			return persona;
-		}catch(Exception e) {
+		} catch (Exception e) {
 			em.getTransaction().rollback();
 			return null;
-		}finally {
-			em.close();
-			
+		} finally {
+
 		}
-		
-		
-		
+
 	}
 
 	@Override
@@ -75,6 +73,14 @@ public class ServicioPersonaImpl implements ServicioPersonaI {
 //		em.getTransaction().begin();
 //		em.remove(em.find(Persona.class, id));
 //		em.getTransaction().commit();
+	}
+
+	@Override
+	public List<ProductoReportes> consultarAltaFacturas() {
+		EntityManager em = emf.createEntityManager();
+		return em.createQuery("SELECT new com.marcos.dto.ProductoReportes(p ,MAX(f.total) as total)"
+		+ " FROM Factura f INNER JOIN f.personaF p GROUP BY p.id "
+				, ProductoReportes.class).getResultList();
 	}
 
 }

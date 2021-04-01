@@ -68,4 +68,7 @@ public interface ServicioProducto {
 	List<Producto> listarProductosCliente();
 	
 	List<ProductoReportes> consultar(); 
+	
+	
+	List<ProductoReportes> consultarGenerosCompras(); 
 }

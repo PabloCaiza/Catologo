@@ -49,6 +49,8 @@ public class ProductoBean implements Serializable {
 	
 	private List<ProductoReportes> productosReportes;
 	
+	private List<ProductoReportes> productosReportados;
+	
 	/**
 	 * Categoria elegida por el usuario
 	 */
@@ -75,6 +77,7 @@ public class ProductoBean implements Serializable {
         
 		if (sessionController.getPersona().getRol().getIdRol() == 1) {
 			this.productosReportes=this.servicio.consultar();
+			this.productosReportados=this.servicio.consultarGenerosCompras();
 	        Collections.sort(this.productosReportes);
 	        Collections.reverse(this.productosReportes);
 			productos = servicio.listarProductos();
@@ -267,6 +270,20 @@ public class ProductoBean implements Serializable {
 	 */
 	public void setProductosReportes(List<ProductoReportes> productosReportes) {
 		this.productosReportes = productosReportes;
+	}
+
+	/**
+	 * @return the productosReportados
+	 */
+	public List<ProductoReportes> getProductosReportados() {
+		return productosReportados;
+	}
+
+	/**
+	 * @param productosReportados the productosReportados to set
+	 */
+	public void setProductosReportados(List<ProductoReportes> productosReportados) {
+		this.productosReportados = productosReportados;
 	}
 
 	/**

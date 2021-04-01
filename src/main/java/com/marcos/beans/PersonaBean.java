@@ -18,6 +18,7 @@ import javax.inject.Named;
 
 import com.marcos.dao.ServicioPersonaI;
 import com.marcos.dto.Persona;
+import com.marcos.dto.ProductoReportes;
 
 /**
  * Clase que controla el flujo de datos de la pantalla login.xhtml y
@@ -52,7 +53,7 @@ public class PersonaBean implements Serializable {
 	 * Numero de intentos que el usuario tiene para ingresar
 	 */
 	private int contador;
-
+    private List <ProductoReportes> factAltas;
 	@Inject
 	private ServicioPersonaI servicio;
 	@Inject
@@ -61,7 +62,7 @@ public class PersonaBean implements Serializable {
 	@PostConstruct
 	public void init() {
 		personas = servicio.listar();
-
+        this.factAltas=this.servicio.consultarAltaFacturas();
 		persona = new Persona();
 	}
 
@@ -250,6 +251,20 @@ public class PersonaBean implements Serializable {
 
 	public void setCorreo(String correo) {
 		this.correo = correo;
+	}
+
+	/**
+	 * @return the factAltas
+	 */
+	public List<ProductoReportes> getFactAltas() {
+		return factAltas;
+	}
+
+	/**
+	 * @param factAltas the factAltas to set
+	 */
+	public void setFactAltas(List<ProductoReportes> factAltas) {
+		this.factAltas = factAltas;
 	}
 
 }

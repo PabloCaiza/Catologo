@@ -172,9 +172,14 @@ public class RegistroProductoController implements Serializable {
 			this.producto = this.sessionController.getSelectProduct();
 			this.registroHabilitado = true;
 			crearProducto();
-
+			
 			this.sessionController.setSelectProduct(null);
+			
+			FacesContext.getCurrentInstance().addMessage("registryForm",
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "Se modifico con exito", ""));
+			
 			rediccionar("http://localhost:8080/app-marcos-01/pages/admin/modificarProducto.xhtml");
+		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
